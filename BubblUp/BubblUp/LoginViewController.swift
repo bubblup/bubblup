@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
@@ -29,11 +30,38 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLoginButton(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("goToMainView", sender: self)
+        
+        PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!) { (user: PFUser?, error: NSError?) -> Void in
+            
+            if let user = user {
+                print("logged in!")
+                self.performSegueWithIdentifier("goToMainView", sender: nil)
+            }
+        }
         
     }
 
     @IBAction func onSignupButton(sender: AnyObject) {
+        
+        let newUser = PFUser()
+        newUser.username = usernameTextField.text
+        newUser.password = passwordTextField.text
+        
+        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            
+            if success {
+                print("made user")
+                self.performSegueWithIdentifier("goToMainView", sender: nil)
+                
+            } else {
+                print(error?.localizedDescription)
+                if error!.code == 202 {
+                    print("username already taken")
+                }
+            }
+            
+        }
+
     }
     /*
     // MARK: - Navigation

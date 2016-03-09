@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MainTableViewController: UIViewController {
 
@@ -26,6 +27,13 @@ class MainTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onLogoutButton(sender: AnyObject) {
+        
+        PFUser.logOut()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("didLogout", object: nil)
+
+    }
 
     /*
     // MARK: - Navigation

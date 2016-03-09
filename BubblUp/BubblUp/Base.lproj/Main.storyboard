@@ -81,7 +81,7 @@
         <!--List-->
         <scene sceneID="Hvr-98-mno">
             <objects>
-                <viewController id="CeM-W9-3De" customClass="MainTableViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainTableViewController" id="CeM-W9-3De" customClass="MainTableViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="07Q-FR-CXx"/>
                         <viewControllerLayoutGuide type="bottom" id="3kH-Lk-Odq"/>
@@ -114,6 +114,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="List" id="mR4-lu-fyP">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Lml-iT-7Y6">
+                            <connections>
+                                <action selector="onLogoutButton:" destination="CeM-W9-3De" id="piR-v2-VlV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="compose" id="a6n-N5-5yG">
                             <connections>
                                 <segue destination="fLQ-xO-VBh" kind="modal" id="UBh-0s-rW6"/>
@@ -127,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exS-it-vmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="301"/>
+            <point key="canvasLocation" x="900" y="301"/>
         </scene>
         <!--Bubbles-->
         <scene sceneID="qt8-oU-tLZ">
@@ -222,6 +227,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pvs-J9-VSq"/>
+        <segue reference="UBh-0s-rW6"/>
     </inferredMetricsTieBreakers>
 </document>
