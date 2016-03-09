@@ -21,6 +21,22 @@ The following **optional** features are implemented:
 - [ ] User can draw an idea.
 - [ ] The application can dictate what the user says
 
+## Database Structure
+class: user
+  field: username
+  field: password
+  embeds_many: ideabox
+  
+class: ideabox
+  field: title
+  embeds_many: idea
+  embedded_in: user
+
+class: idea
+  field: type
+  field: contents
+  field: url
+  embedded_in: ideabox
 
 
 
