@@ -23,20 +23,20 @@ The following **optional** features are implemented:
 
 ## Database Structure
 class: user
-  field: username
-  field: password
-  embeds_many: ideabox
+- field: username
+- field: password
+- embeds_many: ideabox
   
 class: ideabox
-  field: title
-  embeds_many: idea
-  embedded_in: user
+- field: title
+- embeds_many: idea
+- embedded_in: user
 
 class: idea
-  field: type
-  field: contents
-  field: url
-  embedded_in: ideabox
+- field: type
+- field: contents
+- field: url
+- embedded_in: ideabox
 
 
 
