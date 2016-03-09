@@ -1,0 +1,406 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2657021DC64354968963EF8E /* Pods_BubblUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E65CA16E11381DFA3A2058 /* Pods_BubblUp.framework */; };
+		7473B60F1C8FA97100E02852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B60E1C8FA97100E02852 /* AppDelegate.swift */; };
+		7473B6111C8FA97100E02852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B6101C8FA97100E02852 /* ViewController.swift */; };
+		7473B6141C8FA97100E02852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7473B6121C8FA97100E02852 /* Main.storyboard */; };
+		7473B6161C8FA97100E02852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7473B6151C8FA97100E02852 /* Assets.xcassets */; };
+		7473B6191C8FA97100E02852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7473B6171C8FA97100E02852 /* LaunchScreen.storyboard */; };
+		7473B6221C8FA99400E02852 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B6211C8FA99400E02852 /* LoginViewController.swift */; };
+		7473B6241C8FABCF00E02852 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B6231C8FABCF00E02852 /* MainTableViewController.swift */; };
+		7473B6271C8FAC1E00E02852 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B6261C8FAC1E00E02852 /* MainCell.swift */; };
+		7473B6291C8FAD9000E02852 /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B6281C8FAD9000E02852 /* BubbleViewController.swift */; };
+		7473B62B1C8FAE7600E02852 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B62A1C8FAE7600E02852 /* ComposeViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00115E3B64DB043F8F8FCE49 /* Pods-BubblUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BubblUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BubblUp/Pods-BubblUp.release.xcconfig"; sourceTree = "<group>"; };
+		7473B60B1C8FA97100E02852 /* BubblUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubblUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7473B60E1C8FA97100E02852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7473B6101C8FA97100E02852 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7473B6131C8FA97100E02852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7473B6151C8FA97100E02852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7473B6181C8FA97100E02852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7473B61A1C8FA97100E02852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7473B6211C8FA99400E02852 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7473B6231C8FABCF00E02852 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		7473B6261C8FAC1E00E02852 /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		7473B6281C8FAD9000E02852 /* BubbleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
+		7473B62A1C8FAE7600E02852 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		7DD13B42C87F07F78A5E9E06 /* Pods-BubblUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BubblUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BubblUp/Pods-BubblUp.debug.xcconfig"; sourceTree = "<group>"; };
+		D5E65CA16E11381DFA3A2058 /* Pods_BubblUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BubblUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7473B6081C8FA97100E02852 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2657021DC64354968963EF8E /* Pods_BubblUp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4667CD70F87DC682477E9066 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5E65CA16E11381DFA3A2058 /* Pods_BubblUp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7473B6021C8FA97100E02852 = {
+			isa = PBXGroup;
+			children = (
+				7473B60D1C8FA97100E02852 /* BubblUp */,
+				7473B60C1C8FA97100E02852 /* Products */,
+				7A3E1BF351F8FA58079C94A8 /* Pods */,
+				4667CD70F87DC682477E9066 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7473B60C1C8FA97100E02852 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7473B60B1C8FA97100E02852 /* BubblUp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7473B60D1C8FA97100E02852 /* BubblUp */ = {
+			isa = PBXGroup;
+			children = (
+				7473B6251C8FABFD00E02852 /* Views */,
+				7473B6201C8FA97B00E02852 /* View Controllers */,
+				7473B60E1C8FA97100E02852 /* AppDelegate.swift */,
+				7473B6101C8FA97100E02852 /* ViewController.swift */,
+				7473B6121C8FA97100E02852 /* Main.storyboard */,
+				7473B6151C8FA97100E02852 /* Assets.xcassets */,
+				7473B6171C8FA97100E02852 /* LaunchScreen.storyboard */,
+				7473B61A1C8FA97100E02852 /* Info.plist */,
+			);
+			path = BubblUp;
+			sourceTree = "<group>";
+		};
+		7473B6201C8FA97B00E02852 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7473B6211C8FA99400E02852 /* LoginViewController.swift */,
+				7473B6231C8FABCF00E02852 /* MainTableViewController.swift */,
+				7473B6281C8FAD9000E02852 /* BubbleViewController.swift */,
+				7473B62A1C8FAE7600E02852 /* ComposeViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7473B6251C8FABFD00E02852 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7473B6261C8FAC1E00E02852 /* MainCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7A3E1BF351F8FA58079C94A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7DD13B42C87F07F78A5E9E06 /* Pods-BubblUp.debug.xcconfig */,
+				00115E3B64DB043F8F8FCE49 /* Pods-BubblUp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7473B60A1C8FA97100E02852 /* BubblUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7473B61D1C8FA97100E02852 /* Build configuration list for PBXNativeTarget "BubblUp" */;
+			buildPhases = (
+				E812AC86E1070801E72F519A /* Check Pods Manifest.lock */,
+				7473B6071C8FA97100E02852 /* Sources */,
+				7473B6081C8FA97100E02852 /* Frameworks */,
+				7473B6091C8FA97100E02852 /* Resources */,
+				A7E2B44C51E7853C70FFE42E /* Embed Pods Frameworks */,
+				9030411326FD110104B4E73B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BubblUp;
+			productName = BubblUp;
+			productReference = 7473B60B1C8FA97100E02852 /* BubblUp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7473B6031C8FA97100E02852 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = jinseokpark;
+				TargetAttributes = {
+					7473B60A1C8FA97100E02852 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 379EVXMM85;
+					};
+				};
+			};
+			buildConfigurationList = 7473B6061C8FA97100E02852 /* Build configuration list for PBXProject "BubblUp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7473B6021C8FA97100E02852;
+			productRefGroup = 7473B60C1C8FA97100E02852 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7473B60A1C8FA97100E02852 /* BubblUp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7473B6091C8FA97100E02852 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7473B6191C8FA97100E02852 /* LaunchScreen.storyboard in Resources */,
+				7473B6161C8FA97100E02852 /* Assets.xcassets in Resources */,
+				7473B6141C8FA97100E02852 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9030411326FD110104B4E73B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BubblUp/Pods-BubblUp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7E2B44C51E7853C70FFE42E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BubblUp/Pods-BubblUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E812AC86E1070801E72F519A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7473B6071C8FA97100E02852 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7473B6241C8FABCF00E02852 /* MainTableViewController.swift in Sources */,
+				7473B6221C8FA99400E02852 /* LoginViewController.swift in Sources */,
+				7473B6111C8FA97100E02852 /* ViewController.swift in Sources */,
+				7473B60F1C8FA97100E02852 /* AppDelegate.swift in Sources */,
+				7473B6291C8FAD9000E02852 /* BubbleViewController.swift in Sources */,
+				7473B6271C8FAC1E00E02852 /* MainCell.swift in Sources */,
+				7473B62B1C8FAE7600E02852 /* ComposeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7473B6121C8FA97100E02852 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7473B6131C8FA97100E02852 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7473B6171C8FA97100E02852 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7473B6181C8FA97100E02852 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7473B61B1C8FA97100E02852 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7473B61C1C8FA97100E02852 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7473B61E1C8FA97100E02852 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DD13B42C87F07F78A5E9E06 /* Pods-BubblUp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BubblUp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinseokpark.BubblUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7473B61F1C8FA97100E02852 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00115E3B64DB043F8F8FCE49 /* Pods-BubblUp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BubblUp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinseokpark.BubblUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7473B6061C8FA97100E02852 /* Build configuration list for PBXProject "BubblUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7473B61B1C8FA97100E02852 /* Debug */,
+				7473B61C1C8FA97100E02852 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7473B61D1C8FA97100E02852 /* Build configuration list for PBXNativeTarget "BubblUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7473B61E1C8FA97100E02852 /* Debug */,
+				7473B61F1C8FA97100E02852 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7473B6031C8FA97100E02852 /* Project object */;
+}
