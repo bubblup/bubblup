@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2657021DC64354968963EF8E /* Pods_BubblUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E65CA16E11381DFA3A2058 /* Pods_BubblUp.framework */; };
+		475030231C9E622500B39C43 /* Ideabox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475030221C9E622500B39C43 /* Ideabox.swift */; };
+		475030251C9E623100B39C43 /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475030241C9E623100B39C43 /* Idea.swift */; };
 		7473B60F1C8FA97100E02852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B60E1C8FA97100E02852 /* AppDelegate.swift */; };
 		7473B6111C8FA97100E02852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B6101C8FA97100E02852 /* ViewController.swift */; };
 		7473B6141C8FA97100E02852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7473B6121C8FA97100E02852 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		00115E3B64DB043F8F8FCE49 /* Pods-BubblUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BubblUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BubblUp/Pods-BubblUp.release.xcconfig"; sourceTree = "<group>"; };
+		475030221C9E622500B39C43 /* Ideabox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ideabox.swift; sourceTree = "<group>"; };
+		475030241C9E623100B39C43 /* Idea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
 		7473B60B1C8FA97100E02852 /* BubblUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubblUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7473B60E1C8FA97100E02852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7473B6101C8FA97100E02852 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		475030211C9E614400B39C43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				475030221C9E622500B39C43 /* Ideabox.swift */,
+				475030241C9E623100B39C43 /* Idea.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		7473B6021C8FA97100E02852 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +92,7 @@
 		7473B60D1C8FA97100E02852 /* BubblUp */ = {
 			isa = PBXGroup;
 			children = (
+				475030211C9E614400B39C43 /* Model */,
 				7473B6251C8FABFD00E02852 /* Views */,
 				7473B6201C8FA97B00E02852 /* View Controllers */,
 				7473B60E1C8FA97100E02852 /* AppDelegate.swift */,
@@ -246,9 +260,11 @@
 				7473B6221C8FA99400E02852 /* LoginViewController.swift in Sources */,
 				7473B6111C8FA97100E02852 /* ViewController.swift in Sources */,
 				7473B60F1C8FA97100E02852 /* AppDelegate.swift in Sources */,
+				475030231C9E622500B39C43 /* Ideabox.swift in Sources */,
 				7473B6291C8FAD9000E02852 /* BubbleViewController.swift in Sources */,
 				7473B6271C8FAC1E00E02852 /* MainCell.swift in Sources */,
 				7473B62B1C8FAE7600E02852 /* ComposeViewController.swift in Sources */,
+				475030251C9E623100B39C43 /* Idea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
