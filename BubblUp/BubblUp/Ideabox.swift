@@ -18,16 +18,7 @@ class Ideabox: NSObject {
         
  
         
-        ideabox.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-            if(success){
-                print("Successfully created")
-                
-            } else {
-                print(error?.localizedDescription)
-            }
-            
-            
-        }
+        ideabox.saveInBackgroundWithBlock(completion)
         
     }
     /*

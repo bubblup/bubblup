@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -100,7 +100,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7LS-x3-92t" id="h1m-6q-l9G">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Folder 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b8-Qp-Trm">
+                                                    <rect key="frame" x="18" y="8" width="182" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="0b8-Qp-Trm" id="2fk-6I-Y5I"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -121,7 +132,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="compose" id="a6n-N5-5yG">
                             <connections>
-                                <segue destination="fLQ-xO-VBh" kind="modal" id="UBh-0s-rW6"/>
+                                <segue destination="tfP-cF-7Pt" kind="modal" id="OQJ-Te-NGg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -133,6 +144,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exS-it-vmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="301"/>
+        </scene>
+        <!--New Folder View Controller-->
+        <scene sceneID="oTc-BG-yHW">
+            <objects>
+                <viewController id="tfP-cF-7Pt" customClass="NewFolderViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xuO-A2-bCq"/>
+                        <viewControllerLayoutGuide type="bottom" id="m36-yA-GXO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mv7-32-D22">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JzJ-GJ-jjV">
+                                <rect key="frame" x="37" y="213" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yic-RB-LNI">
+                                <rect key="frame" x="137" y="275" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="createButtonClicked:" destination="tfP-cF-7Pt" eventType="touchUpInside" id="5bj-6O-Vle"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="folderName" destination="JzJ-GJ-jjV" id="dVe-F9-3sr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xu1-Ll-2eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1212" y="698"/>
         </scene>
         <!--Bubbles-->
         <scene sceneID="qt8-oU-tLZ">
@@ -157,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmQ-fa-wuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="301"/>
+            <point key="canvasLocation" x="1456" y="129"/>
         </scene>
         <!--Bubble-->
         <scene sceneID="1Gw-ho-in8">
@@ -187,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eke-oI-CdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1653" y="929"/>
+            <point key="canvasLocation" x="1709" y="849"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eb9-dP-905">
@@ -223,10 +269,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kki-3K-0S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="929"/>
+            <point key="canvasLocation" x="1501" y="985"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="UBh-0s-rW6"/>
-    </inferredMetricsTieBreakers>
 </document>
