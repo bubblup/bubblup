@@ -138,7 +138,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="bx5-hf-ND0" id="qMI-KO-WqY"/>
-                        <segue destination="LRU-bt-iZo" kind="push" identifier="goToBubbleView" id="EbV-90-wna"/>
+                        <segue destination="mLU-a7-fFn" kind="push" identifier="goToBubbleView" id="EbV-90-wna"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exS-it-vmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -178,32 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu1-Ll-2eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="698"/>
-        </scene>
-        <!--Bubbles-->
-        <scene sceneID="qt8-oU-tLZ">
-            <objects>
-                <viewController id="LRU-bt-iZo" customClass="BubbleViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eBy-bL-3cD"/>
-                        <viewControllerLayoutGuide type="bottom" id="ztq-GJ-pHJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AXS-Tz-y5M">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Bubbles" id="g7P-QK-FiT">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="compose" id="CJT-5W-86t">
-                            <connections>
-                                <segue destination="fLQ-xO-VBh" kind="modal" id="Pvs-J9-VSq"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OmQ-fa-wuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1456" y="129"/>
+            <point key="canvasLocation" x="1027" y="860"/>
         </scene>
         <!--Bubble-->
         <scene sceneID="1Gw-ho-in8">
@@ -216,6 +191,13 @@
                     <view key="view" contentMode="scaleToFill" id="Tle-HI-WTI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P2g-MF-MS3">
+                                <rect key="frame" x="44" y="101" width="232" height="250"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Bubble" id="yci-rN-udl">
@@ -230,10 +212,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bubbleField" destination="P2g-MF-MS3" id="1J6-nG-KEe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eke-oI-CdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="849"/>
+            <point key="canvasLocation" x="2292" y="581"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eb9-dP-905">
@@ -256,7 +241,7 @@
         <!--Navigation Controller-->
         <scene sceneID="w8I-Z4-W91">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fLQ-xO-VBh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UINavigationController-fLQ-xO-VBh" automaticallyAdjustsScrollViewInsets="NO" id="fLQ-xO-VBh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="36v-jx-IXD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -270,6 +255,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kki-3K-0S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1501" y="985"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KR1-36-uyv">
+            <objects>
+                <viewController id="T7X-Rd-BNx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8gS-A9-eOY"/>
+                        <viewControllerLayoutGuide type="bottom" id="MHx-Vs-YXo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Yu-Be-MZq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eli-2e-yvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--TableList-->
+        <scene sceneID="9V6-Ha-yu8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TableList" id="mLU-a7-fFn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="64x-ME-Fey"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Am-GY-bjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456" y="129"/>
         </scene>
     </scenes>
 </document>

@@ -90,4 +90,11 @@ extension MainTableViewController: UITableViewDataSource, UITableViewDelegate {
         
         self.performSegueWithIdentifier("goToBubbleView", sender: self)
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "goToBubbleView") {
+            let controller = segue.destinationViewController as! BubbleViewController
+            controller.box = boxes[tableView.indexPathForSelectedRow!.row]
+        }
+    }
+
 }

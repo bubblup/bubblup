@@ -7,9 +7,19 @@
 //
 
 import UIKit
+import Parse
 
 class ComposeViewController: UIViewController {
 
+    @IBOutlet weak var bubbleField: UITextField!
+   
+    var box:PFObject?
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+//        var navController = self.presentingViewController as! UINavigationController
+//        var controller = navController.presentingViewController as! BubbleViewController
+//        box = controller.box
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +37,7 @@ class ComposeViewController: UIViewController {
     }
 
     @IBAction func onSaveButton(sender: AnyObject) {
-        
+        var newBubble = bubbleField.text
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
