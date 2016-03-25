@@ -10,6 +10,8 @@ import UIKit
 import Parse
 class BubbleViewController: UIViewController {
     var box:PFObject!
+    @IBOutlet weak var bubbleField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,10 +41,11 @@ class BubbleViewController: UIViewController {
             let viewController = segue.destinationViewController as! ListViewController
             viewController.box = box
             // pass data to next view
-        }
+        } 
     }
+    
 
-    @IBOutlet weak var bubbleField: UITextField!
+
     /*
     // MARK: - Navigation
 

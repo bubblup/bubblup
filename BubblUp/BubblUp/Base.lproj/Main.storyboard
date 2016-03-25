@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -174,11 +174,12 @@
                     </view>
                     <connections>
                         <outlet property="folderName" destination="JzJ-GJ-jjV" id="dVe-F9-3sr"/>
+                        <segue destination="fLQ-xO-VBh" kind="modal" identifier="goToBubbleViewController" id="m39-g0-E92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu1-Ll-2eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027" y="860"/>
+            <point key="canvasLocation" x="1137" y="1049"/>
         </scene>
         <!--Bubble-->
         <scene sceneID="1Gw-ho-in8">
@@ -197,8 +198,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5e-QI-sVC">
+                                <rect key="frame" x="135" y="475" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="PiO-Ki-fTf"/>
+                                    <constraint firstAttribute="height" constant="50" id="rEj-S4-hwo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="5ya-Or-Cjw" kind="modal" id="LBz-xc-ddZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F5e-QI-sVC" firstAttribute="centerX" secondItem="Tle-HI-WTI" secondAttribute="centerX" id="dt8-Sc-skw"/>
+                            <constraint firstItem="0Ti-qi-1Pu" firstAttribute="top" secondItem="F5e-QI-sVC" secondAttribute="bottom" constant="43" id="ep2-hC-8x3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bubble" id="yci-rN-udl">
                         <barButtonItem key="leftBarButtonItem" title="Dismiss" id="5ee-fG-TLr">
@@ -213,12 +234,55 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="F5e-QI-sVC" id="OwI-6w-IRa"/>
                         <outlet property="bubbleField" destination="P2g-MF-MS3" id="1J6-nG-KEe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eke-oI-CdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2292" y="581"/>
+        </scene>
+        <!--Bubble Transition View Controller-->
+        <scene sceneID="iIK-ai-ehN">
+            <objects>
+                <viewController id="5ya-Or-Cjw" customClass="BubbleTransitionViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NGq-rW-gv5"/>
+                        <viewControllerLayoutGuide type="bottom" id="r1Z-Gg-fum"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ipV-EZ-Mid">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOH-Hj-J9H">
+                                <rect key="frame" x="135" y="475" width="50" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.25966828650000001" blue="0.26151527790000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="cBK-mT-qsC"/>
+                                    <constraint firstAttribute="height" constant="50" id="p3x-H4-ZHi"/>
+                                </constraints>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="0.25966828650000001" blue="0.26151527790000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCloseButton:" destination="5ya-Or-Cjw" eventType="touchUpInside" id="fnE-4o-e0O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xOH-Hj-J9H" firstAttribute="centerX" secondItem="ipV-EZ-Mid" secondAttribute="centerX" id="eyv-bu-ZEV"/>
+                            <constraint firstItem="r1Z-Gg-fum" firstAttribute="top" secondItem="xOH-Hj-J9H" secondAttribute="bottom" constant="43" id="w9W-yf-Wn4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="xOH-Hj-J9H" id="2YI-Bn-s77"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbh-hB-NBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2680" y="581"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eb9-dP-905">
@@ -243,6 +307,7 @@
             <objects>
                 <navigationController storyboardIdentifier="UINavigationController-fLQ-xO-VBh" automaticallyAdjustsScrollViewInsets="NO" id="fLQ-xO-VBh" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="P7a-6O-9G9"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="36v-jx-IXD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

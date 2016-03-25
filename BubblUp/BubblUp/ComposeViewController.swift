@@ -9,11 +9,15 @@
 import UIKit
 import Parse
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, UIViewControllerTransitioningDelegate {
+
+    @IBOutlet weak var addButton: UIButton!
+    let transition = BubbleTransition()
 
     @IBOutlet weak var bubbleField: UITextField!
    
     var box:PFObject?
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 //        var navController = self.presentingViewController as! UINavigationController
@@ -22,6 +26,8 @@ class ComposeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        addButton.layer.cornerRadius = addButton.frame.width / 2
 
         // Do any additional setup after loading the view.
     }
@@ -41,6 +47,29 @@ class ComposeViewController: UIViewController {
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController
+        controller.transitioningDelegate = self
+        controller.modalPresentationStyle = .Custom
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Present
+        transition.startingPoint = addButton.center
+        transition.bubbleColor = addButton.backgroundColor!
+        return transition
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Dismiss
+        transition.startingPoint = addButton.center
+        transition.bubbleColor = addButton.backgroundColor!
+        return transition
+    }
+
+    
+
     /*
     // MARK: - Navigation
 

@@ -18,12 +18,18 @@ class NewFolderViewController: UIViewController {
         Ideabox.createIdeabox(newFolderName) { (success:Bool, error: NSError?) -> Void in
             if(success){
                 print("ideabox successfully created")
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    self.performSegueWithIdentifier("goToBubbleViewController", sender: self)
+
+                })
             }
             else{
                 print("unsuccessful")
             }
         }
         
+        
     }
+    
+
 }

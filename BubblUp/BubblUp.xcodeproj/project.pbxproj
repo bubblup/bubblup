@@ -14,6 +14,8 @@
 		4750302A1CA3920500B39C43 /* TableList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475030281CA3920500B39C43 /* TableList.storyboard */; };
 		4750302C1CA3976B00B39C43 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4750302B1CA3976B00B39C43 /* ListViewController.swift */; };
 		475030301CA399B000B39C43 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4750302F1CA399B000B39C43 /* ListCell.swift */; };
+		740B49811CA4BA770038F2B1 /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B49801CA4BA770038F2B1 /* BubbleTransition.swift */; };
+		740B49831CA4BEB00038F2B1 /* BubbleTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B49821CA4BEB00038F2B1 /* BubbleTransitionViewController.swift */; };
 		7473B60F1C8FA97100E02852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B60E1C8FA97100E02852 /* AppDelegate.swift */; };
 		7473B6111C8FA97100E02852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7473B6101C8FA97100E02852 /* ViewController.swift */; };
 		7473B6141C8FA97100E02852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7473B6121C8FA97100E02852 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		475030291CA3920500B39C43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TableList.storyboard; sourceTree = "<group>"; };
 		4750302B1CA3976B00B39C43 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4750302F1CA399B000B39C43 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		740B49801CA4BA770038F2B1 /* BubbleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransition.swift; sourceTree = "<group>"; };
+		740B49821CA4BEB00038F2B1 /* BubbleTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransitionViewController.swift; sourceTree = "<group>"; };
 		7473B60B1C8FA97100E02852 /* BubblUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubblUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7473B60E1C8FA97100E02852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7473B6101C8FA97100E02852 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +83,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		740B497F1CA4BA260038F2B1 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				740B49801CA4BA770038F2B1 /* BubbleTransition.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
 		7473B6021C8FA97100E02852 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +112,7 @@
 		7473B60D1C8FA97100E02852 /* BubblUp */ = {
 			isa = PBXGroup;
 			children = (
+				740B497F1CA4BA260038F2B1 /* Animation */,
 				475030211C9E614400B39C43 /* Model */,
 				7473B6251C8FABFD00E02852 /* Views */,
 				7473B6201C8FA97B00E02852 /* View Controllers */,
@@ -123,6 +136,7 @@
 				7473B62A1C8FAE7600E02852 /* ComposeViewController.swift */,
 				475030261CA2133300B39C43 /* NewFolderViewController.swift */,
 				4750302B1CA3976B00B39C43 /* ListViewController.swift */,
+				740B49821CA4BEB00038F2B1 /* BubbleTransitionViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -272,7 +286,9 @@
 				7473B6241C8FABCF00E02852 /* MainTableViewController.swift in Sources */,
 				7473B6221C8FA99400E02852 /* LoginViewController.swift in Sources */,
 				7473B6111C8FA97100E02852 /* ViewController.swift in Sources */,
+				740B49831CA4BEB00038F2B1 /* BubbleTransitionViewController.swift in Sources */,
 				7473B60F1C8FA97100E02852 /* AppDelegate.swift in Sources */,
+				740B49811CA4BA770038F2B1 /* BubbleTransition.swift in Sources */,
 				475030231C9E622500B39C43 /* Ideabox.swift in Sources */,
 				4750302C1CA3976B00B39C43 /* ListViewController.swift in Sources */,
 				7473B6291C8FAD9000E02852 /* BubbleViewController.swift in Sources */,
