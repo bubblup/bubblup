@@ -8,11 +8,11 @@ Optional (nice to have) user stories listed separately
 
 ## User Stories
 
-- [ ] User can write an idea.
+- [x] User can write an idea.
 - [ ] User can make a voice recording of an idea.
 - [ ] User can make a photo of an idea.
 - [ ] Visualization of ideas
-  - [ ] Ideas can be listed out.
+  - [x] Ideas can be listed out.
   - [ ] Ideas can be rearranged.
 - [ ] Facebook authentication
 
@@ -54,7 +54,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [Bubblup]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
