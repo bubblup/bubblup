@@ -199,7 +199,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5e-QI-sVC">
-                                <rect key="frame" x="135" y="475" width="50" height="50"/>
+                                <rect key="frame" x="135" y="458" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="PiO-Ki-fTf"/>
@@ -218,7 +218,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="F5e-QI-sVC" firstAttribute="centerX" secondItem="Tle-HI-WTI" secondAttribute="centerX" id="dt8-Sc-skw"/>
-                            <constraint firstItem="0Ti-qi-1Pu" firstAttribute="top" secondItem="F5e-QI-sVC" secondAttribute="bottom" constant="43" id="ep2-hC-8x3"/>
+                            <constraint firstItem="0Ti-qi-1Pu" firstAttribute="top" secondItem="F5e-QI-sVC" secondAttribute="bottom" constant="60" id="ep2-hC-8x3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bubble" id="yci-rN-udl">
@@ -255,7 +255,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOH-Hj-J9H">
-                                <rect key="frame" x="135" y="475" width="50" height="50"/>
+                                <rect key="frame" x="135" y="458" width="50" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.25966828650000001" blue="0.26151527790000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="cBK-mT-qsC"/>
@@ -269,11 +269,23 @@
                                     <action selector="onCloseButton:" destination="5ya-Or-Cjw" eventType="touchUpInside" id="fnE-4o-e0O"/>
                                 </connections>
                             </button>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFX-fW-1qa">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Text" id="d2G-qn-qeI"/>
+                                    <tabBarItem title="Picture" id="0rc-kH-gsd"/>
+                                    <tabBarItem title="Voice" id="rHA-uN-pFn"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hFX-fW-1qa" secondAttribute="trailing" id="0o2-nc-6we"/>
+                            <constraint firstItem="r1Z-Gg-fum" firstAttribute="top" secondItem="hFX-fW-1qa" secondAttribute="bottom" id="QGa-rz-6AD"/>
+                            <constraint firstItem="hFX-fW-1qa" firstAttribute="leading" secondItem="ipV-EZ-Mid" secondAttribute="leading" id="bhN-rJ-zUx"/>
                             <constraint firstItem="xOH-Hj-J9H" firstAttribute="centerX" secondItem="ipV-EZ-Mid" secondAttribute="centerX" id="eyv-bu-ZEV"/>
-                            <constraint firstItem="r1Z-Gg-fum" firstAttribute="top" secondItem="xOH-Hj-J9H" secondAttribute="bottom" constant="43" id="w9W-yf-Wn4"/>
+                            <constraint firstItem="r1Z-Gg-fum" firstAttribute="top" secondItem="xOH-Hj-J9H" secondAttribute="bottom" constant="60" id="w9W-yf-Wn4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -282,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbh-hB-NBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680" y="581"/>
+            <point key="canvasLocation" x="2737" y="581"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eb9-dP-905">
@@ -347,6 +359,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Am-GY-bjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1456" y="129"/>
+        </scene>
+        <!--Compose Photo View Controller-->
+        <scene sceneID="Q0p-ps-Xw6">
+            <objects>
+                <viewController id="aHW-uF-MUU" customClass="ComposePhotoViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fDH-9O-RWF"/>
+                        <viewControllerLayoutGuide type="bottom" id="AbX-ki-mJB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CmZ-9p-2Em">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpP-CL-Vvu">
+                                <rect key="frame" x="135" y="458" width="50" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.25966828650000001" blue="0.26151527790000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="90R-aH-cg8"/>
+                                    <constraint firstAttribute="width" constant="50" id="Vga-Xx-oPE"/>
+                                </constraints>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="0.25966828650000001" blue="0.26151527790000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCloseButton:" destination="aHW-uF-MUU" eventType="touchUpInside" id="v7K-Kv-e5b"/>
+                                </connections>
+                            </button>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljY-T1-mLH">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Text" id="kZV-Gx-nQ0"/>
+                                    <tabBarItem title="Picture" id="g8Z-gw-X5T"/>
+                                    <tabBarItem title="Voice" id="5mT-Jb-2TO"/>
+                                </items>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbl-y0-fgd">
+                                <rect key="frame" x="122" y="42" width="77" height="30"/>
+                                <state key="normal" title="Take Photo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTakePhoto:" destination="aHW-uF-MUU" eventType="touchUpInside" id="zWJ-Bh-2Qf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGp-9g-IUz">
+                                <rect key="frame" x="66" y="94" width="188" height="30"/>
+                                <state key="normal" title="Choose Photo From Library">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onChoosePhoto:" destination="aHW-uF-MUU" eventType="touchUpInside" id="Ghm-uC-LjY"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CMK-Ru-0lw">
+                                <rect key="frame" x="0.0" y="28" width="320" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="360" id="ffW-IO-Mdt"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a caption." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QNQ-30-8tW">
+                                <rect key="frame" x="0.0" y="389" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJZ-ao-qhv">
+                                <rect key="frame" x="136" y="420" width="49" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onChoosePhoto:" destination="aHW-uF-MUU" eventType="touchUpInside" id="UFd-NE-jST"/>
+                                    <action selector="onSubmit:" destination="aHW-uF-MUU" eventType="touchUpInside" id="w1z-kN-cT4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ljY-T1-mLH" secondAttribute="trailing" id="2bF-15-7bY"/>
+                            <constraint firstItem="AbX-ki-mJB" firstAttribute="top" secondItem="ljY-T1-mLH" secondAttribute="bottom" id="9IM-L9-z6z"/>
+                            <constraint firstItem="ljY-T1-mLH" firstAttribute="leading" secondItem="CmZ-9p-2Em" secondAttribute="leading" id="BSr-wB-sjJ"/>
+                            <constraint firstAttribute="trailing" secondItem="CMK-Ru-0lw" secondAttribute="trailing" id="Fo0-vD-4qq"/>
+                            <constraint firstItem="CMK-Ru-0lw" firstAttribute="leading" secondItem="CmZ-9p-2Em" secondAttribute="leading" id="GNP-0Z-m9C"/>
+                            <constraint firstItem="TpP-CL-Vvu" firstAttribute="centerX" secondItem="CmZ-9p-2Em" secondAttribute="centerX" id="Gr3-36-vXh"/>
+                            <constraint firstItem="AbX-ki-mJB" firstAttribute="top" secondItem="TpP-CL-Vvu" secondAttribute="bottom" constant="60" id="J1Y-h3-joC"/>
+                            <constraint firstItem="hGp-9g-IUz" firstAttribute="top" secondItem="pbl-y0-fgd" secondAttribute="bottom" constant="22" id="KC7-Xc-mbc"/>
+                            <constraint firstItem="pbl-y0-fgd" firstAttribute="top" secondItem="fDH-9O-RWF" secondAttribute="bottom" constant="22" id="PIS-Kz-HmJ"/>
+                            <constraint firstItem="hGp-9g-IUz" firstAttribute="centerX" secondItem="CmZ-9p-2Em" secondAttribute="centerX" id="Tc4-VY-LX5"/>
+                            <constraint firstItem="CMK-Ru-0lw" firstAttribute="top" secondItem="fDH-9O-RWF" secondAttribute="bottom" constant="8" id="jNh-ZC-tgj"/>
+                            <constraint firstItem="pbl-y0-fgd" firstAttribute="centerX" secondItem="CmZ-9p-2Em" secondAttribute="centerX" id="yb4-0i-3bo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="captionTextField" destination="QNQ-30-8tW" id="auW-Og-n7o"/>
+                        <outlet property="closeButton" destination="TpP-CL-Vvu" id="spO-VM-wRq"/>
+                        <outlet property="newPhoto" destination="CMK-Ru-0lw" id="GFt-vU-y4O"/>
+                        <outlet property="submitButton" destination="uJZ-ao-qhv" id="8c9-d2-GyO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Kf-eN-1aG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2737" y="-102"/>
         </scene>
     </scenes>
 </document>
