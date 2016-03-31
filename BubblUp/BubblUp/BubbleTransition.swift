@@ -8,8 +8,8 @@
 
 import UIKit
 
-class BubbleTransition: NSObject {
-
+public class BubbleTransition: NSObject {
+    
     /**
      The point that originates the bubble. The bubble starts from this point
      and shrinks to it on dismiss
@@ -33,6 +33,13 @@ class BubbleTransition: NSObject {
     public var transitionMode: BubbleTransitionMode = .Present
     
     /**
+     The transition type. Possible values `.Audio`, `.Photo` or `.Video`
+     Defaults to `.Audio`
+     */
+    public var transitionType: BubbleTransitionType = .Text
+    
+    
+    /**
      The color of the bubble. Make sure that it matches the destination controller's background color.
      */
     public var bubbleColor: UIColor = .whiteColor()
@@ -49,6 +56,18 @@ class BubbleTransition: NSObject {
     @objc public enum BubbleTransitionMode: Int {
         case Present, Dismiss, Pop
     }
+    /**
+     The possible directions of the transition.
+     
+     - Audio: Transition to Audio VC
+     - Photo: Transition to Photo VC
+     - Video: Transition to Video VC
+     */
+    
+    @objc public enum BubbleTransitionType: Int {
+        case Draw, Photo, Text
+    }
+    
 }
 
 extension BubbleTransition: UIViewControllerAnimatedTransitioning {

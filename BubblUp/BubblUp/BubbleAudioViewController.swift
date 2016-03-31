@@ -1,23 +1,17 @@
 //
-//  BubbleTransitionViewController.swift
+//  BubbleAudioViewController.swift
 //  BubblUp
 //
-//  Created by WUSTL STS on 3/24/16.
+//  Created by WUSTL STS on 3/31/16.
 //  Copyright © 2016 jinseokpark. All rights reserved.
 //
 
 import UIKit
 
-class BubbleTransitionViewController: UIViewController {
+class BubbleAudioViewController: UIViewController {
 
-
-    @IBOutlet weak var closeButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        closeButton.layer.cornerRadius = closeButton.frame.width / 2
-        closeButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
 
         // Do any additional setup after loading the view.
     }
@@ -27,12 +21,6 @@ class BubbleTransitionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func onCloseButton(sender: AnyObject) {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-
-    }
 
     /*
     // MARK: - Navigation

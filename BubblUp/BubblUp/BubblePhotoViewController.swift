@@ -1,5 +1,5 @@
 //
-//  ComposePhotoViewController.swift
+//  BubblePhotoViewController.swift
 //  BubblUp
 //
 //  Created by Adam Epstein on 3/29/16.
@@ -9,8 +9,9 @@
 import UIKit
 import Parse
 
-class ComposePhotoViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var newPhoto: UIImageView!
     
     @IBOutlet weak var submitButton: UIButton!
@@ -22,6 +23,9 @@ class ComposePhotoViewController: UIViewController,UIImagePickerControllerDelega
         newPhoto.hidden = true
         captionTextField.hidden = true
         submitButton.hidden = true
+
+        dismissButton.layer.cornerRadius = dismissButton.frame.height / 2
+        dismissButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
 
         // Do any additional setup after loading the view.
     }
@@ -88,6 +92,9 @@ class ComposePhotoViewController: UIViewController,UIImagePickerControllerDelega
             }
         }
         return nil
+    }
+    @IBAction func onDismissButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation
