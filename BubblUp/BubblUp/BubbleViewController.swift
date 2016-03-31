@@ -41,7 +41,12 @@ class BubbleViewController: UIViewController {
             let viewController = segue.destinationViewController as! ListViewController
             viewController.box = box
             // pass data to next view
-        } 
+        }
+        if (segue.identifier == "toAnimationSegue"){
+            let viewController = segue.destinationViewController as! UINavigationController
+            let controller = viewController.topViewController as! BubbleLayoutViewController
+            controller.box = box
+        }
     }
     
 

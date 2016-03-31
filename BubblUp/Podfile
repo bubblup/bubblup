@@ -5,5 +5,8 @@ use_frameworks!
 
 target ‘BubblUp’ do
     pod 'Parse'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKShareKit'
+    pod 'FBSDKLoginKit'
 end
 

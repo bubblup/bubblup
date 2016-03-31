@@ -85,9 +85,15 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-BubblUp/Bolts.framework"
+  install_framework "Pods-BubblUp/FBSDKCoreKit.framework"
+  install_framework "Pods-BubblUp/FBSDKLoginKit.framework"
+  install_framework "Pods-BubblUp/FBSDKShareKit.framework"
   install_framework "Pods-BubblUp/Parse.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BubblUp/Bolts.framework"
+  install_framework "Pods-BubblUp/FBSDKCoreKit.framework"
+  install_framework "Pods-BubblUp/FBSDKLoginKit.framework"
+  install_framework "Pods-BubblUp/FBSDKShareKit.framework"
   install_framework "Pods-BubblUp/Parse.framework"
 fi

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class BubbleLayoutViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
@@ -17,9 +18,11 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
 
     let transition = BubbleTransition()
     var buttonType: UIButton!
+    var box: PFObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = box["title"] as! String
 
         addTextButton.layer.cornerRadius = addTextButton.frame.width/2
         addPhotoButton.layer.cornerRadius = addTextButton.frame.width/2
@@ -37,6 +40,11 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
         let controller = segue.destinationViewController
         controller.transitioningDelegate = self
         controller.modalPresentationStyle = .Custom
+        if (segue.identifier == "photoSegue"){
+            let viewController = segue.destinationViewController as! BubblePhotoViewController
+            viewController.box = box
+        }
+        
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

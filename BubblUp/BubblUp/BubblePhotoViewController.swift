@@ -75,12 +75,14 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
         Idea.createNewIdea(captionTextField.text!, type: Type.MediaType.image, file: fileImage, containedIn: box) { (success: Bool, error: NSError?) -> Void in
             if success{
                 print("Image successfully submitted")
-                //Do something now
+                
+                
             } else{
                 print(error?.localizedDescription)
             }
+            
         }
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func getPFFileFromImage(image: UIImage?) -> PFFile? {

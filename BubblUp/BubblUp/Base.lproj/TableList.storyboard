@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" title="Bubbles" id="g7P-QK-FiT">
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="compose" id="CJT-5W-86t">
                             <connections>
-                                <segue destination="bgF-an-MQ5" kind="modal" id="Pvs-J9-VSq"/>
+                                <segue destination="bgF-an-MQ5" kind="modal" identifier="toAnimationSegue" id="Pvs-J9-VSq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -98,7 +98,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7LS-x3-92t" id="h1m-6q-l9G">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Folder 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b8-Qp-Trm">
@@ -342,7 +342,6 @@
         <!--Navigation Controller-->
         <scene sceneID="w8I-Z4-W91">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kki-3K-0S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="UINavigationController-fLQ-xO-VBh" automaticallyAdjustsScrollViewInsets="NO" id="fLQ-xO-VBh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="P7a-6O-9G9"/>
@@ -355,6 +354,7 @@
                         <segue destination="DAd-Xs-XnW" kind="relationship" relationship="rootViewController" id="Qsd-oI-bHM"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kki-3K-0S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1518" y="1049"/>
         </scene>
@@ -428,7 +428,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onPhotoButton:" destination="DAd-Xs-XnW" eventType="touchUpInside" id="PCH-zF-KMC"/>
-                                    <segue destination="aHW-uF-MUU" kind="modal" id="xcV-9s-izK"/>
+                                    <segue destination="aHW-uF-MUU" kind="modal" identifier="photoSegue" id="xcV-9s-izK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjg-6a-Qzt">
@@ -517,7 +517,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onChoosePhoto:" destination="aHW-uF-MUU" eventType="touchUpInside" id="UFd-NE-jST"/>
                                     <action selector="onSubmit:" destination="aHW-uF-MUU" eventType="touchUpInside" id="w1z-kN-cT4"/>
                                 </connections>
                             </button>
