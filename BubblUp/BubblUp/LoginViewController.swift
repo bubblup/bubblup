@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import FBSDKLoginKit
+import ParseFacebookUtilsV4
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -75,6 +76,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     }
     
+    @IBAction func onSecondButton(sender: AnyObject) {
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile", "email", "user_friends"]) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    print("User signed up and logged in through Facebook!")
+                } else {
+                    print("User logged in through Facebook!")
+                }
+            } else {
+                print("Uh oh. The user cancelled the Facebook login.")
+            }
+        }
+
+    }
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User Logged In")
         
@@ -90,8 +106,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                // Do work
-            }
+                            }
         }
     }
     
@@ -107,5 +122,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func returnUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"])
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                let userName : NSString = result.valueForKey("name") as! NSString
+                print("User Name is: \(userName)")
+                self.usernameTextField.text = result.valueForKey("email") as! String
+
+            }
+        })
+    }
 
 }

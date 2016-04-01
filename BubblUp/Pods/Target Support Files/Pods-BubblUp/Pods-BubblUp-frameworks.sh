@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-BubblUp/FBSDKLoginKit.framework"
   install_framework "Pods-BubblUp/FBSDKShareKit.framework"
   install_framework "Pods-BubblUp/Parse.framework"
+  install_framework "Pods-BubblUp/ParseFacebookUtilsV4.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BubblUp/Bolts.framework"
@@ -96,4 +97,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BubblUp/FBSDKLoginKit.framework"
   install_framework "Pods-BubblUp/FBSDKShareKit.framework"
   install_framework "Pods-BubblUp/Parse.framework"
+  install_framework "Pods-BubblUp/ParseFacebookUtilsV4.framework"
 fi

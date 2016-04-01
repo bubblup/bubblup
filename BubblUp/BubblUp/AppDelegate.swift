@@ -11,6 +11,7 @@ import Parse
 import FBSDKCoreKit
 import FBSDKShareKit
 import FBSDKLoginKit
+import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = vc
             
         }
+        
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
 
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
