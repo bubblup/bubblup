@@ -47,15 +47,21 @@
                                     <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yzW-li-f54"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIg-uk-aqc" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="137" y="112" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mTz-ai-Eam" firstAttribute="centerX" secondItem="1sd-tH-1Jl" secondAttribute="centerX" id="01T-Sd-HyA"/>
                             <constraint firstItem="R6H-U0-CdW" firstAttribute="top" secondItem="ROr-D6-DHF" secondAttribute="bottom" constant="14" id="4XO-vT-Aod"/>
+                            <constraint firstItem="ROr-D6-DHF" firstAttribute="top" secondItem="XIg-uk-aqc" secondAttribute="bottom" constant="30" id="6nr-Xb-0pF"/>
                             <constraint firstItem="R6H-U0-CdW" firstAttribute="leading" secondItem="ROr-D6-DHF" secondAttribute="leading" id="Bdp-ix-HEA"/>
                             <constraint firstItem="1sd-tH-1Jl" firstAttribute="trailing" secondItem="R6H-U0-CdW" secondAttribute="trailing" id="Dpa-A2-em3"/>
                             <constraint firstItem="2Cg-Im-fn0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I5G-O9-g3x"/>
                             <constraint firstItem="R6H-U0-CdW" firstAttribute="leading" secondItem="1sd-tH-1Jl" secondAttribute="leading" id="LgO-mj-kYV"/>
+                            <constraint firstItem="XIg-uk-aqc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MXF-yO-Aqw"/>
                             <constraint firstItem="2Cg-Im-fn0" firstAttribute="centerX" secondItem="mTz-ai-Eam" secondAttribute="centerX" id="OTC-bt-gdk"/>
                             <constraint firstItem="ROr-D6-DHF" firstAttribute="trailing" secondItem="R6H-U0-CdW" secondAttribute="trailing" id="TqZ-XF-HrI"/>
                             <constraint firstItem="ROr-D6-DHF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="VOh-IP-DhB"/>
@@ -67,6 +73,7 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="mTz-ai-Eam" id="eSU-1x-oSj"/>
+                        <outlet property="loginView" destination="XIg-uk-aqc" id="Um3-zn-QA9"/>
                         <outlet property="passwordReTextField" destination="1sd-tH-1Jl" id="eWS-0k-VzV"/>
                         <outlet property="passwordTextField" destination="R6H-U0-CdW" id="hmR-ej-nMf"/>
                         <outlet property="signupButton" destination="2Cg-Im-fn0" id="S6z-oK-YOb"/>
