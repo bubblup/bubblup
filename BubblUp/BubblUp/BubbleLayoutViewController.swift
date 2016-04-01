@@ -44,7 +44,10 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
             let viewController = segue.destinationViewController as! BubblePhotoViewController
             viewController.box = box
         }
-        
+        if (segue.identifier == "textSegue"){
+            let viewController = segue.destinationViewController as! BubbleTextViewController
+            viewController.box = box
+        }
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -67,7 +70,10 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
         transition.bubbleColor = buttonType.backgroundColor!
         return transition
     }
-    
+
+    @IBAction func dismissClicked(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     @IBAction func onPhotoButton(sender: AnyObject) {
         transition.transitionType = .Photo
     }

@@ -16,7 +16,7 @@ class BubbleTextViewController: UIViewController {
 
     @IBOutlet weak var bubbleField: UITextField!
    
-    var box:PFObject?
+    var box:PFObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,22 @@ class BubbleTextViewController: UIViewController {
         dismissButton.layer.cornerRadius = dismissButton.frame.width / 2
         dismissButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
 
+    }
+    
+    @IBAction func onSaveClicked(sender: AnyObject) {
+        if(box == nil) {
+            print("box does not exist")
+        }else{
+            Idea.createNewIdea(bubbleField.text, type: Type.MediaType.text, file: nil, containedIn: box) { (success:Bool, error:NSError?) -> Void in
+                if success {
+                    print("successful")
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                else{
+                    print("unsuccessful")
+                       self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }}
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,10 +51,5 @@ class BubbleTextViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    @IBAction func onSaveButton(sender: AnyObject) {
-        var newBubble = bubbleField.text
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+ 
 }

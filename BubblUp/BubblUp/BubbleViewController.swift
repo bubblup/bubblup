@@ -10,12 +10,37 @@ import UIKit
 import Parse
 class BubbleViewController: UIViewController {
     var box:PFObject!
+    var ideas:[PFObject]!
+
     @IBOutlet weak var bubbleField: UITextField!
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight=UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        getAllIdeas(box)
+        segmentedControl.selectedSegmentIndex = 0
+        tableView.hidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        getAllIdeas(box)
+    }
+    
+    @IBAction func switchClicked(sender: AnyObject) {
+        if(segmentedControl.selectedSegmentIndex == 0) {
+            tableView.hidden = true
+        }
+        else {
+            tableView.hidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,3 +87,48 @@ class BubbleViewController: UIViewController {
     */
 
 }
+
+extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
+  
+    func getAllIdeas(box: PFObject!){
+        let query = PFQuery(className:"Idea")
+        query.orderByDescending("_created_at")
+        query.whereKey("box", equalTo: box)
+        query.findObjectsInBackgroundWithBlock {(media:[PFObject]?, error:NSError?) -> Void in
+            if let media = media {
+                self.ideas = media
+                self.tableView.reloadData()
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ideas != nil {
+            return ideas.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("ListCell", forIndexPath: indexPath) as! ListCell
+        
+        let idea = ideas[indexPath.row]
+        
+        cell.contentLabel.text = idea["text"] as! String
+        let type =  idea["type"] as! Int
+        cell.typeLabel.text =  "\(Type.mediaToString(Type.MediaType(rawValue: type)!))"
+        
+        
+        return cell
+    }
+    
+    
+}
+
+
+
