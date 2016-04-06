@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -178,6 +178,14 @@
                                     <action selector="createButtonClicked:" destination="tfP-cF-7Pt" eventType="touchUpInside" id="5bj-6O-Vle"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqH-3v-eEK">
+                                <rect key="frame" x="28" y="58" width="85" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="onCancel:" destination="tfP-cF-7Pt" eventType="touchUpInside" id="fUa-m6-rZz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -188,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu1-Ll-2eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1137" y="1049"/>
+            <point key="canvasLocation" x="1119" y="1112"/>
         </scene>
         <!--Bubble-->
         <scene sceneID="1Gw-ho-in8">
@@ -470,23 +478,6 @@
                                     <segue destination="sjy-sW-CuP" kind="modal" identifier="textSegue" id="GYp-UA-wW1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-jL-LyF">
-                                <rect key="frame" x="20" y="498" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.53704536560000005" green="0.81156646929999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="8wQ-nA-O2F"/>
-                                    <constraint firstAttribute="width" constant="50" id="ROg-H6-NOA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onPhotoButton:" destination="DAd-Xs-XnW" eventType="touchUpInside" id="PCH-zF-KMC"/>
-                                    <segue destination="aHW-uF-MUU" kind="modal" identifier="photoSegue" id="xcV-9s-izK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktw-Yn-aRd">
                                 <rect key="frame" x="250" y="498" width="50" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -520,6 +511,23 @@
                                 <connections>
                                     <action selector="onDrawButton:" destination="DAd-Xs-XnW" eventType="touchUpInside" id="Rui-Mg-kvR"/>
                                     <segue destination="xwp-Vf-qg1" kind="modal" id="Wj2-Bd-7f5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-jL-LyF">
+                                <rect key="frame" x="20" y="498" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.53704536560000005" green="0.81156646929999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8wQ-nA-O2F"/>
+                                    <constraint firstAttribute="width" constant="50" id="ROg-H6-NOA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPhotoButton:" destination="DAd-Xs-XnW" eventType="touchUpInside" id="PCH-zF-KMC"/>
+                                    <segue destination="aHW-uF-MUU" kind="modal" identifier="photoSegue" id="xcV-9s-izK"/>
                                 </connections>
                             </button>
                         </subviews>

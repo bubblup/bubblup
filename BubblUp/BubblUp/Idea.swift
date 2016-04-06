@@ -65,5 +65,9 @@ class Idea: NSObject {
         idea["index"] = newIndex
         idea.saveInBackgroundWithBlock(completion)
     }
+    
+    class func deleteIdea(idea:PFObject!, withCompletion completion: PFBooleanResultBlock? ){
+        idea.deleteInBackgroundWithBlock(completion)
+    }
 }
 

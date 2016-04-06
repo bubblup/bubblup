@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LRU-bt-iZo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LRU-bt-iZo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Bubble View Controller-->
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHm-4A-G0W">
-                                <rect key="frame" x="40" y="180" width="240" height="249"/>
+                                <rect key="frame" x="40" y="-137" width="240" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tXj-5L-SQH">
@@ -29,10 +30,10 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7bg-4O-yDY" id="pRa-ad-YXH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-UB-nJk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-UB-nJk">
                                                     <rect key="frame" x="5" y="5" width="70" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,13 +72,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="g7P-QK-FiT">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="9LB-z6-VWh">
-                            <connections>
-                                <action selector="onEdit:" destination="LRU-bt-iZo" id="jeC-Yi-zf8"/>
-                            </connections>
-                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lo5-sD-Ovj">
-                            <rect key="frame" x="96" y="7" width="129" height="31"/>
+                            <rect key="frame" x="95.5" y="6.5" width="129" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Bubbles"/>
@@ -87,11 +83,18 @@
                                 <action selector="switchClicked:" destination="LRU-bt-iZo" eventType="valueChanged" id="urK-Vk-ikw"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="compose" id="CJT-5W-86t">
-                            <connections>
-                                <segue destination="bgF-an-MQ5" kind="modal" identifier="toAnimationSegue" id="Pvs-J9-VSq"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" systemItem="compose" id="CJT-5W-86t">
+                                <connections>
+                                    <segue destination="bgF-an-MQ5" kind="modal" identifier="toAnimationSegue" id="Pvs-J9-VSq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="9LB-z6-VWh">
+                                <connections>
+                                    <action selector="onEdit:" destination="LRU-bt-iZo" id="jeC-Yi-zf8"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -103,6 +106,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmQ-fa-wuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1506" y="129"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HsQ-eR-C3A">
+            <objects>
+                <viewController id="VRu-Fg-2F4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JGQ-MW-qlV"/>
+                        <viewControllerLayoutGuide type="bottom" id="ID3-Mj-h2L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IPX-yY-9lJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JVJ-MV-vYg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hL-dI-ahU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1879" y="139"/>
         </scene>
         <!--UINavigationController-fLQ-xO-VBh-->
         <scene sceneID="U3Y-ES-DJS">

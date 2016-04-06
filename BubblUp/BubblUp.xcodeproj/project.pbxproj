@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2657021DC64354968963EF8E /* Pods_BubblUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E65CA16E11381DFA3A2058 /* Pods_BubblUp.framework */; };
+		4707EEE61CB4AA4600F526E8 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4707EEE51CB4AA4600F526E8 /* Bubble.swift */; };
 		475030231C9E622500B39C43 /* Ideabox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475030221C9E622500B39C43 /* Ideabox.swift */; };
 		475030251C9E623100B39C43 /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475030241C9E623100B39C43 /* Idea.swift */; };
 		475030271CA2133300B39C43 /* NewFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475030261CA2133300B39C43 /* NewFolderViewController.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		00115E3B64DB043F8F8FCE49 /* Pods-BubblUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BubblUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BubblUp/Pods-BubblUp.release.xcconfig"; sourceTree = "<group>"; };
+		4707EEE51CB4AA4600F526E8 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		475030221C9E622500B39C43 /* Ideabox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ideabox.swift; sourceTree = "<group>"; };
 		475030241C9E623100B39C43 /* Idea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
 		475030261CA2133300B39C43 /* NewFolderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFolderViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				7473B6261C8FAC1E00E02852 /* MainCell.swift */,
 				4750302F1CA399B000B39C43 /* ListCell.swift */,
+				4707EEE51CB4AA4600F526E8 /* Bubble.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7473B6241C8FABCF00E02852 /* MainTableViewController.swift in Sources */,
+				4707EEE61CB4AA4600F526E8 /* Bubble.swift in Sources */,
 				7473B6221C8FA99400E02852 /* LoginViewController.swift in Sources */,
 				7473B6111C8FA97100E02852 /* ViewController.swift in Sources */,
 				74BA85FF1CADB78B00F5ADAA /* BubbleDrawViewController.swift in Sources */,

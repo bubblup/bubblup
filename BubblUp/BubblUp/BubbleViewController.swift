@@ -163,6 +163,26 @@ extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
         return true // Yes, the table view can be reordered
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            print("indexpath\(indexPath.row)")
+          //  tableView.deleteRowsAtInde
+          //  tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:UITableViewRowAnimation.Fade)
+            Idea.deleteIdea(ideas[indexPath.row], withCompletion: { (success:Bool, error:NSError?) -> Void in
+                if(success == true) {
+                print("delete successful")
+                }
+                else {
+                    print("delete unsuccessful")
+                }
+            })
+            ideas.removeAtIndex(indexPath.row)
+
+            tableView.reloadData()
+            
+        }
+    }
+    
     func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
         // update the item in my data source by first removing at the from index, then inserting at the to index.
         let idea = ideas[fromIndexPath.row]
