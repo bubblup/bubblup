@@ -142,10 +142,10 @@
 				475030261CA2133300B39C43 /* NewFolderViewController.swift */,
 				4750302B1CA3976B00B39C43 /* ListViewController.swift */,
 				74BA86001CADB96500F5ADAA /* BubbleLayoutViewController.swift */,
-				7473B62A1C8FAE7600E02852 /* BubbleTextViewController.swift */,
-				6619BF701CAB21A500D19B59 /* BubblePhotoViewController.swift */,
 				74BA85FC1CADB66A00F5ADAA /* BubbleAudioViewController.swift */,
 				74BA85FE1CADB78B00F5ADAA /* BubbleDrawViewController.swift */,
+				6619BF701CAB21A500D19B59 /* BubblePhotoViewController.swift */,
+				7473B62A1C8FAE7600E02852 /* BubbleTextViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

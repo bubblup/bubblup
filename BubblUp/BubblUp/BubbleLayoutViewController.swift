@@ -15,6 +15,7 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var addDrawButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
+    @IBOutlet weak var addAudioButton: UIButton!
 
     let transition = BubbleTransition()
     var buttonType: UIButton!
@@ -27,6 +28,7 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
         addTextButton.layer.cornerRadius = addTextButton.frame.width/2
         addPhotoButton.layer.cornerRadius = addTextButton.frame.width/2
         addDrawButton.layer.cornerRadius = addTextButton.frame.width/2
+        addAudioButton.layer.cornerRadius = addAudioButton.frame.width/2
 
         // Do any additional setup after loading the view.
     }
@@ -48,14 +50,23 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
             let viewController = segue.destinationViewController as! BubbleTextViewController
             viewController.box = box
         }
+        if (segue.identifier == "voiceSegue"){
+            let viewController = segue.destinationViewController as! BubbleAudioViewController
+            viewController.box = box
+        }
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         switch transition.transitionType {
+        case .Audio: buttonType = addAudioButton
+            break
         case .Draw: buttonType = addDrawButton
+            break
         case .Photo: buttonType = addPhotoButton
+            break
         case .Text: buttonType = addTextButton
+            break
         }
 
         transition.transitionMode = .Present
@@ -73,6 +84,9 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
 
     @IBAction func dismissClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    @IBAction func onAudioButton(sender: AnyObject) {
+        transition.transitionType = .Audio
     }
     @IBAction func onPhotoButton(sender: AnyObject) {
         transition.transitionType = .Photo

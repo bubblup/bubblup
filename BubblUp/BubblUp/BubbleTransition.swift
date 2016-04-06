@@ -65,7 +65,7 @@ public class BubbleTransition: NSObject {
      */
     
     @objc public enum BubbleTransitionType: Int {
-        case Draw, Photo, Text
+        case Audio, Draw, Photo, Text
     }
     
 }
