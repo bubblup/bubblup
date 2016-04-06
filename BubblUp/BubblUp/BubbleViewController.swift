@@ -14,6 +14,7 @@ class BubbleViewController: UIViewController {
 
     @IBOutlet weak var bubbleField: UITextField!
 
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -97,6 +98,7 @@ extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
         query.findObjectsInBackgroundWithBlock {(media:[PFObject]?, error:NSError?) -> Void in
             if let media = media {
                 self.ideas = media
+                self.ideas.sortInPlace({($0["index"] as? Int) < ($1["index"] as? Int)})
                 self.tableView.reloadData()
             } else {
                 print(error?.localizedDescription)
@@ -127,7 +129,49 @@ extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    @IBAction func onEdit(sender: AnyObject) {
+        if tableView.editing{
+            //listTableView.editing = false;
+            tableView.setEditing(false, animated: false);
+            editButton.style = UIBarButtonItemStyle.Plain;
+            editButton.title = "Edit";
+            for idea in ideas{
+                //Change the oder number
+                var index = ideas.indexOf(idea)!
+                Idea.changeIndex(idea, newIndex: index, withCompletion: { (success: Bool, error: NSError?) -> Void in
+                    if success{
+                        //print("\(idea["text"]) new index is \(index)")
+                    } else{
+                        print(error?.localizedDescription)
+                    }
+                })
+            }
+            //listTableView.reloadData();
+        }
+        else{
+            //listTableView.editing = true;
+            tableView.setEditing(true, animated: true);
+            editButton.title = "Done";
+            editButton.style =  UIBarButtonItemStyle.Done;
+            //listTableView.reloadData();
+            
+        }
+    }
     
+    
+    func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        return true // Yes, the table view can be reordered
+    }
+    
+    func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
+        // update the item in my data source by first removing at the from index, then inserting at the to index.
+        let idea = ideas[fromIndexPath.row]
+        ideas.removeAtIndex(fromIndexPath.row)
+        ideas.insert(idea, atIndex: toIndexPath.row)
+    }
+    
+
+
 }
 
 

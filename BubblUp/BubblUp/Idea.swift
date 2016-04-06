@@ -55,9 +55,15 @@ class Idea: NSObject {
         idea["file"] = file
         }
         idea["box"] = box
+        idea["index"] = 0
         
         idea.saveInBackgroundWithBlock(completion)
 
+    }
+    
+    class func changeIndex(idea:PFObject!, newIndex:Int!, withCompletion completion: PFBooleanResultBlock? ){
+        idea["index"] = newIndex
+        idea.saveInBackgroundWithBlock(completion)
     }
 }
 
