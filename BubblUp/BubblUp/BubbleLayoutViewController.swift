@@ -72,10 +72,12 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
         transition.transitionMode = .Present
         transition.startingPoint = buttonType.center
         transition.bubbleColor = buttonType.backgroundColor!
+    
         return transition
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         transition.transitionMode = .Dismiss
         transition.startingPoint = buttonType.center
         transition.bubbleColor = buttonType.backgroundColor!
