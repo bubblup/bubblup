@@ -9,11 +9,11 @@ Optional (nice to have) user stories listed separately
 ## User Stories
 
 - [x] User can write an idea.
-- [ ] User can make a voice recording of an idea.
+- [X] User can make a voice recording of an idea.
 - [X] User can make a photo of an idea.
-- [ ] Visualization of ideas
+- [X] Visualization of ideas
   - [x] Ideas can be listed out.
-  - [ ] Ideas can be rearranged.
+  -[X] Ideas can be rearranged.
 - [X] Facebook authentication
 
 The following **optional** features are implemented:
@@ -44,7 +44,7 @@ class: idea
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/oofMNua.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/aPiA5q5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
