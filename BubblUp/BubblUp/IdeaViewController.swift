@@ -8,8 +8,10 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
-class IdeaViewController: UIViewController {
+
+class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
     
     var idea: PFObject!
     var ideas: [PFObject]!
@@ -19,6 +21,12 @@ class IdeaViewController: UIViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
+    
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    var player: AVAudioPlayer!
+    var soundFileURL:NSURL!
+    var soundFileData:NSData!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -76,8 +84,9 @@ class IdeaViewController: UIViewController {
     
     func loadData(){
         type = idea["type"] as! Int
-        
-        if type == 0{
+        playButton.hidden = true
+        stopButton.hidden = true
+        if type == Type.MediaType.text.rawValue{
             //type is text
             textField.hidden = false
             imageView.hidden = true
@@ -85,7 +94,7 @@ class IdeaViewController: UIViewController {
             textField.text = idea["text"] as! String
 
         }
-        else if type == 1{
+        else if type == Type.MediaType.image.rawValue{
             //type is image
 
             textField.hidden = true
@@ -108,6 +117,29 @@ class IdeaViewController: UIViewController {
                 captionTextField.text = "No Caption"
             }
         }
+        else if type == Type.MediaType.voice.rawValue {
+            playButton.hidden = false
+            stopButton.hidden = false
+            let audioFile:PFFile = idea["file"] as! PFFile
+            
+          //  soundFileURL = NSURL(fileURLWithPath:file.url!)
+            
+            
+            audioFile.getDataInBackgroundWithBlock{ (audioFile: NSData?, error:NSError?) -> Void in
+                if error == nil {
+                    self.soundFileData = audioFile
+                    print("audio loaded")
+                   // player.init(audioFile)
+//                    let path = "temp"
+//                    if !audioFile!.writeToFile(path, atomically: true){
+//                        print("Error saving")
+//                    }
+                } else {
+                    print("audio failed")
+                }
+            }
+            
+        }
     }
     
     
@@ -115,6 +147,71 @@ class IdeaViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
+    func setSessionPlayback() {
+        let session:AVAudioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+        } catch let error as NSError {
+            print("could not set session category")
+            print(error.localizedDescription)
+        }
+        do {
+            try session.setActive(true)
+        } catch let error as NSError {
+            print("could not make session active")
+            print(error.localizedDescription)
+        }
+    }
+    
+    func play() {
+       // var url = self.soundFileURL
+       // print("playing \(url)")
+        
+        do {
+            self.player = try AVAudioPlayer(data: self.soundFileData)
+           // self.player = try AVAudioPlayer(contentsOfURL: url!)
+            stopButton.enabled = true
+            player.delegate = self
+            player.prepareToPlay()
+            player.volume = 1.0
+            player.play()
+        } catch let error as NSError {
+            self.player = nil
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    @IBAction func onPlayButton(sender: AnyObject) {
+        
+        setSessionPlayback()
+        play()
+        
+    }
+    
+    @IBAction func onStopButton(sender: AnyObject) {
+        
+        print("stop")
+        
+        player?.stop()
+        
+       
+        
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setActive(false)
+            playButton.enabled = true
+            stopButton.enabled = false
+        } catch let error as NSError {
+            print("could not make session inactive")
+            print(error.localizedDescription)
+        }
+        
+        //recorder = nil
+        
+    }
+    
     
 
 }

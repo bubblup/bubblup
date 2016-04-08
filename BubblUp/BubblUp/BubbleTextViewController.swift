@@ -50,6 +50,8 @@ class BubbleTextViewController: UIViewController {
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+   
 
  
 }
