@@ -69,5 +69,7 @@ class Idea: NSObject {
     class func deleteIdea(idea:PFObject!, withCompletion completion: PFBooleanResultBlock? ){
         idea.deleteInBackgroundWithBlock(completion)
     }
+    
+
 }
 

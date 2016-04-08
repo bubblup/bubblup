@@ -73,6 +73,11 @@ class BubbleViewController: UIViewController {
             let controller = viewController.topViewController as! BubbleLayoutViewController
             controller.box = box
         }
+        if(segue.identifier == "onIdeaSegue"){
+            let controller = segue.destinationViewController as! IdeaViewController
+                controller.idea = ideas[tableView.indexPathForSelectedRow!.row]
+                controller.ideas = ideas
+            }
     }
     
 
