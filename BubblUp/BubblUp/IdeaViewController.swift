@@ -22,6 +22,8 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var upbutton: UIBarButtonItem!
+    @IBOutlet weak var downbutton: UIBarButtonItem!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     var player: AVAudioPlayer!
@@ -64,6 +66,8 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
                 captionTextField.userInteractionEnabled = false
                 textField.userInteractionEnabled = false
             }
+            editButton.style = UIBarButtonItemStyle.Plain;
+            editButton.title = "Edit";
 
             loadData()
         }
@@ -77,6 +81,8 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
                 captionTextField.userInteractionEnabled = false
                 textField.userInteractionEnabled = false
             }
+            editButton.style = UIBarButtonItemStyle.Plain;
+            editButton.title = "Edit";
             
             loadData()
         }
