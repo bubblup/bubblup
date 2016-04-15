@@ -120,14 +120,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1h-eo-OzB">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Kb2-5U-XtG">
                                 <rect key="frame" x="8" y="480" width="304" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Etk-Fz-lkE"/>
+                                    <constraint firstAttribute="height" constant="80" id="wfQ-VB-1Nc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EN5-Nf-eBU">
+                                <rect key="frame" x="8" y="72" width="304" height="488"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Snh-Qs-rRi">
                                 <rect key="frame" x="0.0" y="64" width="320" height="360"/>
                                 <constraints>
@@ -135,11 +142,6 @@
                                     <constraint firstAttribute="height" constant="360" id="L3m-Yu-CKB"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dEL-pc-4na">
-                                <rect key="frame" x="8" y="72" width="304" height="488"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DJ-Y2-g3H">
                                 <rect key="frame" x="145" y="229" width="30" height="30"/>
                                 <constraints>
@@ -166,19 +168,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Snh-Qs-rRi" secondAttribute="trailing" id="40u-RV-vWd"/>
-                            <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="I1h-eo-OzB" secondAttribute="bottom" constant="8" id="5IK-3j-cqG"/>
-                            <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="dEL-pc-4na" secondAttribute="bottom" constant="8" id="6U1-8G-A4I"/>
-                            <constraint firstAttribute="trailing" secondItem="dEL-pc-4na" secondAttribute="trailing" constant="8" id="9QX-4e-Nbo"/>
+                            <constraint firstItem="EN5-Nf-eBU" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" constant="8" id="4os-25-hGx"/>
                             <constraint firstItem="6DJ-Y2-g3H" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" constant="165" id="JAH-Dy-5Yl"/>
                             <constraint firstItem="biI-JY-2Te" firstAttribute="top" secondItem="6DJ-Y2-g3H" secondAttribute="bottom" constant="15" id="MFD-Sr-OLd"/>
                             <constraint firstItem="Snh-Qs-rRi" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" id="P2r-jn-us4"/>
+                            <constraint firstAttribute="trailing" secondItem="EN5-Nf-eBU" secondAttribute="trailing" constant="8" id="SRV-7V-STJ"/>
                             <constraint firstItem="Snh-Qs-rRi" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" id="Ujq-4j-oww"/>
-                            <constraint firstItem="dEL-pc-4na" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="V9r-Ph-Ksj"/>
-                            <constraint firstItem="dEL-pc-4na" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" constant="8" id="Zrt-lw-mY3"/>
+                            <constraint firstItem="EN5-Nf-eBU" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="Vxv-4k-g4T"/>
+                            <constraint firstAttribute="trailing" secondItem="Kb2-5U-XtG" secondAttribute="trailing" constant="8" id="Xjw-tW-jiy"/>
+                            <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="Kb2-5U-XtG" secondAttribute="bottom" constant="8" id="bMQ-F7-eLh"/>
                             <constraint firstItem="biI-JY-2Te" firstAttribute="centerX" secondItem="IPX-yY-9lJ" secondAttribute="centerX" id="cAm-gV-SDX"/>
-                            <constraint firstItem="I1h-eo-OzB" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="fqT-4m-HH6"/>
+                            <constraint firstItem="Kb2-5U-XtG" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="k7m-jk-bG2"/>
                             <constraint firstItem="6DJ-Y2-g3H" firstAttribute="centerX" secondItem="IPX-yY-9lJ" secondAttribute="centerX" id="peB-1X-k1J"/>
-                            <constraint firstAttribute="trailing" secondItem="I1h-eo-OzB" secondAttribute="trailing" constant="8" id="up0-mL-hkG"/>
+                            <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="EN5-Nf-eBU" secondAttribute="bottom" constant="8" id="sfu-9S-tyq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Idea" id="JVJ-MV-vYg">
@@ -203,13 +205,13 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="captionTextField" destination="I1h-eo-OzB" id="TmA-Yb-Jju"/>
+                        <outlet property="captionTextField" destination="Kb2-5U-XtG" id="2Hf-yr-obJ"/>
                         <outlet property="downbutton" destination="8kW-NG-nPk" id="eUh-TO-7i0"/>
                         <outlet property="editButton" destination="Hwn-HL-u7T" id="KCZ-kw-dx9"/>
                         <outlet property="imageView" destination="Snh-Qs-rRi" id="USq-zS-YXu"/>
                         <outlet property="playButton" destination="6DJ-Y2-g3H" id="VBB-pq-NkA"/>
                         <outlet property="stopButton" destination="biI-JY-2Te" id="Vd4-Ah-6Yl"/>
-                        <outlet property="textField" destination="dEL-pc-4na" id="R8i-OJ-tvb"/>
+                        <outlet property="textField" destination="EN5-Nf-eBU" id="ki4-2j-DWO"/>
                         <outlet property="upbutton" destination="ISz-Iq-sLr" id="gZt-d2-zev"/>
                     </connections>
                 </viewController>

@@ -17,12 +17,14 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
     var ideas: [PFObject]!
     var type: Int!
     
-    @IBOutlet weak var captionTextField: UITextField!
+    
+    @IBOutlet weak var captionTextField: UITextView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textField: UITextField!
+    
     
     @IBOutlet weak var upbutton: UIBarButtonItem!
+    @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var downbutton: UIBarButtonItem!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -31,6 +33,8 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
     var soundFileData:NSData!
     override func viewDidLoad() {
         super.viewDidLoad()
+        captionTextField.userInteractionEnabled = false
+        textField.userInteractionEnabled = false
         loadData()
     }
     
