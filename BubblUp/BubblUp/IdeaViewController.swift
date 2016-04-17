@@ -35,6 +35,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         captionTextField.userInteractionEnabled = false
         textField.userInteractionEnabled = false
+        self.automaticallyAdjustsScrollViewInsets = false
         loadData()
     }
     
@@ -72,6 +73,11 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             }
             editButton.style = UIBarButtonItemStyle.Plain;
             editButton.title = "Edit";
+            playButton.hidden = true
+            stopButton.hidden = true
+            imageView.hidden = true
+            captionTextField.text = ""
+            textField.text = ""
 
             loadData()
         }
@@ -87,6 +93,11 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             }
             editButton.style = UIBarButtonItemStyle.Plain;
             editButton.title = "Edit";
+            playButton.hidden = true
+            stopButton.hidden = true
+            imageView.hidden = true
+            captionTextField.text = ""
+            textField.text = ""
             
             loadData()
         }
