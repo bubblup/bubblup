@@ -37,21 +37,9 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
         playButton.enabled = false
         stopButton.enabled = false
         saveButton.enabled = false
+        statusLabel.text = ""
         
         setupRecorder()
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
     }
     
@@ -306,5 +294,55 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
     @IBAction func onDismissButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            print("was shaken")
+            if(box == nil) {
+                print("box does not exist")
+            }else{
+                let path = self.soundFileURL!
+                var dataToUpload: NSData = NSData(contentsOfURL: path)!
+                let soundFile = PFFile(name: textField.text, data: dataToUpload)
+                Idea.createNewIdea(textField.text, type: Type.MediaType.voice, file: soundFile, containedIn: box) { (success:Bool, error: NSError?) -> Void in
+                    if success {
+                        print("successful")
+                        CATransaction.begin()
+                        CATransaction.setCompletionBlock({ () -> Void in
+                            self.textField.text = ""
+                            self.playButton.enabled = false
+                            self.stopButton.enabled = false
+                            self.saveButton.enabled = false
+                            self.statusLabel.text = ""
+                            self.setupRecorder()
+                        })
+                        let anim = CAKeyframeAnimation( keyPath:"transform" )
+                        anim.values = [
+                            NSValue( CATransform3D:CATransform3DMakeTranslation(-5, 0, 0 ) ),
+                            NSValue( CATransform3D:CATransform3DMakeTranslation( 5, 0, 0 ) )
+                        ]
+                        anim.autoreverses = true
+                        anim.repeatCount = 2
+                        anim.duration = 7/100
+                        self.textField.layer.addAnimation( anim, forKey:nil )
+                        self.playButton.layer.addAnimation( anim, forKey:nil )
+                        self.stopButton.layer.addAnimation( anim, forKey:nil )
+                        self.saveButton.layer.addAnimation( anim, forKey:nil )
+                        self.statusLabel.layer.addAnimation( anim, forKey:nil )
+                        
+                        CATransaction.commit()
+                    }
+                    else{
+                        print("unsuccessful")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                }}
+        }
+    }
+
 
 }

@@ -98,5 +98,49 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
     @IBAction func onDismissButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            print("was shaken")
+            if(box == nil) {
+                print("box does not exist")
+            }else{
+                var fileImage = getPFFileFromImage(newPhoto.image)
+                Idea.createNewIdea(captionTextField.text!, type: Type.MediaType.image, file: fileImage, containedIn: box) { (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        print("successful")
+                        CATransaction.begin()
+                        CATransaction.setCompletionBlock({ () -> Void in
+                            self.captionTextField.text = ""
+                            self.newPhoto.hidden = true
+                            self.captionTextField.hidden = true
+                            self.submitButton.hidden = true
+                        })
+                        let anim = CAKeyframeAnimation( keyPath:"transform" )
+                        anim.values = [
+                            NSValue( CATransform3D:CATransform3DMakeTranslation(-5, 0, 0 ) ),
+                            NSValue( CATransform3D:CATransform3DMakeTranslation( 5, 0, 0 ) )
+                        ]
+                        anim.autoreverses = true
+                        anim.repeatCount = 2
+                        anim.duration = 7/100
+                        self.captionTextField.layer.addAnimation( anim, forKey:nil )
+                        self.newPhoto.layer.addAnimation( anim, forKey:nil )
+                        
+                        CATransaction.commit()
+                    }
+                    else{
+                        print("unsuccessful")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                }}
+        }
+    }
+
 
 }
