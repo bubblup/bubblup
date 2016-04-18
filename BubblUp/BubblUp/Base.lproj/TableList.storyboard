@@ -127,20 +127,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Kb2-5U-XtG">
-                                <rect key="frame" x="8" y="480" width="304" height="80"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Kb2-5U-XtG">
+                                <rect key="frame" x="8" y="464" width="304" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="wfQ-VB-1Nc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EN5-Nf-eBU">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EN5-Nf-eBU">
                                 <rect key="frame" x="8" y="72" width="304" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Snh-Qs-rRi">
                                 <rect key="frame" x="0.0" y="64" width="320" height="360"/>
@@ -183,8 +183,8 @@
                             <constraint firstItem="Snh-Qs-rRi" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" id="Ujq-4j-oww"/>
                             <constraint firstItem="EN5-Nf-eBU" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="Vxv-4k-g4T"/>
                             <constraint firstAttribute="trailing" secondItem="Kb2-5U-XtG" secondAttribute="trailing" constant="8" id="Xjw-tW-jiy"/>
-                            <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="Kb2-5U-XtG" secondAttribute="bottom" constant="8" id="bMQ-F7-eLh"/>
                             <constraint firstItem="biI-JY-2Te" firstAttribute="centerX" secondItem="IPX-yY-9lJ" secondAttribute="centerX" id="cAm-gV-SDX"/>
+                            <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="Kb2-5U-XtG" secondAttribute="bottom" constant="24" id="hca-Ld-FZQ"/>
                             <constraint firstItem="Kb2-5U-XtG" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="k7m-jk-bG2"/>
                             <constraint firstItem="6DJ-Y2-g3H" firstAttribute="centerX" secondItem="IPX-yY-9lJ" secondAttribute="centerX" id="peB-1X-k1J"/>
                             <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="EN5-Nf-eBU" secondAttribute="bottom" constant="8" id="sfu-9S-tyq"/>

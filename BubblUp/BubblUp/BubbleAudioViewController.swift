@@ -228,6 +228,7 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
                 print("voice successfully saved")
                 self.dismissViewControllerAnimated(true, completion: nil)
                 self.deleteAllRecordings()
+                self.dismissViewControllerAnimated(true, completion: nil)
             }else {
                 print(error?.localizedDescription)
             }
