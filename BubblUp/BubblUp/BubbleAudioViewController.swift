@@ -226,6 +226,7 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
         Idea.createNewIdea(textField.text, type: Type.MediaType.voice, file: soundFile, containedIn: box) { (success:Bool, error: NSError?) -> Void in
             if success {
                 print("voice successfully saved")
+                self.dismissViewControllerAnimated(true, completion: nil)
                 self.deleteAllRecordings()
             }else {
                 print(error?.localizedDescription)

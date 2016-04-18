@@ -17,6 +17,8 @@ class BubbleViewController: UIViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var containerView: UIView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +27,9 @@ class BubbleViewController: UIViewController {
         tableView.rowHeight=UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         getAllIdeas(box)
+        //     let viewController = containerView.inputViewController
         segmentedControl.selectedSegmentIndex = 0
-        tableView.hidden = true
+        tableView.alpha = 0
         // Do any additional setup after loading the view.
     }
     
@@ -37,10 +40,17 @@ class BubbleViewController: UIViewController {
     
     @IBAction func switchClicked(sender: AnyObject) {
         if(segmentedControl.selectedSegmentIndex == 0) {
-            tableView.hidden = true
+            UIView.animateWithDuration(0.5, animations: {
+                self.containerView.alpha = 1
+                self.tableView.alpha = 0
+            })
+            
         }
         else {
-            tableView.hidden = false
+            UIView.animateWithDuration(0.5, animations: {
+                self.containerView.alpha = 0
+                self.tableView.alpha = 1
+            })
         }
     }
 
@@ -78,6 +88,11 @@ class BubbleViewController: UIViewController {
                 controller.idea = ideas[tableView.indexPathForSelectedRow!.row]
                 controller.ideas = ideas
             }
+        if(segue.identifier == "toBubbleView"){
+            let viewController = segue.destinationViewController as! UINavigationController
+            let controller = viewController.topViewController as! BubbleCollectionViewController
+            controller.box = box
+        }
     }
     
 
