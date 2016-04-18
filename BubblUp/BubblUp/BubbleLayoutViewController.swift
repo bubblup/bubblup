@@ -89,15 +89,25 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
     }
     @IBAction func onAudioButton(sender: AnyObject) {
         transition.transitionType = .Audio
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     @IBAction func onPhotoButton(sender: AnyObject) {
         transition.transitionType = .Photo
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     @IBAction func onTextButton(sender: AnyObject) {
         transition.transitionType = .Text
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+
     }
     @IBAction func onDrawButton(sender: AnyObject) {
         transition.transitionType = .Draw
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+
     }
 
 }
