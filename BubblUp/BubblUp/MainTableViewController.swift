@@ -22,6 +22,43 @@ class MainTableViewController: UIViewController {
 
     }
     
+    @IBAction func newFolderClicked(sender: AnyObject) {
+        let alertController = UIAlertController(title: "New Folder", message: "Enter your folder name", preferredStyle: .Alert)
+        var nameTextField: UITextField?
+
+        let okClosure: ((UIAlertAction!) -> Void)! = { action in
+            var newFolderName = nameTextField!.text
+            if newFolderName?.characters.count == 0 {
+                var date = NSDate()
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy/MM/dd HH:mm"
+                
+                newFolderName = formatter.stringFromDate(date)
+            }
+            //if newFolderName?.characters.count != 0 {
+            Ideabox.createIdeabox(newFolderName) { (success:Bool, error: NSError?) -> Void in
+                if(success){
+                    print("ideabox successfully created")
+                    self.getAllBoxes()
+                }
+                else{
+                    print("unsuccessful")
+                }
+            }
+           // }
+        }
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: okClosure)
+        alertController.addAction(okAction)
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            nameTextField = textField
+            nameTextField?.placeholder = "Folder Name"
+        }
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         getAllBoxes()
@@ -93,6 +130,9 @@ extension MainTableViewController: UITableViewDataSource, UITableViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "goToBubbleView") {
             let controller = segue.destinationViewController as! BubbleViewController
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
             controller.box = boxes[tableView.indexPathForSelectedRow!.row]
         }
     }

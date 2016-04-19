@@ -65,7 +65,7 @@ public class BubbleTransition: NSObject {
      */
     
     @objc public enum BubbleTransitionType: Int {
-        case Audio, Draw, Photo, Text
+        case Audio, Draw, Photo, Text, Bubble
     }
     
 }
@@ -117,14 +117,22 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning {
                     transitionContext.completeTransition(true)
             }
         } else {
+            print("pop")
             let key = (transitionMode == .Pop) ? UITransitionContextToViewKey : UITransitionContextFromViewKey
             let returningControllerView = transitionContext.viewForKey(key)!
             let originalCenter = returningControllerView.center
             let originalSize = returningControllerView.frame.size
+          
+            
             
             bubble.frame = frameForBubble(originalCenter, size: originalSize, start: startingPoint)
             bubble.layer.cornerRadius = bubble.frame.size.height / 2
             bubble.center = startingPoint
+            
+            
+            if(transitionType == .Bubble){
+                startingPoint = originalCenter
+            }
             
             UIView.animateWithDuration(duration, animations: {
                 self.bubble.transform = CGAffineTransformMakeScale(0.001, 0.001)

@@ -15,17 +15,17 @@ protocol BubbleViewControllerDelegate: class {
     func composeCancel(sender: BubbleViewController)
 }
 
-class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
+class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     var box:PFObject!
     var ideas:[PFObject]!
     
-    
+    let transition = BubbleTransition()
+
     @IBOutlet weak var tabGesture: UITapGestureRecognizer!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var addDrawButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
     @IBOutlet weak var addAudioButton: UIButton!
-    let transition = BubbleTransition()
     var buttonType: UIButton!
 
     @IBOutlet weak var composeButton: UIBarButtonItem!
@@ -46,10 +46,11 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
             self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
             
             }, completion: nil)
-        
+        tabGesture.enabled = false
 
     }
     @IBAction func composeClicked(sender: AnyObject) {
+            tabGesture.enabled = true
 //        if(self.tableView.alpha != 1) {
 //        print("compose clicked")
 //        delegate?.compose(self)
@@ -69,6 +70,13 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
       //  }
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tabGesture.enabled = false
+
+    }
+    
     @IBAction func viewTapped(sender: AnyObject) {
         print("view tapped")
        // delegate?.composeCancel(self)
@@ -80,10 +88,13 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
             self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 150
             
             }, completion: nil)
+        tabGesture.enabled = false
         
     }
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        tabGesture.enabled = false
         tabGesture.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -117,6 +128,8 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidAppear(animated)
         getAllIdeas(box)
     }
+    
+    
     
     @IBAction func switchClicked(sender: AnyObject) {
         if(segmentedControl.selectedSegmentIndex == 0) {
@@ -153,6 +166,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
             }}
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("prepare for segue")
         if (segue.identifier == "toListView") {
             let viewController = segue.destinationViewController as! ListViewController
             viewController.box = box
@@ -177,6 +191,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
             controller.box = box
         }
         else {
+            print("open forms")
         let controller = segue.destinationViewController
         controller.transitioningDelegate = self
         controller.modalPresentationStyle = .Custom
@@ -329,6 +344,8 @@ extension BubbleViewController: UIViewControllerTransitioningDelegate {
             break
         case .Text: buttonType = addTextButton
             break
+        default:
+            break
         }
         
         transition.transitionMode = .Present
@@ -345,7 +362,7 @@ extension BubbleViewController: UIViewControllerTransitioningDelegate {
         transition.bubbleColor = buttonType.backgroundColor!
         return transition
     }
-    
+    /*
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         print("should receive touch")
         
@@ -368,27 +385,29 @@ extension BubbleViewController: UIViewControllerTransitioningDelegate {
         return true
         
     }
-    
+    */
     @IBAction func onAudioButton(sender: AnyObject) {
+        print("on audio button")
         transition.transitionType = .Audio
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+       // let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
+       // self.presentViewController(vc, animated: true, completion: nil)
     }
     @IBAction func onPhotoButton(sender: AnyObject) {
+        print("photo button clicked")
         transition.transitionType = .Photo
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+      //  let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
+      //  self.presentViewController(vc, animated: true, completion: nil)
     }
     @IBAction func onTextButton(sender: AnyObject) {
         transition.transitionType = .Text
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+     //   let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
+     //   self.presentViewController(vc, animated: true, completion: nil)
         
     }
     @IBAction func onDrawButton(sender: AnyObject) {
         transition.transitionType = .Draw
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+    //    let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
+    //    self.presentViewController(vc, animated: true, completion: nil)
         
     }
 

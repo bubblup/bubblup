@@ -26,7 +26,7 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
     var meterTimer:NSTimer!
     var soundFileURL:NSURL!
 
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

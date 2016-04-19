@@ -27,6 +27,7 @@ class BubbleTextViewController: UIViewController {
 
     }
     
+    
     @IBAction func onSaveClicked(sender: AnyObject) {
         if(box == nil) {
             print("box does not exist")
@@ -48,7 +49,7 @@ class BubbleTextViewController: UIViewController {
     }
     
     @IBAction func onDismissButton(sender: AnyObject) {
-        
+
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

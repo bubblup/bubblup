@@ -67,6 +67,8 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
             break
         case .Text: buttonType = addTextButton
             break
+        default:
+            break
         }
 
         transition.transitionMode = .Present

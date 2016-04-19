@@ -59,7 +59,8 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
-        collectionView.allowsMultipleSelection = true
+        collectionView.allowsSelection = true
+      //  collectionView.allowsMultipleSelection = true
         collectionView.delegate = self
         longPressGesture = UILongPressGestureRecognizer(target: self, action: "handleLongGesture:")
         self.collectionView.addGestureRecognizer(longPressGesture)
@@ -80,8 +81,16 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        getAllIdeas(box)
+    }
+
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
+        getAllIdeas(box)
+
 //        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
 //            
 //            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
@@ -207,38 +216,66 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
     func collectionView(collectionView: UICollectionView,
         moveItemAtIndexPath sourceIndexPath: NSIndexPath,
         toIndexPath destinationIndexPath: NSIndexPath) {
-            //let temp = numbers.removeAtIndex(sourceIndexPath.item)
-            //numbers.insert(temp, atIndex: destinationIndexPath.item)
+            print("move Item")
+            let temp = ideas.removeAtIndex(sourceIndexPath.item)
+            ideas.insert(temp, atIndex: destinationIndexPath.item)
+            for idea in ideas{
+                //Change the oder number
+                var index = ideas.indexOf(idea)!
+                Idea.changeIndex(idea, newIndex: index, withCompletion: { (success: Bool, error: NSError?) -> Void in
+                    if success{
+                        //print("\(idea["text"]) new index is \(index)")
+                    } else{
+                        print(error?.localizedDescription)
+                    }
+                })
+            }
     }
             // move your data order
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("select")
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BubbleCell
-        cell.backgroundColor = UIColor.blackColor()
+      //  cell.backgroundColor = UIColor.blackColor()
          // let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BubbleCell", forIndexPath: indexPath) as! BubbleCell
-        cell.bubbleLabel.text = "select"
-        
+        //cell.bubbleLabel.text = "select"
+        transition.transitionType = .Bubble
+        transition.bubbleColor = UIColor.whiteColor()
+        print("select end")
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        print("deselect")
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BubbleCell
-
-         //let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BubbleCell", forIndexPath: indexPath) as! BubbleCell
-        cell.bubbleLabel.text = "deselect"
-    }
+//    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+//        print("deselect")
+//        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BubbleCell
+//
+//         //let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BubbleCell", forIndexPath: indexPath) as! BubbleCell
+//        cell.bubbleLabel.text = "deselect"
+//    }
     
     func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
+//    func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+//      //  return true
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("prepare For segue from collection")
         let controller = segue.destinationViewController
         controller.transitioningDelegate = self
         controller.modalPresentationStyle = .Custom
+        if (segue.identifier == "toPageView") {
+            let viewController = segue.destinationViewController as! BubblePageViewController
+            
+            viewController.ideas = ideas
+            let indexPaths = self.collectionView.indexPathsForSelectedItems()
+            let indexPath: NSIndexPath = indexPaths![0] as NSIndexPath
+            viewController.index = indexPath.row
+            
+            
+            // pass data to next view
+        }
+        else {
+        
         if (segue.identifier == "photoSegue"){
             let viewController = segue.destinationViewController as! BubblePhotoViewController
             viewController.box = box
@@ -251,6 +288,20 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
             let viewController = segue.destinationViewController as! BubbleAudioViewController
             viewController.box = box
         }
+        
+        if (segue.identifier == "toPageView") {
+            let viewController = segue.destinationViewController as! BubblePageViewController
+        
+            viewController.ideas = ideas
+            let indexPaths = self.collectionView.indexPathsForSelectedItems()
+            let indexPath: NSIndexPath = indexPaths![0] as NSIndexPath
+            viewController.index = indexPath.row
+            
+            
+                // pass data to next view
+        }
+        }
+    
     }
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -264,11 +315,20 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
             break
         case .Text: buttonType = addTextButton
             break
+        case .Bubble:
+            break
+            
         }
         
         transition.transitionMode = .Present
         transition.startingPoint = buttonType.center
         transition.bubbleColor = buttonType.backgroundColor!
+
+        if(transition.transitionType == .Bubble){
+        transition.startingPoint = self.view.center
+        transition.bubbleColor = UIColor.grayColor()
+        print(transition.bubbleColor)
+        }
         
         return transition
     }
@@ -304,5 +364,8 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         self.presentViewController(vc, animated: true, completion: nil)
         
     }
+ 
+
+    
 
 }

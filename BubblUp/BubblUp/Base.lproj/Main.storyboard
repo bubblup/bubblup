@@ -134,14 +134,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="List" id="mR4-lu-fyP">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Lml-iT-7Y6">
+                        <barButtonItem key="leftBarButtonItem" image="logout" id="Lml-iT-7Y6">
                             <connections>
                                 <action selector="onLogoutButton:" destination="CeM-W9-3De" id="piR-v2-VlV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="compose" id="a6n-N5-5yG">
+                        <barButtonItem key="rightBarButtonItem" image="folder" id="a6n-N5-5yG">
                             <connections>
-                                <segue destination="tfP-cF-7Pt" kind="modal" id="OQJ-Te-NGg"/>
+                                <action selector="newFolderClicked:" destination="CeM-W9-3De" id="FCK-HY-jyu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -415,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DG9-jk-jQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2576" y="717"/>
+            <point key="canvasLocation" x="2534" y="680"/>
         </scene>
         <!--Bubble Audio View Controller-->
         <scene sceneID="pW6-nz-6KP">
@@ -684,12 +684,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Li2-uY-Xsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3029" y="717"/>
+            <point key="canvasLocation" x="2993" y="710"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera" width="32" height="25"/>
         <image name="drawing" width="32" height="32"/>
+        <image name="folder" width="24" height="24"/>
+        <image name="logout" width="20" height="20"/>
         <image name="microphone" width="19" height="32"/>
         <image name="text" width="28" height="32"/>
     </resources>

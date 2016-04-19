@@ -32,6 +32,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onDrawButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="fr1-O3-i8s"/>
+                                    <segue destination="aMM-by-q1T" kind="modal" id="EiA-A2-3Id"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g5-uB-Jtq">
@@ -46,7 +47,8 @@
                                     <color key="titleShadowColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="onAudioButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="lVf-8q-BSG"/>
+                                    <action selector="onAudioButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="5B7-GV-aI3"/>
+                                    <segue destination="X4B-u5-XmJ" kind="modal" identifier="voiceSegue" id="Dzw-3v-eWe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6K-iX-1rI">
@@ -61,7 +63,8 @@
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="onTextButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="sg4-C0-u60"/>
+                                    <action selector="onTextButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="i9v-ws-ZCz"/>
+                                    <segue destination="9rc-MX-JCc" kind="modal" identifier="textSegue" id="Qxe-wE-86B"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSN-aP-xhT">
@@ -76,7 +79,8 @@
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="onPhotoButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="EHW-Z5-HOt"/>
+                                    <action selector="onPhotoButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="LqQ-QL-8QL"/>
+                                    <segue destination="Mll-jq-1SW" kind="modal" identifier="photoSegue" id="y38-bc-ECg"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNw-QB-zcc">
@@ -150,11 +154,11 @@
                     <navigationItem key="navigationItem" id="g7P-QK-FiT">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lo5-sD-Ovj">
-                            <rect key="frame" x="95.5" y="6.5" width="129" height="31"/>
+                            <rect key="frame" x="113.5" y="7" width="93" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Bubbles"/>
-                                <segment title="List"/>
+                                <segment title="" image="bubble"/>
+                                <segment title="" image="list"/>
                             </segments>
                             <connections>
                                 <action selector="switchClicked:" destination="LRU-bt-iZo" eventType="valueChanged" id="urK-Vk-ikw"/>
@@ -195,6 +199,75 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1314" y="-99"/>
+        </scene>
+        <!--Bubble Page View Controller-->
+        <scene sceneID="bHW-hH-HzV">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="3Bz-oi-hJd" customClass="BubblePageViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdj-X2-buq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3248" y="-61"/>
+        </scene>
+        <!--One Bubble View Controller-->
+        <scene sceneID="lFd-hK-xBH">
+            <objects>
+                <viewController storyboardIdentifier="BubbleController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WIp-20-cW0" customClass="OneBubbleViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dJ4-yX-Ihk"/>
+                        <viewControllerLayoutGuide type="bottom" id="w39-vu-EAR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bfm-IC-0aF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cA-FP-zAu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPl-vy-yVP">
+                                        <rect key="frame" x="128" y="20" width="64" height="64"/>
+                                        <state key="normal" image="cancel2"/>
+                                        <connections>
+                                            <action selector="exitBubble:" destination="WIp-20-cW0" eventType="touchUpInside" id="v5J-F1-20R"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXL-Ds-ckm">
+                                        <rect key="frame" x="33" y="234" width="255" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="mBi-Fo-yo9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SPl-vy-yVP" firstAttribute="centerX" secondItem="0cA-FP-zAu" secondAttribute="centerX" id="ElL-ug-neM"/>
+                                    <constraint firstAttribute="trailing" secondItem="pXL-Ds-ckm" secondAttribute="trailing" constant="32" id="e8a-Dp-0Ka"/>
+                                    <constraint firstItem="pXL-Ds-ckm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SPl-vy-yVP" secondAttribute="bottom" constant="50" id="sf9-4k-VSP"/>
+                                    <constraint firstItem="pXL-Ds-ckm" firstAttribute="centerY" secondItem="0cA-FP-zAu" secondAttribute="centerY" id="tlh-JN-wpc"/>
+                                    <constraint firstItem="pXL-Ds-ckm" firstAttribute="leading" secondItem="0cA-FP-zAu" secondAttribute="leading" constant="33" id="vhp-te-dPo"/>
+                                    <constraint firstItem="SPl-vy-yVP" firstAttribute="top" secondItem="0cA-FP-zAu" secondAttribute="top" constant="20" id="yvm-ll-jJe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w39-vu-EAR" firstAttribute="top" secondItem="0cA-FP-zAu" secondAttribute="bottom" id="Pkr-jM-CS7"/>
+                            <constraint firstItem="0cA-FP-zAu" firstAttribute="top" secondItem="bfm-IC-0aF" secondAttribute="top" id="U7X-ph-5lf"/>
+                            <constraint firstItem="0cA-FP-zAu" firstAttribute="leading" secondItem="bfm-IC-0aF" secondAttribute="leading" id="bcM-B5-4CG"/>
+                            <constraint firstAttribute="trailing" secondItem="0cA-FP-zAu" secondAttribute="trailing" id="oSF-B0-4K2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bubbleContainer" destination="0cA-FP-zAu" id="YOQ-VO-TP6"/>
+                        <outlet property="textLabel" destination="pXL-Ds-ckm" id="4BO-Zz-vfq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dAk-Ug-z4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3279" y="-223"/>
         </scene>
         <!--Idea-->
         <scene sceneID="HsQ-eR-C3A">
@@ -358,6 +431,7 @@
                                         <connections>
                                             <outlet property="bubbleLabel" destination="H1e-bP-kiF" id="mK4-S6-kyU"/>
                                             <outlet property="typeImage" destination="tPJ-ar-bG3" id="Dnx-iN-g0q"/>
+                                            <segue destination="3Bz-oi-hJd" kind="modal" identifier="toPageView" id="ID7-P4-lz5"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -446,7 +520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDc-52-vpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2871" y="-61"/>
+            <point key="canvasLocation" x="2829" y="-34"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cul-N3-YMm">
@@ -533,7 +607,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgN-kW-PRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2576" y="717"/>
+            <point key="canvasLocation" x="2815" y="785"/>
         </scene>
         <!--Bubble Audio View Controller-->
         <scene sceneID="lcy-pw-3TR">
@@ -663,7 +737,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4J-7m-Nzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3019" y="1381"/>
+            <point key="canvasLocation" x="3030" y="1623"/>
         </scene>
         <!--Bubble Draw View Controller-->
         <scene sceneID="znm-Yu-0M6">
@@ -802,12 +876,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZt-gV-3uS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3029" y="717"/>
+            <point key="canvasLocation" x="3030" y="798"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bubble" width="24" height="24"/>
         <image name="camera" width="32" height="25"/>
+        <image name="cancel2" width="64" height="64"/>
         <image name="drawing" width="32" height="32"/>
+        <image name="list" width="32" height="32"/>
         <image name="microphone" width="19" height="32"/>
         <image name="text" width="28" height="32"/>
     </resources>
