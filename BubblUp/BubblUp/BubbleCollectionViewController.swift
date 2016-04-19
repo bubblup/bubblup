@@ -9,7 +9,11 @@
 import UIKit
 import Parse
 
-class BubbleCollectionViewController: UIViewController, UIViewControllerTransitioningDelegate {
+
+
+class BubbleCollectionViewController: UIViewController, UIViewControllerTransitioningDelegate, BubbleViewControllerDelegate {
+    //weak var delegate:BubbleViewControllerDelegate?
+
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -26,6 +30,30 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
     let transition = BubbleTransition()
     var buttonType: UIButton!
 
+    func compose(sender: BubbleViewController) {
+        print("compose")
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            
+            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
+            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 - 20
+            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 - 20
+            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 - 20
+            
+            
+            }, completion: nil)
+    }
+    func composeCancel(sender: BubbleViewController){
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            
+            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 + 50
+            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 + 50
+            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 + 50
+            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 + 50
+            
+            }, completion: nil)
+
+        
+    }
 
     
     override func viewDidLoad() {
@@ -54,25 +82,25 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
-        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-            
-            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
-            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 - 20
-            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 - 20
-            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 - 20
-
-            
-            }, completion: nil)
+//        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+//            
+//            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
+//            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 - 20
+//            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 - 20
+//            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 - 20
+//
+//            
+//            }, completion: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(false)
-        
-        addTextButton.center.y = self.collectionView.frame.height - addTextButton.frame.height/2 + 50
-        addPhotoButton.center.y = self.collectionView.frame.height - addPhotoButton.frame.height/2 + 50
-        addDrawButton.center.y = self.collectionView.frame.height - addDrawButton.frame.height/2 + 50
-        addAudioButton.center.y = self.collectionView.frame.height - addAudioButton.frame.height/2 + 50
-
+        print("view will disappear")
+//        addTextButton.center.y = self.collectionView.frame.height - addTextButton.frame.height/2 + 50
+//        addPhotoButton.center.y = self.collectionView.frame.height - addPhotoButton.frame.height/2 + 50
+//        addDrawButton.center.y = self.collectionView.frame.height - addDrawButton.frame.height/2 + 50
+//        addAudioButton.center.y = self.collectionView.frame.height - addAudioButton.frame.height/2 + 50
+//
     }
     
     

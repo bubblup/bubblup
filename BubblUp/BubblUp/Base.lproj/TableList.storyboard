@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LRU-bt-iZo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LRU-bt-iZo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -19,6 +19,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VII-Qe-F7c">
+                                <rect key="frame" x="244" y="570" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.82806179940000002" green="0.88132599899999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SjK-yX-eBd"/>
+                                    <constraint firstAttribute="width" constant="50" id="XLF-3i-0NE"/>
+                                </constraints>
+                                <state key="normal" image="drawing">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onDrawButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="fr1-O3-i8s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g5-uB-Jtq">
+                                <rect key="frame" x="171" y="570" width="50" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1RW-jY-OR8"/>
+                                    <constraint firstAttribute="width" constant="50" id="w8g-X4-BPT"/>
+                                </constraints>
+                                <state key="normal" image="microphone">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAudioButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="lVf-8q-BSG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6K-iX-1rI">
+                                <rect key="frame" x="101" y="570" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="R8h-b3-UfS"/>
+                                    <constraint firstAttribute="height" constant="50" id="Xge-yH-eiS"/>
+                                </constraints>
+                                <state key="normal" image="text">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTextButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="sg4-C0-u60"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSN-aP-xhT">
+                                <rect key="frame" x="27" y="570" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.53704536560000005" green="0.81156646929999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LkW-z4-VKC"/>
+                                    <constraint firstAttribute="width" constant="50" id="xEO-Xn-qCl"/>
+                                </constraints>
+                                <state key="normal" image="camera">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPhotoButton:" destination="LRU-bt-iZo" eventType="touchUpInside" id="EHW-Z5-HOt"/>
+                                </connections>
+                            </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNw-QB-zcc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
@@ -28,6 +88,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tXj-5L-SQH">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ListCell" rowHeight="60" id="7bg-4O-yDY" customClass="ListCell" customModule="BubblUp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="60"/>
@@ -67,16 +128,24 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="tXj-5L-SQH" firstAttribute="leading" secondItem="AXS-Tz-y5M" secondAttribute="leading" id="CfY-uK-mbG"/>
                             <constraint firstAttribute="trailing" secondItem="tXj-5L-SQH" secondAttribute="trailing" id="M8q-Jv-ayp"/>
                             <constraint firstItem="ztq-GJ-pHJ" firstAttribute="top" secondItem="tXj-5L-SQH" secondAttribute="bottom" id="Nck-DN-tuL"/>
                             <constraint firstItem="zNw-QB-zcc" firstAttribute="leading" secondItem="AXS-Tz-y5M" secondAttribute="leading" id="O0s-fP-oXw"/>
+                            <constraint firstItem="ZSN-aP-xhT" firstAttribute="leading" secondItem="AXS-Tz-y5M" secondAttribute="leading" constant="25" id="QvH-Ob-Zby"/>
                             <constraint firstAttribute="trailing" secondItem="zNw-QB-zcc" secondAttribute="trailing" id="REd-W5-wHN"/>
                             <constraint firstItem="ztq-GJ-pHJ" firstAttribute="top" secondItem="zNw-QB-zcc" secondAttribute="bottom" id="Vhf-kR-bCc"/>
+                            <constraint firstItem="6g5-uB-Jtq" firstAttribute="leading" secondItem="W6K-iX-1rI" secondAttribute="trailing" constant="20" id="Xmh-3O-Qml"/>
+                            <constraint firstItem="VII-Qe-F7c" firstAttribute="leading" secondItem="6g5-uB-Jtq" secondAttribute="trailing" constant="25" id="h65-tq-7L5"/>
                             <constraint firstItem="tXj-5L-SQH" firstAttribute="top" secondItem="eBy-bL-3cD" secondAttribute="bottom" id="jdP-4b-HcO"/>
                             <constraint firstItem="zNw-QB-zcc" firstAttribute="top" secondItem="AXS-Tz-y5M" secondAttribute="top" id="kJZ-G9-wGZ"/>
+                            <constraint firstItem="W6K-iX-1rI" firstAttribute="leading" secondItem="ZSN-aP-xhT" secondAttribute="trailing" constant="24" id="oGU-Z4-vWX"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dlj-CF-rYZ" appends="YES" id="MvC-4H-PYK"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="g7P-QK-FiT">
                         <nil key="title"/>
@@ -94,7 +163,7 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Item" systemItem="compose" id="CJT-5W-86t">
                                 <connections>
-                                    <segue destination="bgF-an-MQ5" kind="modal" identifier="toAnimationSegue" id="Pvs-J9-VSq"/>
+                                    <action selector="composeClicked:" destination="LRU-bt-iZo" id="5jg-3u-cA5"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Edit" id="9LB-z6-VWh">
@@ -106,15 +175,26 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="addAudioButton" destination="6g5-uB-Jtq" id="IBJ-IL-1ef"/>
+                        <outlet property="addDrawButton" destination="VII-Qe-F7c" id="7rs-aT-RzH"/>
+                        <outlet property="addPhotoButton" destination="ZSN-aP-xhT" id="SPN-gm-U3X"/>
+                        <outlet property="addTextButton" destination="W6K-iX-1rI" id="bPC-Pj-3kF"/>
+                        <outlet property="composeButton" destination="CJT-5W-86t" id="GXA-7C-vWt"/>
                         <outlet property="containerView" destination="zNw-QB-zcc" id="TnO-At-ync"/>
                         <outlet property="editButton" destination="9LB-z6-VWh" id="ddr-nN-9ye"/>
                         <outlet property="segmentedControl" destination="lo5-sD-Ovj" id="k9c-3c-oOP"/>
+                        <outlet property="tabGesture" destination="dlj-CF-rYZ" id="nt3-O7-6M7"/>
                         <outlet property="tableView" destination="tXj-5L-SQH" id="fnF-1Q-k2h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmQ-fa-wuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dlj-CF-rYZ">
+                    <connections>
+                        <action selector="viewTapped:" destination="LRU-bt-iZo" id="L3v-cn-GKo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1506" y="129"/>
+            <point key="canvasLocation" x="1314" y="-99"/>
         </scene>
         <!--Idea-->
         <scene sceneID="HsQ-eR-C3A">
@@ -225,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hL-dI-ahU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2453" y="129"/>
+            <point key="canvasLocation" x="2505" y="-94"/>
         </scene>
         <!--UINavigationController-fLQ-xO-VBh-->
         <scene sceneID="U3Y-ES-DJS">
@@ -384,7 +464,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNe-As-NDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2200" y="29"/>
+            <point key="canvasLocation" x="2053" y="323"/>
         </scene>
         <!--Bubble-->
         <scene sceneID="XsP-Yf-h71">

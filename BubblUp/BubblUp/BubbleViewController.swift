@@ -8,20 +8,83 @@
 
 import UIKit
 import Parse
-class BubbleViewController: UIViewController {
+
+
+protocol BubbleViewControllerDelegate: class {
+    func compose(sender: BubbleViewController)
+    func composeCancel(sender: BubbleViewController)
+}
+
+class BubbleViewController: UIViewController, UIGestureRecognizerDelegate {
     var box:PFObject!
     var ideas:[PFObject]!
+    
+    
+    @IBOutlet weak var tabGesture: UITapGestureRecognizer!
+    @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var addDrawButton: UIButton!
+    @IBOutlet weak var addTextButton: UIButton!
+    @IBOutlet weak var addAudioButton: UIButton!
+    let transition = BubbleTransition()
+    var buttonType: UIButton!
 
+    @IBOutlet weak var composeButton: UIBarButtonItem!
     @IBOutlet weak var bubbleField: UITextField!
 
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
-
+   weak var delegate:BubbleViewControllerDelegate?
     
+    @IBAction func composeCanceled(sender: AnyObject) {
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            
+            self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 50
+            self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 50
+            self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 50
+            self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
+            
+            }, completion: nil)
+        
+
+    }
+    @IBAction func composeClicked(sender: AnyObject) {
+//        if(self.tableView.alpha != 1) {
+//        print("compose clicked")
+//        delegate?.compose(self)
+//        composeButton.image = UIImage(named: "cancel")
+//        }
+//        else {
+           print("compose")
+            UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                
+                self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 50
+                self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 50
+                self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 50
+                self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
+                
+                }, completion: nil)
+
+      //  }
+        
+    }
+    @IBAction func viewTapped(sender: AnyObject) {
+        print("view tapped")
+       // delegate?.composeCancel(self)
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            
+            self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 150
+            self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 150
+            self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 150
+            self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 150
+            
+            }, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabGesture.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight=UITableViewAutomaticDimension
@@ -30,6 +93,23 @@ class BubbleViewController: UIViewController {
         //     let viewController = containerView.inputViewController
         segmentedControl.selectedSegmentIndex = 0
         tableView.alpha = 0
+        //delegate = self
+        self.view.bringSubviewToFront(addTextButton)
+        self.view.bringSubviewToFront(addPhotoButton)
+        self.view.bringSubviewToFront(addAudioButton)
+        self.view.bringSubviewToFront(addDrawButton)
+      //  addTextButton.send
+            
+       // addTextButton.layer.zPosition = 1
+       // addPhotoButton.layer.zPosition = 1
+       // addDrawButton.layer.zPosition = 1
+       // addAudioButton.layer.zPosition = 1
+        addTextButton.layer.cornerRadius = addTextButton.frame.width/2
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
+        addDrawButton.layer.cornerRadius = addDrawButton.frame.width/2
+        addAudioButton.layer.cornerRadius = addAudioButton.frame.width/2
+        
+        self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
         // Do any additional setup after loading the view.
     }
     
@@ -78,20 +158,40 @@ class BubbleViewController: UIViewController {
             viewController.box = box
             // pass data to next view
         }
-        if (segue.identifier == "toAnimationSegue"){
+        else if (segue.identifier == "toAnimationSegue"){
             let viewController = segue.destinationViewController as! UINavigationController
             let controller = viewController.topViewController as! BubbleLayoutViewController
             controller.box = box
         }
-        if(segue.identifier == "onIdeaSegue"){
+        else if(segue.identifier == "onIdeaSegue"){
             let controller = segue.destinationViewController as! IdeaViewController
                 controller.idea = ideas[tableView.indexPathForSelectedRow!.row]
                 controller.ideas = ideas
             }
-        if(segue.identifier == "toBubbleView"){
+        else if(segue.identifier == "toBubbleView"){
             let viewController = segue.destinationViewController as! UINavigationController
             let controller = viewController.topViewController as! BubbleCollectionViewController
+            delegate = controller
+          //  delegate!.compose(self)
+            //controller.delegate = self
             controller.box = box
+        }
+        else {
+        let controller = segue.destinationViewController
+        controller.transitioningDelegate = self
+        controller.modalPresentationStyle = .Custom
+        if (segue.identifier == "photoSegue"){
+            let viewController = segue.destinationViewController as! BubblePhotoViewController
+            viewController.box = box
+        }
+        if (segue.identifier == "textSegue"){
+            let viewController = segue.destinationViewController as! BubbleTextViewController
+            viewController.box = box
+        }
+        if (segue.identifier == "voiceSegue"){
+            let viewController = segue.destinationViewController as! BubbleAudioViewController
+            viewController.box = box
+        }
         }
     }
     
@@ -179,6 +279,9 @@ extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
     }
     
     
+   // @IBAction func composeClicked(sender: AnyObject) {
+       // delegate?.compose(self.containerView.)
+   // }
     func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
         return true // Yes, the table view can be reordered
     }
@@ -212,6 +315,84 @@ extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
     
 
 
+}
+
+extension BubbleViewController: UIViewControllerTransitioningDelegate {
+       func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        switch transition.transitionType {
+        case .Audio: buttonType = addAudioButton
+            break
+        case .Draw: buttonType = addDrawButton
+            break
+        case .Photo: buttonType = addPhotoButton
+            break
+        case .Text: buttonType = addTextButton
+            break
+        }
+        
+        transition.transitionMode = .Present
+        transition.startingPoint = buttonType.center
+        transition.bubbleColor = buttonType.backgroundColor!
+        
+        return transition
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.transitionMode = .Dismiss
+        transition.startingPoint = buttonType.center
+        transition.bubbleColor = buttonType.backgroundColor!
+        return transition
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        print("should receive touch")
+        
+        print(touch.view)
+        
+        if(touch.view == addAudioButton){
+        return false
+        }
+        if(touch.view == addPhotoButton){
+        return false
+        }
+        if(touch.view == addTextButton){
+            return false
+        }
+        if(touch.view == addDrawButton){
+            return false
+        }
+    print("true")
+        
+        return true
+        
+    }
+    
+    @IBAction func onAudioButton(sender: AnyObject) {
+        transition.transitionType = .Audio
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    @IBAction func onPhotoButton(sender: AnyObject) {
+        transition.transitionType = .Photo
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    @IBAction func onTextButton(sender: AnyObject) {
+        transition.transitionType = .Text
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+        
+    }
+    @IBAction func onDrawButton(sender: AnyObject) {
+        transition.transitionType = .Draw
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+        
+    }
+
+    
 }
 
 
