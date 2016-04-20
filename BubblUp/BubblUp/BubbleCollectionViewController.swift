@@ -67,8 +67,22 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
 //        
 //        collectionView.backgroundColor = UIColor(patternImage: image)
 //    }
+    
+    func gradient(view: UIView){
+   // var vista : UIView = init(frame: rect)
+    let gradient : CAGradientLayer = CAGradientLayer()
+    gradient.frame = view.bounds
+    
+    let cor1 = UIColor.blackColor().CGColor
+    let cor2 = UIColor.whiteColor().CGColor
+    let arrayColors = [cor1, cor2]
+    
+    gradient.colors = arrayColors
+    view.layer.insertSublayer(gradient, atIndex: 0)
+    }
+    
     func assignbackground(){
-        let background = UIImage(named: "background")
+        let background = UIImage(named: "background2")
         var imageView : UIImageView!
         imageView = UIImageView(frame: view.bounds)
         imageView.contentMode =  UIViewContentMode.ScaleAspectFill
@@ -80,6 +94,8 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
         //collectionView.layer.zPosition = -1
         //self.view.sendSubviewToBack(imageView)
         self.view.insertSubview(imageView, atIndex:0)
+        print("assign")
+      //  collectionView.backgroundColor = UIColor(patternImage: background!)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,16 +214,68 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         }
         return 0
     }
-    
+    func applyCurvedShadow(view: UIView) {
+        let size = view.bounds.size
+        let width = size.width
+        let height = size.height
+        let depth = CGFloat(11.0)
+        let lessDepth = 0.8 * depth
+        let curvyness = CGFloat(5)
+        let radius = CGFloat(1)
+        
+        var path = UIBezierPath()
+        
+        // top left
+        path.moveToPoint(CGPoint(x: radius, y: height))
+        
+        // top right
+        path.addLineToPoint(CGPoint(x: width - 2*radius, y: height))
+        
+        // bottom right + a little extra
+        path.addLineToPoint(CGPoint(x: width - 2*radius, y: height + depth))
+        
+        // path to bottom left via curve
+        path.addCurveToPoint(CGPoint(x: radius, y: height + depth),
+            controlPoint1: CGPoint(x: width - curvyness, y: height + lessDepth - curvyness),
+            controlPoint2: CGPoint(x: curvyness, y: height + lessDepth - curvyness))
+        
+        var layer = view.layer
+        layer.shadowPath = path.CGPath
+        layer.shadowColor = UIColor.blackColor().CGColor
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = radius
+        layer.shadowOffset = CGSize(width: 0, height: -3)
+    }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BubbleCell", forIndexPath: indexPath) as! BubbleCell
         let idea = ideas[indexPath.row]
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor(patternImage: UIImage(named: "bubble-1")!)
+        UIGraphicsBeginImageContext(cell.frame.size)
+        UIImage(named: "bubble-1")?.drawInRect(cell.bounds)
+        
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+        
+        cell.backgroundColor = UIColor(patternImage: image)
+        
+//        let imageView = UIImageView(frame: cell.bounds)
+//        imageView.image = UIImage(named: "bubble-1")//if its in images.xcassets
+//        cell.insertSubview(imageView, atIndex: 0)
+
         cell.bubbleLabel.text = idea["text"] as! String
         cell.layer.cornerRadius = cell.frame.height / 2
-
-
-        print(cell.bubbleLabel.text)
+       // gradient(cell)
+// 
+//        cell.layer.shadowOffset = CGSize(width: 3, height: 3)
+//        cell.layer.shadowOpacity = 0.7
+//        cell.layer.shadowRadius = 2
+    //   cell.layer.masksToBounds = true;
+//        cell.layer.shadowOffset = CGSizeMake(-15, 20);
+//        cell.layer.shadowRadius = 15;
+//        cell.layer.shadowOpacity = 0.5;
+//        print(cell.bubbleLabel.text)
+        applyCurvedShadow(cell)
         let type =  idea["type"] as! Int
         //case text
         //case image
