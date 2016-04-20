@@ -14,6 +14,7 @@ class OneBubbleViewController: UIViewController, UIScrollViewDelegate, AVAudioPl
     
     var idea: PFObject!
     var type: Int!
+    var pageIndex:Int!
 
     var player: AVAudioPlayer!
     var soundFileURL:NSURL!
@@ -28,21 +29,55 @@ class OneBubbleViewController: UIViewController, UIScrollViewDelegate, AVAudioPl
 
     @IBOutlet weak var bubbleContainer: UIView!
 
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var textLabel: UITextView!
  
+    @IBOutlet weak var editButton: UIButton!
     
+    @IBOutlet weak var check_button: UIButton!
     @IBAction func exitBubble(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
 
        // self.dismissViewControllerAnimated(true, completion: nil)
     }
+    @IBAction func onEdit(sender: AnyObject) {
+        check_button.hidden = false
+        editButton.hidden = true
+        
+      
+            captionTextField.userInteractionEnabled = true
+            textLabel.userInteractionEnabled = true
+        captionTextField.becomeFirstResponder()
+        textLabel.becomeFirstResponder()
+            
+        
+    
+    }
+    @IBAction func onCheck(sender: AnyObject) {
+        check_button.hidden = true
+        editButton.hidden = false
+        captionTextField.userInteractionEnabled = false
+        textLabel.userInteractionEnabled = false
+        
+        if type == 0{
+            idea["text"] = textLabel.text
+        }
+        else{
+            idea["text"] = captionTextField.text
+        }
+        idea.saveInBackground()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        captionTextField.userInteractionEnabled = false
+        textLabel.userInteractionEnabled = false
         bubbleContainer.layer.cornerRadius = 30
         textLabel.clipsToBounds = true
         textLabel.layer.cornerRadius = 10
         textLabel.text = idea["text"] as! String
+        captionTextField.layer.borderWidth = 5.0;
+        captionTextField.layer.borderColor = self.view.tintColor.CGColor
+        textLabel.layer.borderWidth = 5.0;
+        textLabel.layer.borderColor = self.view.tintColor.CGColor
         loadData()
 
 
@@ -51,8 +86,13 @@ class OneBubbleViewController: UIViewController, UIScrollViewDelegate, AVAudioPl
     override func viewDidAppear(animated: Bool) {
 
         super.viewDidAppear(animated)
-        print(idea["text"] as! String)
-        print("view did appear")
+        print(idea["type"] as! Int)
+        editButton.hidden = false
+        check_button.hidden = true
+        captionTextField.userInteractionEnabled = false
+        textLabel.userInteractionEnabled = false
+        // loadData()
+      //  print("view did appear")
     }
 
 
@@ -63,7 +103,8 @@ extension OneBubbleViewController {
         playButton.hidden = true
         stopButton.hidden = true
         pauseButton.hidden = true
-     
+        stopButton.enabled = false
+        pauseButton.enabled = false
         if type == Type.MediaType.text.rawValue{
             //type is text
             textLabel.hidden = false
@@ -168,6 +209,7 @@ extension OneBubbleViewController {
     @IBAction func onPlayButton(sender: AnyObject) {
         
         setSessionPlayback()
+        playButton.enabled = false
         play()
         
     }

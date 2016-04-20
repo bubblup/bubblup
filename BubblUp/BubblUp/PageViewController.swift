@@ -40,36 +40,42 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     func getViewControllerAtIndex(index: Int) -> OneBubbleViewController {
+     //   if((ideas.count == 0) || (index >= ideas.count)) {
+      //      return nil
+       // }
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("BubbleController") as! OneBubbleViewController
-        print("index\(index)")
         controller.idea = ideas[index]
+        controller.pageIndex = index
         
         return controller
         
     }
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-            let previousIndex = index - 1
-            if(previousIndex < 0){
-                index = ideas.count - 1
+            
+            var previousIndex = (viewController as! OneBubbleViewController).pageIndex!
+            
+            if(previousIndex == 0){
                 return nil
             }
-            index = previousIndex
+            previousIndex -= 1
             return getViewControllerAtIndex(previousIndex)
     }
     
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-            let nextIndex = index + 1
-            if(nextIndex >= ideas.count){
-                index = 0
+            var currentIndex = (viewController as! OneBubbleViewController).pageIndex!
+           // print("view controller after view\(currentIndex)")
+            
+            currentIndex++
+            if(currentIndex >= ideas.count){
+                
                 return nil
             }
-            index = nextIndex
-            return getViewControllerAtIndex(nextIndex)
+            
+            return getViewControllerAtIndex(currentIndex)
     }
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        print("count\(ideas.count)")
         return ideas.count
     }
     

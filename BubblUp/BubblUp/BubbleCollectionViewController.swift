@@ -246,37 +246,38 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BubbleCell", forIndexPath: indexPath) as! BubbleCell
         let idea = ideas[indexPath.row]
-        cell.backgroundColor = UIColor(patternImage: UIImage(named: "bubble-1")!)
+        //cell.backgroundColor = UIColor(patternImage: UIImage(named: "bubble-1")!)
         
-        
+        cell.backgroundColor = UIColor(patternImage: UIImage(named: "speechbubble")!)
+
         let type =  idea["type"] as! Int
         //case text
         //case image
         //case voice
-        //case video
-        switch(type){
-        case 0:
-            cell.typeImage.image = UIImage(named: "text")
-            break
-        case 1:
-            cell.typeImage.image = UIImage(named: "camera")
-
-            break
-        case 2:
-            cell.typeImage.image = UIImage(named: "microphone")
-
-            break
-        case 3:
-            cell.typeImage.image = UIImage(named: "drawing")
-
-            break
-        default:
-            break
-        }
+//        //case video
+//        switch(type){
+//        case 0:
+//            cell.typeImage.image = UIImage(named: "text")
+//            break
+//        case 1:
+//            cell.typeImage.image = UIImage(named: "camera")
+//
+//            break
+//        case 2:
+//            cell.typeImage.image = UIImage(named: "microphone")
+//
+//            break
+//        case 3:
+//            cell.typeImage.image = UIImage(named: "drawing")
+//
+//            break
+//        default:
+//            break
+//        }
 
         
         UIGraphicsBeginImageContext(cell.frame.size)
-        UIImage(named: "bubble-1")?.drawInRect(cell.bounds)
+        UIImage(named: "speechbubble")?.drawInRect(cell.bounds)
         
         var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
 
