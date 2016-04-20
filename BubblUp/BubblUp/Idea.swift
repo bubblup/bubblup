@@ -51,6 +51,16 @@ class Idea: NSObject {
         let idea = PFObject(className: "Idea")
         idea["type"] = type.rawValue
         idea["text"] = texts
+
+        if(texts?.characters.count == 0) {
+            var date = NSDate()
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm"
+            
+            idea["text"] = formatter.stringFromDate(date)
+            
+        }
+        
         if file != nil {
         idea["file"] = file
         }

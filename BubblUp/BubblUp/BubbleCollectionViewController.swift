@@ -12,8 +12,11 @@ import Parse
 
 
 class BubbleCollectionViewController: UIViewController, UIViewControllerTransitioningDelegate, BubbleViewControllerDelegate {
+    let panRec = UIPanGestureRecognizer()
+
     //weak var delegate:BubbleViewControllerDelegate?
 
+    @IBOutlet weak var pin: UIImageView!
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -114,16 +117,10 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
         getAllIdeas(box)
         
         self.title = box["title"] as! String
-//        
-//        addTextButton.layer.cornerRadius = addTextButton.frame.width/2
-//        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
-//        addDrawButton.layer.cornerRadius = addDrawButton.frame.width/2
-//        addAudioButton.layer.cornerRadius = addAudioButton.frame.width/2
 
-//        addTextButton.center.y = self.collectionView.frame.height - addTextButton.frame.height/2 + 50
-//        addPhotoButton.center.y = self.collectionView.frame.height - addPhotoButton.frame.height/2 + 50
-//        addDrawButton.center.y = self.collectionView.frame.height - addDrawButton.frame.height/2 + 50
-//        addAudioButton.center.y = self.collectionView.frame.height - addAudioButton.frame.height/2 + 50
+        panRec.addTarget(self, action: "draggedView:")
+        pin.addGestureRecognizer(panRec)
+        pin.userInteractionEnabled = true
         
 
     }
@@ -250,6 +247,34 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BubbleCell", forIndexPath: indexPath) as! BubbleCell
         let idea = ideas[indexPath.row]
         cell.backgroundColor = UIColor(patternImage: UIImage(named: "bubble-1")!)
+        
+        
+        let type =  idea["type"] as! Int
+        //case text
+        //case image
+        //case voice
+        //case video
+        switch(type){
+        case 0:
+            cell.typeImage.image = UIImage(named: "text")
+            break
+        case 1:
+            cell.typeImage.image = UIImage(named: "camera")
+
+            break
+        case 2:
+            cell.typeImage.image = UIImage(named: "microphone")
+
+            break
+        case 3:
+            cell.typeImage.image = UIImage(named: "drawing")
+
+            break
+        default:
+            break
+        }
+
+        
         UIGraphicsBeginImageContext(cell.frame.size)
         UIImage(named: "bubble-1")?.drawInRect(cell.bounds)
         
@@ -276,24 +301,6 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
 //        cell.layer.shadowOpacity = 0.5;
 //        print(cell.bubbleLabel.text)
         applyCurvedShadow(cell)
-        let type =  idea["type"] as! Int
-        //case text
-        //case image
-        //case voice
-        //case video
-        switch(type){
-        case 0:
-       //     cell.typeImage = UIImage(
-            break
-        case 1:
-            break
-        case 2:
-            break
-        case 3:
-            break
-        default:
-            break
-        }
         
         //cell.typeLabel.text =  "\(Type.mediaToString(Type.MediaType(rawValue: type)!))"
         //   let cellColor = colorForIndexPath(indexPath)
@@ -363,7 +370,7 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         controller.transitioningDelegate = self
         controller.modalPresentationStyle = .Custom
         if (segue.identifier == "toPageView") {
-            let viewController = segue.destinationViewController as! BubblePageViewController
+            let viewController = segue.destinationViewController as! PageViewController
             
             viewController.ideas = ideas
             let indexPaths = self.collectionView.indexPathsForSelectedItems()
@@ -389,7 +396,7 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         }
         
         if (segue.identifier == "toPageView") {
-            let viewController = segue.destinationViewController as! BubblePageViewController
+            let viewController = segue.destinationViewController as! PageViewController
         
             viewController.ideas = ideas
             let indexPaths = self.collectionView.indexPathsForSelectedItems()
@@ -402,69 +409,89 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         }
     
     }
-//    
-//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-////        
-////        switch transition.transitionType {
-////        case .Audio: buttonType = addAudioButton
-////            break
-////        case .Draw: buttonType = addDrawButton
-////            break
-////        case .Photo: buttonType = addPhotoButton
-////            break
-////        case .Text: buttonType = addTextButton
-////            break
-////        case .Bubble:
-////            break
-////            
-//        }
-//        
-//        transition.transitionMode = .Present
-//        transition.startingPoint = buttonType.center
-//        transition.bubbleColor = buttonType.backgroundColor!
-//
-//        if(transition.transitionType == .Bubble){
-//        transition.startingPoint = self.view.center
-//        transition.bubbleColor = UIColor.grayColor()
-//        print(transition.bubbleColor)
-//        }
-//        
-//        return transition
-//    }
-//
-//    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        
-//        transition.transitionMode = .Dismiss
-//        transition.startingPoint = buttonType.center
-//        transition.bubbleColor = buttonType.backgroundColor!
-//        return transition
-//    }
 
-    
-//    @IBAction func onAudioButton(sender: AnyObject) {
-//        transition.transitionType = .Audio
-//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
-//        self.presentViewController(vc, animated: true, completion: nil)
-//    }
-//    @IBAction func onPhotoButton(sender: AnyObject) {
-//        transition.transitionType = .Photo
-//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
-//        self.presentViewController(vc, animated: true, completion: nil)
-//    }
-//    @IBAction func onTextButton(sender: AnyObject) {
-//        transition.transitionType = .Text
-//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
-//        self.presentViewController(vc, animated: true, completion: nil)
-//        
-//    }
-//    @IBAction func onDrawButton(sender: AnyObject) {
-//        transition.transitionType = .Draw
-//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
-//        self.presentViewController(vc, animated: true, completion: nil)
-//        
-//    }
-// 
 
     
 
+}
+
+var center:CGPoint!
+extension BubbleCollectionViewController {
+    @IBAction func drag(sender: UIPanGestureRecognizer) {
+        print("dragged")
+        draggedView(sender)
+    }
+    func draggedView(sender:UIPanGestureRecognizer){
+        print("dragged view")
+        
+        if(sender.state == .Began){
+            center = sender.view?.center
+
+        }
+        
+        var translation = sender.translationInView(self.view)
+        
+        //sender.view.
+        var tmp=sender.view?.center.x  //x translation
+        var tmp1=sender.view?.center.y //y translation
+        
+        //set limitation for x and y origin
+        if(translation.x <= 100 && translation.y <= 50 )
+        {
+            sender.view?.center=CGPointMake(tmp!+translation.x, tmp1!+translation.y)
+            sender.setTranslation(CGPointZero, inView: self.view)
+        }
+        if(sender.state == .Ended){
+            let visibleCells = collectionView.visibleCells()
+            let viewPosition = sender.locationInView(collectionView)
+            for cell in visibleCells {
+                //cell.layer.conta
+                if cell.layer.containsPoint(cell.layer.convertPoint(viewPosition, fromLayer: cell.layer.superlayer)){
+                    print("delete")
+                    let indexPath = collectionView.indexPathForCell(cell)
+                    removeIdea(indexPath!)
+                    self.collectionView.deleteItemsAtIndexPaths([collectionView.indexPathForCell(cell)!])
+                    break
+                  //  self.collectionView.reloadData()
+                   // self.collectionView.deleteItemsAtIndexPaths([collectionView.indexPathForCell(cell)!])
+                }
+            }
+            
+            
+            
+            sender.view?.center
+            for idea in ideas {
+                
+            }
+            sender.view?.center = center!
+            
+
+        }
+        
+        
+    }
+    func removeIdea(indexPath: NSIndexPath){
+        
+        Idea.deleteIdea(ideas[indexPath.row], withCompletion: { (success:Bool, error:NSError?) -> Void in
+            if(success == true) {
+                print("delete successful")
+            }
+            else {
+                print("delete unsuccessful")
+            }
+        })
+        ideas.removeAtIndex(indexPath.row)
+    }
+    func highlightCell(indexPath : NSIndexPath, flag: Bool) {
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        
+        if flag {
+            cell?.contentView.backgroundColor = UIColor.magentaColor()
+        } else {
+            cell?.contentView.backgroundColor = nil
+        }
+    }
+
+    
 }

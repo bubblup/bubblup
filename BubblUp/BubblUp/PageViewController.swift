@@ -1,61 +1,57 @@
 //
-//  BubblePageViewController.swift
+//  PageViewController.swift
 //  BubblUp
 //
-//  Created by Suyeon Kang on 4/19/16.
+//  Created by Suyeon Kang on 4/20/16.
 //  Copyright © 2016 jinseokpark. All rights reserved.
 //
 
 import UIKit
 import Parse
-class BubblePageViewController: UIPageViewController {
-    
-   // var idea: PFObject!
-    var ideas: [PFObject]!
-    
-    var index: Int!
-    
 
+class PageViewController: UIViewController, UIPageViewControllerDataSource {
+    var pageViewController : UIPageViewController?
+    var index:Int!
+    var ideas: [PFObject]!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
-        dataSource = self
+        
+        self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        self.pageViewController!.dataSource = self
+        
         let firstViewController = getViewControllerAtIndex(index)
         
-        setupPageControl()
-
-        setViewControllers([firstViewController],
-                direction: .Forward,
-                animated: true,
-                completion: nil)
         
-    }
-    private func setupPageControl() {
-        let pageControl = UIPageControl.appearanceWhenContainedInInstancesOfClasses([self.dynamicType])
+        self.pageViewController!.setViewControllers([firstViewController],
+            direction: .Forward,
+            animated: true,
+            completion: nil)
         
-        pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
-        pageControl.pageIndicatorTintColor = UIColor.greenColor()
-        pageControl.backgroundColor = UIColor.orangeColor()
+      //  let startingViewController: PageContentViewController = self.viewControllerAtIndex(0)!
+      //  let viewControllers: NSArray = [startingViewController]
+      //  self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+        self.pageViewController!.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        
+        self.addChildViewController(self.pageViewController!)
+        self.view.addSubview(self.pageViewController!.view)
+        self.pageViewController!.didMoveToParentViewController(self)
     }
-    
-    
-  }
-
-extension BubblePageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func getViewControllerAtIndex(index: Int) -> OneBubbleViewController {
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("BubbleController") as! OneBubbleViewController
-        
+        print("index\(index)")
         controller.idea = ideas[index]
         
         return controller
         
     }
-    
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
             let previousIndex = index - 1
             if(previousIndex < 0){
+                index = ideas.count - 1
                 return nil
             }
             index = previousIndex
@@ -66,6 +62,7 @@ extension BubblePageViewController: UIPageViewControllerDataSource, UIPageViewCo
         viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
             let nextIndex = index + 1
             if(nextIndex >= ideas.count){
+                index = 0
                 return nil
             }
             index = nextIndex
@@ -81,4 +78,3 @@ extension BubblePageViewController: UIPageViewControllerDataSource, UIPageViewCo
     }
 
 }
-

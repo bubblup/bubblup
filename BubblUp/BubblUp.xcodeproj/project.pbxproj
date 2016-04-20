@@ -19,6 +19,7 @@
 		475030301CA399B000B39C43 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4750302F1CA399B000B39C43 /* ListCell.swift */; };
 		47C70E291CC6B04800E47015 /* OneBubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C70E281CC6B04800E47015 /* OneBubbleViewController.swift */; };
 		47C70E2B1CC6B5BD00E47015 /* BubblePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C70E2A1CC6B5BD00E47015 /* BubblePageViewController.swift */; };
+		47C70E2F1CC74FB400E47015 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C70E2E1CC74FB400E47015 /* PageViewController.swift */; };
 		6619BF711CAB21A500D19B59 /* BubblePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6619BF701CAB21A500D19B59 /* BubblePhotoViewController.swift */; };
 		6619BF741CB722C000D19B59 /* IdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6619BF731CB722C000D19B59 /* IdeaViewController.swift */; };
 		740B49811CA4BA770038F2B1 /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B49801CA4BA770038F2B1 /* BubbleTransition.swift */; };
@@ -50,6 +51,7 @@
 		4750302F1CA399B000B39C43 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		47C70E281CC6B04800E47015 /* OneBubbleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneBubbleViewController.swift; sourceTree = "<group>"; };
 		47C70E2A1CC6B5BD00E47015 /* BubblePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblePageViewController.swift; sourceTree = "<group>"; };
+		47C70E2E1CC74FB400E47015 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		6619BF701CAB21A500D19B59 /* BubblePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblePhotoViewController.swift; sourceTree = "<group>"; };
 		6619BF731CB722C000D19B59 /* IdeaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaViewController.swift; sourceTree = "<group>"; };
 		740B49801CA4BA770038F2B1 /* BubbleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransition.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				471BC5971CC457500025CB84 /* BubbleCollectionViewController.swift */,
 				47C70E281CC6B04800E47015 /* OneBubbleViewController.swift */,
 				47C70E2A1CC6B5BD00E47015 /* BubblePageViewController.swift */,
+				47C70E2E1CC74FB400E47015 /* PageViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				4750302C1CA3976B00B39C43 /* ListViewController.swift in Sources */,
 				74BA86011CADB96500F5ADAA /* BubbleLayoutViewController.swift in Sources */,
 				6619BF711CAB21A500D19B59 /* BubblePhotoViewController.swift in Sources */,
+				47C70E2F1CC74FB400E47015 /* PageViewController.swift in Sources */,
 				7473B6291C8FAD9000E02852 /* BubbleViewController.swift in Sources */,
 				7473B6271C8FAC1E00E02852 /* MainCell.swift in Sources */,
 				471BC5981CC457500025CB84 /* BubbleCollectionViewController.swift in Sources */,

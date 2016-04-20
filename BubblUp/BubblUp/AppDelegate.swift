@@ -29,7 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    // view.backgroundColor = UIColorFromRGB(0x209624)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        let pageControl = UIPageControl.appearance()
+        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
+        pageControl.backgroundColor = UIColor.whiteColor()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.tintColor = UIColorFromRGB(0xA7DBD8)
 
