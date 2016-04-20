@@ -26,6 +26,10 @@ class ListViewController: UIViewController {
         getAllIdeas(box)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        getAllIdeas(box)
+    }
+    
     func getAllIdeas(box: PFObject!){
     let query = PFQuery(className:"Idea")
     query.orderByDescending("_created_at")
