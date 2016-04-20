@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LRU-bt-iZo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LRU-bt-iZo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -99,10 +99,10 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7bg-4O-yDY" id="pRa-ad-YXH">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-UB-nJk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-UB-nJk">
                                                     <rect key="frame" x="5" y="5" width="70" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -155,7 +155,7 @@
                     <navigationItem key="navigationItem" id="g7P-QK-FiT">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lo5-sD-Ovj">
-                            <rect key="frame" x="113.5" y="7" width="93" height="30"/>
+                            <rect key="frame" x="114" y="7" width="93" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="" image="bubble"/>
@@ -282,7 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Kb2-5U-XtG">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kb2-5U-XtG">
                                 <rect key="frame" x="8" y="464" width="304" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -291,12 +291,45 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EN5-Nf-eBU">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EN5-Nf-eBU">
                                 <rect key="frame" x="8" y="72" width="304" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DJ-Y2-g3H">
+                                <rect key="frame" x="48" y="268" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="PsJ-Kh-pFn"/>
+                                    <constraint firstAttribute="height" constant="32" id="xcb-FE-f0y"/>
+                                </constraints>
+                                <state key="normal" title="Play" image="play"/>
+                                <connections>
+                                    <action selector="onPlayButton:" destination="VRu-Fg-2F4" eventType="touchUpInside" id="Kpi-W0-7Zf"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biI-JY-2Te">
+                                <rect key="frame" x="240" y="268" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="MzJ-nu-Iaa"/>
+                                    <constraint firstAttribute="height" constant="32" id="s4A-l5-sBC"/>
+                                </constraints>
+                                <state key="normal" image="stop"/>
+                                <connections>
+                                    <action selector="onStopButton:" destination="VRu-Fg-2F4" eventType="touchUpInside" id="ho5-ID-bXb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlD-Zr-B2e">
+                                <rect key="frame" x="144" y="268" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="9UQ-2c-Flc"/>
+                                    <constraint firstAttribute="height" constant="32" id="n56-Xg-0TA"/>
+                                </constraints>
+                                <state key="normal" image="pause"/>
+                                <connections>
+                                    <action selector="onPauseButton:" destination="VRu-Fg-2F4" eventType="touchUpInside" id="5Ow-vp-uvO"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Snh-Qs-rRi">
                                 <rect key="frame" x="0.0" y="64" width="320" height="360"/>
                                 <constraints>
@@ -304,77 +337,58 @@
                                     <constraint firstAttribute="height" constant="360" id="L3m-Yu-CKB"/>
                                 </constraints>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DJ-Y2-g3H">
-                                <rect key="frame" x="145" y="229" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="NH9-2U-h9c"/>
-                                    <constraint firstAttribute="height" constant="30" id="YpA-PU-uLl"/>
-                                </constraints>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="onPlayButton:" destination="VRu-Fg-2F4" eventType="touchUpInside" id="Kpi-W0-7Zf"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biI-JY-2Te">
-                                <rect key="frame" x="144" y="274" width="32" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="UNc-tS-bSp"/>
-                                    <constraint firstAttribute="width" constant="32" id="dg6-qP-VaA"/>
-                                </constraints>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="onStopButton:" destination="VRu-Fg-2F4" eventType="touchUpInside" id="ho5-ID-bXb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Snh-Qs-rRi" secondAttribute="trailing" id="40u-RV-vWd"/>
+                            <constraint firstItem="biI-JY-2Te" firstAttribute="centerY" secondItem="6DJ-Y2-g3H" secondAttribute="centerY" id="4em-n8-wdM"/>
                             <constraint firstItem="EN5-Nf-eBU" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" constant="8" id="4os-25-hGx"/>
-                            <constraint firstItem="6DJ-Y2-g3H" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" constant="165" id="JAH-Dy-5Yl"/>
-                            <constraint firstItem="biI-JY-2Te" firstAttribute="top" secondItem="6DJ-Y2-g3H" secondAttribute="bottom" constant="15" id="MFD-Sr-OLd"/>
                             <constraint firstItem="Snh-Qs-rRi" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" id="P2r-jn-us4"/>
                             <constraint firstAttribute="trailing" secondItem="EN5-Nf-eBU" secondAttribute="trailing" constant="8" id="SRV-7V-STJ"/>
                             <constraint firstItem="Snh-Qs-rRi" firstAttribute="top" secondItem="JGQ-MW-qlV" secondAttribute="bottom" id="Ujq-4j-oww"/>
                             <constraint firstItem="EN5-Nf-eBU" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="Vxv-4k-g4T"/>
                             <constraint firstAttribute="trailing" secondItem="Kb2-5U-XtG" secondAttribute="trailing" constant="8" id="Xjw-tW-jiy"/>
-                            <constraint firstItem="biI-JY-2Te" firstAttribute="centerX" secondItem="IPX-yY-9lJ" secondAttribute="centerX" id="cAm-gV-SDX"/>
+                            <constraint firstItem="xlD-Zr-B2e" firstAttribute="centerY" secondItem="6DJ-Y2-g3H" secondAttribute="centerY" id="dzc-AP-VR2"/>
+                            <constraint firstItem="xlD-Zr-B2e" firstAttribute="centerX" secondItem="IPX-yY-9lJ" secondAttribute="centerX" id="eX3-U9-8P7"/>
+                            <constraint firstItem="xlD-Zr-B2e" firstAttribute="centerY" secondItem="IPX-yY-9lJ" secondAttribute="centerY" id="gtD-M2-A7E"/>
                             <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="Kb2-5U-XtG" secondAttribute="bottom" constant="24" id="hca-Ld-FZQ"/>
                             <constraint firstItem="Kb2-5U-XtG" firstAttribute="leading" secondItem="IPX-yY-9lJ" secondAttribute="leading" constant="8" id="k7m-jk-bG2"/>
-                            <constraint firstItem="6DJ-Y2-g3H" firstAttribute="centerX" secondItem="IPX-yY-9lJ" secondAttribute="centerX" id="peB-1X-k1J"/>
+                            <constraint firstItem="xlD-Zr-B2e" firstAttribute="leading" secondItem="6DJ-Y2-g3H" secondAttribute="trailing" constant="64" id="p2w-MI-WVn"/>
+                            <constraint firstItem="biI-JY-2Te" firstAttribute="leading" secondItem="xlD-Zr-B2e" secondAttribute="trailing" constant="64" id="rXB-jq-H2f"/>
                             <constraint firstItem="ID3-Mj-h2L" firstAttribute="top" secondItem="EN5-Nf-eBU" secondAttribute="bottom" constant="8" id="sfu-9S-tyq"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="leftarrow" id="9hN-BD-Vky">
+                            <connections>
+                                <action selector="onGoUp:" destination="VRu-Fg-2F4" id="gcJ-98-Nxo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="mmL-45-gxN"/>
+                        <barButtonItem image="rightarrow" id="obf-WZ-RTa">
+                            <connections>
+                                <action selector="onGoDown:" destination="VRu-Fg-2F4" id="5jt-09-cfw"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Idea" id="JVJ-MV-vYg">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Edit" id="Hwn-HL-u7T">
-                                <connections>
-                                    <action selector="onEdit:" destination="VRu-Fg-2F4" id="1cK-Wc-jI8"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="play" id="ISz-Iq-sLr">
-                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-12" maxY="0.0"/>
-                                <connections>
-                                    <action selector="onGoDown:" destination="VRu-Fg-2F4" id="A0k-jZ-GmE"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="rewind" id="8kW-NG-nPk">
-                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-12" maxY="0.0"/>
-                                <connections>
-                                    <action selector="onGoUp:" destination="VRu-Fg-2F4" id="diE-el-qxn"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Hwn-HL-u7T">
+                            <connections>
+                                <action selector="onEdit:" destination="VRu-Fg-2F4" id="1cK-Wc-jI8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="captionTextField" destination="Kb2-5U-XtG" id="2Hf-yr-obJ"/>
-                        <outlet property="downbutton" destination="8kW-NG-nPk" id="eUh-TO-7i0"/>
                         <outlet property="editButton" destination="Hwn-HL-u7T" id="KCZ-kw-dx9"/>
                         <outlet property="imageView" destination="Snh-Qs-rRi" id="USq-zS-YXu"/>
+                        <outlet property="leftButton" destination="9hN-BD-Vky" id="EhL-sO-nth"/>
+                        <outlet property="pauseButton" destination="xlD-Zr-B2e" id="q3u-mQ-zTC"/>
                         <outlet property="playButton" destination="6DJ-Y2-g3H" id="VBB-pq-NkA"/>
+                        <outlet property="rightButton" destination="obf-WZ-RTa" id="LiI-0U-ejy"/>
                         <outlet property="stopButton" destination="biI-JY-2Te" id="Vd4-Ah-6Yl"/>
                         <outlet property="textField" destination="EN5-Nf-eBU" id="ki4-2j-DWO"/>
-                        <outlet property="upbutton" destination="ISz-Iq-sLr" id="gZt-d2-zev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hL-dI-ahU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -401,9 +415,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FuZ-lL-ht0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FuZ-lL-ht0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="C7D-c7-8yW"/>
+                                    <constraint firstAttribute="height" constant="568" id="TvZ-wX-ocA"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qbt-hj-EZF">
                                     <size key="itemSize" width="113" height="116"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -454,7 +472,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDc-52-vpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1770" y="-131"/>
+            <point key="canvasLocation" x="2908" y="218"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cul-N3-YMm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tTJ-Ih-v8o" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hsv-D3-6bV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VE2-KU-5Hr">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Wum-lI-87G" kind="relationship" relationship="rootViewController" id="ggo-IA-vSP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNe-As-NDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2057" y="269"/>
         </scene>
         <!--Bubble-->
         <scene sceneID="XsP-Yf-h71">
@@ -800,8 +840,13 @@
         <image name="camera" width="32" height="25"/>
         <image name="cancel2" width="64" height="64"/>
         <image name="drawing" width="32" height="32"/>
+        <image name="leftarrow" width="17" height="28"/>
         <image name="list" width="32" height="32"/>
         <image name="microphone" width="19" height="32"/>
+        <image name="pause" width="64" height="64"/>
+        <image name="play" width="64" height="64"/>
+        <image name="rightarrow" width="17" height="28"/>
+        <image name="stop" width="62" height="64"/>
         <image name="text" width="28" height="32"/>
     </resources>
 </document>

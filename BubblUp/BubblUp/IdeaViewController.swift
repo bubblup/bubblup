@@ -21,13 +21,12 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var captionTextField: UITextView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
-    
-    
-    @IBOutlet weak var upbutton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextView!
-    @IBOutlet weak var downbutton: UIBarButtonItem!
+    @IBOutlet weak var leftButton: UIBarButtonItem!
+    @IBOutlet weak var rightButton: UIBarButtonItem!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     var player: AVAudioPlayer!
     var soundFileURL:NSURL!
     var soundFileData:NSData!
@@ -36,6 +35,22 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
         captionTextField.userInteractionEnabled = false
         textField.userInteractionEnabled = false
         self.automaticallyAdjustsScrollViewInsets = false
+        self.navigationController?.toolbarHidden = false
+        self.navigationController?.toolbar.setBackgroundImage(UIImage(),
+            forToolbarPosition: UIBarPosition.Any,
+            barMetrics: UIBarMetrics.Default)
+        self.navigationController?.toolbar.setShadowImage(UIImage(),
+            forToolbarPosition: UIBarPosition.Any)
+        var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        
+        leftSwipe.direction = .Left
+        rightSwipe.direction = .Right
+        
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+        
+
         loadData()
     }
     
@@ -75,6 +90,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             editButton.title = "Edit";
             playButton.hidden = true
             stopButton.hidden = true
+            pauseButton.hidden = true
             imageView.hidden = true
             captionTextField.text = ""
             textField.text = ""
@@ -95,6 +111,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             editButton.title = "Edit";
             playButton.hidden = true
             stopButton.hidden = true
+            pauseButton.hidden = true
             imageView.hidden = true
             captionTextField.text = ""
             textField.text = ""
@@ -107,6 +124,18 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
         type = idea["type"] as! Int
         playButton.hidden = true
         stopButton.hidden = true
+        pauseButton.hidden = true
+        var index = ideas.indexOf(idea) as Int!
+        if(index == 0){
+            leftButton.enabled = false
+        }
+        else if (index == ideas.endIndex-1){
+            rightButton.enabled = false
+        }
+        else{
+            leftButton.enabled = true
+            rightButton.enabled = true
+        }
         if type == Type.MediaType.text.rawValue{
             //type is text
             textField.hidden = false
@@ -141,6 +170,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
         else if type == Type.MediaType.voice.rawValue {
             playButton.hidden = false
             stopButton.hidden = false
+            pauseButton.hidden = false
             let audioFile:PFFile = idea["file"] as! PFFile
             
           //  soundFileURL = NSURL(fileURLWithPath:file.url!)
@@ -193,6 +223,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             self.player = try AVAudioPlayer(data: self.soundFileData)
            // self.player = try AVAudioPlayer(contentsOfURL: url!)
             stopButton.enabled = true
+            pauseButton.enabled = true
             player.delegate = self
             player.prepareToPlay()
             player.volume = 1.0
@@ -224,6 +255,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             try session.setActive(false)
             playButton.enabled = true
             stopButton.enabled = false
+            pauseButton.enabled = false
         } catch let error as NSError {
             print("could not make session inactive")
             print(error.localizedDescription)
@@ -231,6 +263,34 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
         
         //recorder = nil
         
+    }
+    
+    @IBAction func onPauseButton(sender: AnyObject) {
+        print("pause")
+        player?.pause()
+        
+        
+        
+        let session = AVAudioSession.sharedInstance()
+        playButton.enabled = true
+        pauseButton.enabled = false
+
+    }
+    
+    func handleSwipes(sender:UISwipeGestureRecognizer) {
+        if (sender.direction == .Left) {
+            onGoDown(self)
+        }
+        
+        if (sender.direction == .Right) {
+            onGoUp(self)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        self.navigationController?.toolbarHidden = true
     }
     
     
