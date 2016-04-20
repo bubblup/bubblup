@@ -84,9 +84,10 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNw-QB-zcc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="tTJ-Ih-v8o" kind="embed" identifier="toBubbleView" id="GyW-wr-sPu"/>
+                                    <segue destination="Wum-lI-87G" kind="embed" identifier="toBubbleView" id="HF9-xo-1Wi"/>
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tXj-5L-SQH">
@@ -144,8 +145,8 @@
                             <constraint firstItem="6g5-uB-Jtq" firstAttribute="leading" secondItem="W6K-iX-1rI" secondAttribute="trailing" constant="20" id="Xmh-3O-Qml"/>
                             <constraint firstItem="VII-Qe-F7c" firstAttribute="leading" secondItem="6g5-uB-Jtq" secondAttribute="trailing" constant="25" id="h65-tq-7L5"/>
                             <constraint firstItem="tXj-5L-SQH" firstAttribute="top" secondItem="eBy-bL-3cD" secondAttribute="bottom" id="jdP-4b-HcO"/>
-                            <constraint firstItem="zNw-QB-zcc" firstAttribute="top" secondItem="AXS-Tz-y5M" secondAttribute="top" id="kJZ-G9-wGZ"/>
                             <constraint firstItem="W6K-iX-1rI" firstAttribute="leading" secondItem="ZSN-aP-xhT" secondAttribute="trailing" constant="24" id="oGU-Z4-vWX"/>
+                            <constraint firstItem="zNw-QB-zcc" firstAttribute="top" secondItem="eBy-bL-3cD" secondAttribute="bottom" id="zc4-7K-FLm"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="dlj-CF-rYZ" appends="YES" id="MvC-4H-PYK"/>
@@ -267,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAk-Ug-z4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279" y="-223"/>
+            <point key="canvasLocation" x="3491" y="-223"/>
         </scene>
         <!--Idea-->
         <scene sceneID="HsQ-eR-C3A">
@@ -397,23 +398,24 @@
                         <viewControllerLayoutGuide type="bottom" id="50h-HC-ZvM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pna-c2-Mjy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FuZ-lL-ht0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FuZ-lL-ht0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qbt-hj-EZF">
-                                    <size key="itemSize" width="144" height="144"/>
+                                    <size key="itemSize" width="113" height="116"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BubbleCell" id="JpR-N7-J0s" customClass="BubbleCell" customModule="BubblUp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44" width="144" height="144"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="113" height="116"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="113" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-ar-bG3">
@@ -436,109 +438,23 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UD7-pD-Q6A">
-                                <rect key="frame" x="250" y="568" width="50" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Qez-kb-ySc"/>
-                                    <constraint firstAttribute="height" constant="50" id="teI-GW-crY"/>
-                                </constraints>
-                                <state key="normal" image="microphone">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onAudioButton:" destination="Wum-lI-87G" eventType="touchUpInside" id="bQd-9u-oZs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDn-Sd-Rbm">
-                                <rect key="frame" x="174" y="568" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.82806179940000002" green="0.88132599899999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="K4w-oo-RL0"/>
-                                    <constraint firstAttribute="height" constant="50" id="NAy-4T-eVM"/>
-                                </constraints>
-                                <state key="normal" image="drawing">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onDrawButton:" destination="Wum-lI-87G" eventType="touchUpInside" id="KmH-aa-yeW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6o-xj-04H">
-                                <rect key="frame" x="20" y="568" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.53704536560000005" green="0.81156646929999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="EbQ-Z8-yv3"/>
-                                    <constraint firstAttribute="height" constant="50" id="MnT-JX-9we"/>
-                                </constraints>
-                                <state key="normal" image="camera">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onPhotoButton:" destination="Wum-lI-87G" eventType="touchUpInside" id="83U-k5-bLd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qE-g9-f8R">
-                                <rect key="frame" x="97" y="568" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="8Wo-hC-WhE"/>
-                                    <constraint firstAttribute="height" constant="50" id="hAp-xw-q2h"/>
-                                </constraints>
-                                <state key="normal" image="text">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTextButton:" destination="Wum-lI-87G" eventType="touchUpInside" id="6hd-Rz-FMH"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="h6o-xj-04H" firstAttribute="leading" secondItem="Pna-c2-Mjy" secondAttribute="leading" constant="20" id="0rU-D5-mLy"/>
                             <constraint firstAttribute="trailing" secondItem="FuZ-lL-ht0" secondAttribute="trailing" id="7ur-D6-f8U"/>
                             <constraint firstItem="50h-HC-ZvM" firstAttribute="top" secondItem="FuZ-lL-ht0" secondAttribute="bottom" id="IKO-F9-KA3"/>
                             <constraint firstItem="FuZ-lL-ht0" firstAttribute="leading" secondItem="Pna-c2-Mjy" secondAttribute="leading" id="RBQ-DV-hpo"/>
                             <constraint firstItem="FuZ-lL-ht0" firstAttribute="top" secondItem="Pna-c2-Mjy" secondAttribute="top" id="SQb-SU-mB7"/>
-                            <constraint firstItem="4qE-g9-f8R" firstAttribute="leading" secondItem="h6o-xj-04H" secondAttribute="trailing" constant="27" id="XRC-Wg-wh2"/>
-                            <constraint firstItem="UD7-pD-Q6A" firstAttribute="leading" secondItem="YDn-Sd-Rbm" secondAttribute="trailing" constant="26" id="bgI-Sa-45I"/>
-                            <constraint firstAttribute="trailing" secondItem="UD7-pD-Q6A" secondAttribute="trailing" constant="20" id="nV7-O3-iyc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FjH-fh-O0P"/>
                     <connections>
-                        <outlet property="addAudioButton" destination="UD7-pD-Q6A" id="MKg-6I-ZOT"/>
-                        <outlet property="addDrawButton" destination="YDn-Sd-Rbm" id="gZF-yg-IFS"/>
-                        <outlet property="addPhotoButton" destination="h6o-xj-04H" id="lFm-do-Aks"/>
-                        <outlet property="addTextButton" destination="4qE-g9-f8R" id="jkS-7k-czB"/>
                         <outlet property="collectionView" destination="FuZ-lL-ht0" id="j0a-SE-UZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDc-52-vpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2829" y="-34"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cul-N3-YMm">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tTJ-Ih-v8o" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hsv-D3-6bV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Wum-lI-87G" kind="relationship" relationship="rootViewController" id="ggo-IA-vSP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TNe-As-NDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2053" y="323"/>
+            <point key="canvasLocation" x="1770" y="-131"/>
         </scene>
         <!--Bubble-->
         <scene sceneID="XsP-Yf-h71">

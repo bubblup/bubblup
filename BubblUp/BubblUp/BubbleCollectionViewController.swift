@@ -23,41 +23,72 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
     var box:PFObject!
     var longPressGesture: UILongPressGestureRecognizer!
     
-    @IBOutlet weak var addPhotoButton: UIButton!
-    @IBOutlet weak var addDrawButton: UIButton!
-    @IBOutlet weak var addTextButton: UIButton!
-    @IBOutlet weak var addAudioButton: UIButton!
+ //   @IBOutlet weak var addPhotoButton: UIButton!
+ //   @IBOutlet weak var addDrawButton: UIButton!
+ //   @IBOutlet weak var addTextButton: UIButton!
+ //   @IBOutlet weak var addAudioButton: UIButton!
     let transition = BubbleTransition()
     var buttonType: UIButton!
 
     func compose(sender: BubbleViewController) {
         print("compose")
-        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-            
-            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
-            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 - 20
-            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 - 20
-            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 - 20
-            
-            
-            }, completion: nil)
+//        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+//            
+//            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
+//            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 - 20
+//            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 - 20
+//            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 - 20
+//            
+//            
+//            }, completion: nil)
     }
     func composeCancel(sender: BubbleViewController){
-        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-            
-            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 + 50
-            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 + 50
-            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 + 50
-            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 + 50
-            
-            }, completion: nil)
+//        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+//            
+//            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 + 50
+//            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 + 50
+//            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 + 50
+//            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 + 50
+//            
+//            }, completion: nil)
 
         
     }
 
-    
+//    func addBackgroundImage() {
+//        imageView = UIImageView(frame: view.bounds)
+//        imageView.contentMode = .ScaleAspectFill
+//        UIGraphicsBeginImageContext(self.collectionView.frame.size)
+//        UIImage(named: "background")?.drawInRect(self.collectionView.bounds)
+//    
+//        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+//        
+//        UIGraphicsEndImageContext()
+//        
+//        collectionView.backgroundColor = UIColor(patternImage: image)
+//    }
+    func assignbackground(){
+        let background = UIImage(named: "background")
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+       // collectionView.addSubview(imageView)
+        
+        //collectionView.layer.zPosition = -1
+        //self.view.sendSubviewToBack(imageView)
+        self.view.insertSubview(imageView, atIndex:0)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColor = UIColor.clearColor()
+        collectionView.opaque = false
+        //addBackgroundImage()
+        assignbackground()
+       // self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+       // self.collectionView.backgroundView =
         collectionView.dataSource = self
         collectionView.allowsSelection = true
       //  collectionView.allowsMultipleSelection = true
@@ -67,11 +98,11 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
         getAllIdeas(box)
         
         self.title = box["title"] as! String
-        
-        addTextButton.layer.cornerRadius = addTextButton.frame.width/2
-        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
-        addDrawButton.layer.cornerRadius = addDrawButton.frame.width/2
-        addAudioButton.layer.cornerRadius = addAudioButton.frame.width/2
+//        
+//        addTextButton.layer.cornerRadius = addTextButton.frame.width/2
+//        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
+//        addDrawButton.layer.cornerRadius = addDrawButton.frame.width/2
+//        addAudioButton.layer.cornerRadius = addAudioButton.frame.width/2
 
 //        addTextButton.center.y = self.collectionView.frame.height - addTextButton.frame.height/2 + 50
 //        addPhotoButton.center.y = self.collectionView.frame.height - addPhotoButton.frame.height/2 + 50
@@ -303,68 +334,68 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         }
     
     }
-    
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        switch transition.transitionType {
-        case .Audio: buttonType = addAudioButton
-            break
-        case .Draw: buttonType = addDrawButton
-            break
-        case .Photo: buttonType = addPhotoButton
-            break
-        case .Text: buttonType = addTextButton
-            break
-        case .Bubble:
-            break
-            
-        }
-        
-        transition.transitionMode = .Present
-        transition.startingPoint = buttonType.center
-        transition.bubbleColor = buttonType.backgroundColor!
+//    
+//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+////        
+////        switch transition.transitionType {
+////        case .Audio: buttonType = addAudioButton
+////            break
+////        case .Draw: buttonType = addDrawButton
+////            break
+////        case .Photo: buttonType = addPhotoButton
+////            break
+////        case .Text: buttonType = addTextButton
+////            break
+////        case .Bubble:
+////            break
+////            
+//        }
+//        
+//        transition.transitionMode = .Present
+//        transition.startingPoint = buttonType.center
+//        transition.bubbleColor = buttonType.backgroundColor!
+//
+//        if(transition.transitionType == .Bubble){
+//        transition.startingPoint = self.view.center
+//        transition.bubbleColor = UIColor.grayColor()
+//        print(transition.bubbleColor)
+//        }
+//        
+//        return transition
+//    }
+//
+//    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        
+//        transition.transitionMode = .Dismiss
+//        transition.startingPoint = buttonType.center
+//        transition.bubbleColor = buttonType.backgroundColor!
+//        return transition
+//    }
 
-        if(transition.transitionType == .Bubble){
-        transition.startingPoint = self.view.center
-        transition.bubbleColor = UIColor.grayColor()
-        print(transition.bubbleColor)
-        }
-        
-        return transition
-    }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        transition.transitionMode = .Dismiss
-        transition.startingPoint = buttonType.center
-        transition.bubbleColor = buttonType.backgroundColor!
-        return transition
-    }
-
-    
-    @IBAction func onAudioButton(sender: AnyObject) {
-        transition.transitionType = .Audio
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
-        self.presentViewController(vc, animated: true, completion: nil)
-    }
-    @IBAction func onPhotoButton(sender: AnyObject) {
-        transition.transitionType = .Photo
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
-        self.presentViewController(vc, animated: true, completion: nil)
-    }
-    @IBAction func onTextButton(sender: AnyObject) {
-        transition.transitionType = .Text
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
-        self.presentViewController(vc, animated: true, completion: nil)
-        
-    }
-    @IBAction func onDrawButton(sender: AnyObject) {
-        transition.transitionType = .Draw
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
-        self.presentViewController(vc, animated: true, completion: nil)
-        
-    }
- 
+//    @IBAction func onAudioButton(sender: AnyObject) {
+//        transition.transitionType = .Audio
+//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
+//        self.presentViewController(vc, animated: true, completion: nil)
+//    }
+//    @IBAction func onPhotoButton(sender: AnyObject) {
+//        transition.transitionType = .Photo
+//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
+//        self.presentViewController(vc, animated: true, completion: nil)
+//    }
+//    @IBAction func onTextButton(sender: AnyObject) {
+//        transition.transitionType = .Text
+//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
+//        self.presentViewController(vc, animated: true, completion: nil)
+//        
+//    }
+//    @IBAction func onDrawButton(sender: AnyObject) {
+//        transition.transitionType = .Draw
+//        let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
+//        self.presentViewController(vc, animated: true, completion: nil)
+//        
+//    }
+// 
 
     
 

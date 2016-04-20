@@ -40,10 +40,10 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     @IBAction func composeCanceled(sender: AnyObject) {
         UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             
-            self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 50
-            self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 50
-            self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 50
-            self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
+            self.addTextButton.center.y = self.view.frame.height - self.addTextButton.frame.height/2 + 50
+            self.addPhotoButton.center.y = self.view.frame.height - self.addPhotoButton.frame.height/2 + 50
+            self.addDrawButton.center.y = self.view.frame.height - self.addDrawButton.frame.height/2 + 50
+            self.addAudioButton.center.y = self.view.frame.height - self.addAudioButton.frame.height/2 + 50
             
             }, completion: nil)
         tabGesture.enabled = false
@@ -51,6 +51,14 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     }
     @IBAction func composeClicked(sender: AnyObject) {
             tabGesture.enabled = true
+        addTextButton.hidden = false
+        addPhotoButton.hidden = false
+        addDrawButton.hidden = false
+        addAudioButton.hidden = false
+        self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 150
+        self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 150
+        self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 150
+        self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 150
 //        if(self.tableView.alpha != 1) {
 //        print("compose clicked")
 //        delegate?.compose(self)
@@ -115,17 +123,28 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
        // addPhotoButton.layer.zPosition = 1
        // addDrawButton.layer.zPosition = 1
        // addAudioButton.layer.zPosition = 1
+        
         addTextButton.layer.cornerRadius = addTextButton.frame.width/2
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
         addDrawButton.layer.cornerRadius = addDrawButton.frame.width/2
         addAudioButton.layer.cornerRadius = addAudioButton.frame.width/2
-        
-        self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
+        print("view did load")
+        addTextButton.hidden = true
+        addPhotoButton.hidden = true
+        addDrawButton.hidden = true
+        addAudioButton.hidden = true
+
+    //    self.addTextButton.center.y = self.view.frame.height - self.addTextButton.frame.height/2 + 150
+       // self.addPhotoButton.center.y = self.view.frame.height - self.addPhotoButton.frame.height/2 + 150
+      //  self.addDrawButton.center.y = self.view.frame.height - self.addDrawButton.frame.height/2 + 150
+      //  self.addAudioButton.center.y = self.view.frame.height - self.addAudioButton.frame.height/2 + 150
+     //   self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+       
         getAllIdeas(box)
     }
     
@@ -183,8 +202,10 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
                 controller.ideas = ideas
             }
         else if(segue.identifier == "toBubbleView"){
-            let viewController = segue.destinationViewController as! UINavigationController
-            let controller = viewController.topViewController as! BubbleCollectionViewController
+           // let viewController = segue.destinationViewController as! UINavigationController
+            let controller = segue.destinationViewController as! BubbleCollectionViewController
+
+          //  let controller = viewController.topViewController as! BubbleCollectionViewController
             delegate = controller
           //  delegate!.compose(self)
             //controller.delegate = self
