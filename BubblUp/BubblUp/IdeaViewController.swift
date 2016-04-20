@@ -92,6 +92,8 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             stopButton.hidden = true
             pauseButton.hidden = true
             imageView.hidden = true
+            textField.hidden = true
+            captionTextField.hidden = true
             captionTextField.text = ""
             textField.text = ""
 
@@ -113,6 +115,8 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             stopButton.hidden = true
             pauseButton.hidden = true
             imageView.hidden = true
+            textField.hidden = true
+            captionTextField.hidden = true
             captionTextField.text = ""
             textField.text = ""
             
@@ -171,6 +175,14 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             playButton.hidden = false
             stopButton.hidden = false
             pauseButton.hidden = false
+            captionTextField.hidden = false
+            textField.hidden = true
+            let text = idea["text"] as? String
+            if text != nil{
+                captionTextField.text = text!
+            } else{
+                captionTextField.text = "No Caption"
+            }
             let audioFile:PFFile = idea["file"] as! PFFile
             
           //  soundFileURL = NSURL(fileURLWithPath:file.url!)
