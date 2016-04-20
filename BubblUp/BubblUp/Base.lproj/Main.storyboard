@@ -700,5 +700,5 @@
         <image name="microphone" width="19" height="32"/>
         <image name="text" width="28" height="32"/>
     </resources>
-    <color key="tintColor" red="0.65490196078431373" green="0.85882352941176465" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.70440995065789469" green="0.85882352941176465" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
 </document>

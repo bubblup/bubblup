@@ -255,32 +255,43 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         //case image
         //case voice
 //        //case video
-//        switch(type){
-//        case 0:
-//            cell.typeImage.image = UIImage(named: "text")
-//            break
-//        case 1:
-//            cell.typeImage.image = UIImage(named: "camera")
-//
-//            break
-//        case 2:
-//            cell.typeImage.image = UIImage(named: "microphone")
-//
-//            break
-//        case 3:
-//            cell.typeImage.image = UIImage(named: "drawing")
-//
-//            break
-//        default:
-//            break
-//        }
+     //   cell.typeImage.hidden = true
+
+        switch(type){
+        case 0:
+            cell.typeImage.hidden = true
+            cell.bubbleLabel.hidden = false
+            break
+        case 1:
+            cell.typeImage.image = UIImage(named: "camera")
+            cell.typeImage.hidden = false
+            cell.bubbleLabel.hidden = true
+            break
+        case 2:
+            cell.typeImage.image = UIImage(named: "microphone")
+            cell.typeImage.hidden = false
+
+            cell.bubbleLabel.hidden = true
+
+            break
+        case 3:
+            cell.typeImage.image = UIImage(named: "drawing")
+            cell.typeImage.hidden = false
+
+            cell.bubbleLabel.hidden = true
+
+
+            break
+        default:
+            break
+        }
 
         
         UIGraphicsBeginImageContext(cell.frame.size)
-        UIImage(named: "speechbubble")?.drawInRect(cell.bounds)
+        UIImage(named: "bubble4")?.drawInRect(cell.bounds)
         
         var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-
+    
         UIGraphicsEndImageContext()
         
         cell.backgroundColor = UIColor(patternImage: image)
@@ -290,7 +301,7 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
 //        cell.insertSubview(imageView, atIndex: 0)
 
         cell.bubbleLabel.text = idea["text"] as! String
-        cell.layer.cornerRadius = cell.frame.height / 2
+        //cell.layer.cornerRadius = cell.frame.height / 2
        // gradient(cell)
 // 
 //        cell.layer.shadowOffset = CGSize(width: 3, height: 3)
@@ -301,7 +312,7 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
 //        cell.layer.shadowRadius = 15;
 //        cell.layer.shadowOpacity = 0.5;
 //        print(cell.bubbleLabel.text)
-        applyCurvedShadow(cell)
+      //  applyCurvedShadow(cell)
         
         //cell.typeLabel.text =  "\(Type.mediaToString(Type.MediaType(rawValue: type)!))"
         //   let cellColor = colorForIndexPath(indexPath)
