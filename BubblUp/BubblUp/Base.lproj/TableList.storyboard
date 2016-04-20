@@ -491,17 +491,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin2" translatesAutoresizingMaskIntoConstraints="NO" id="EMu-qA-AHA">
-                                <rect key="frame" x="266" y="516" width="54" height="52"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="1c0-ps-oGS"/>
-                                    <constraint firstAttribute="width" constant="54" id="oCO-zh-GXl"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="08p-3u-qab" appends="YES" id="6xM-zi-QR5"/>
-                                </connections>
-                            </imageView>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FuZ-lL-ht0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qbt-hj-EZF">
@@ -531,7 +520,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-ar-bG3">
-                                                            <rect key="frame" x="28.5" y="12.5" width="40" height="40"/>
+                                                            <rect key="frame" x="28" y="12" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="49O-G1-Jup"/>
                                                                 <constraint firstAttribute="width" constant="40" id="uYb-zQ-16N"/>
@@ -568,15 +557,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin2" translatesAutoresizingMaskIntoConstraints="NO" id="EMu-qA-AHA">
+                                <rect key="frame" x="266" y="516" width="54" height="52"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="1c0-ps-oGS"/>
+                                    <constraint firstAttribute="width" constant="54" id="oCO-zh-GXl"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="08p-3u-qab" appends="YES" id="6xM-zi-QR5"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FuZ-lL-ht0" firstAttribute="trailing" secondItem="EMu-qA-AHA" secondAttribute="trailing" id="9jq-UI-fXC"/>
-                            <constraint firstItem="FuZ-lL-ht0" firstAttribute="leading" secondItem="Pna-c2-Mjy" secondAttribute="leading" id="Fe0-AW-Z1G"/>
-                            <constraint firstItem="FuZ-lL-ht0" firstAttribute="bottom" secondItem="50h-HC-ZvM" secondAttribute="top" id="Yok-Hn-u98"/>
-                            <constraint firstItem="FuZ-lL-ht0" firstAttribute="top" secondItem="Pna-c2-Mjy" secondAttribute="top" id="dcl-E6-bTT"/>
-                            <constraint firstAttribute="trailing" secondItem="EMu-qA-AHA" secondAttribute="trailing" id="fWO-d7-XJ9"/>
-                            <constraint firstItem="50h-HC-ZvM" firstAttribute="top" secondItem="EMu-qA-AHA" secondAttribute="bottom" id="hSR-xf-TFl"/>
+                            <constraint firstItem="FuZ-lL-ht0" firstAttribute="top" secondItem="Pna-c2-Mjy" secondAttribute="top" id="5sT-6C-pQF"/>
+                            <constraint firstAttribute="trailing" secondItem="FuZ-lL-ht0" secondAttribute="trailing" id="QaO-Ad-sXL"/>
+                            <constraint firstItem="50h-HC-ZvM" firstAttribute="top" secondItem="EMu-qA-AHA" secondAttribute="bottom" id="T1j-vQ-zlx"/>
+                            <constraint firstAttribute="trailing" secondItem="EMu-qA-AHA" secondAttribute="trailing" id="X26-aa-lNs"/>
+                            <constraint firstItem="FuZ-lL-ht0" firstAttribute="leading" secondItem="Pna-c2-Mjy" secondAttribute="leading" id="f47-lM-N8q"/>
+                            <constraint firstItem="50h-HC-ZvM" firstAttribute="top" secondItem="FuZ-lL-ht0" secondAttribute="bottom" id="uKf-bC-2o4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FjH-fh-O0P"/>
