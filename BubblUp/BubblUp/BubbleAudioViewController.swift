@@ -295,7 +295,10 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
         }
         
     }
-
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
     
     @IBAction func onDismissButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)

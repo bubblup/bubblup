@@ -52,6 +52,7 @@ class BubbleTextViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
     @IBAction func onDismissButton(sender: AnyObject) {
 
         self.dismissViewControllerAnimated(true, completion: nil)
