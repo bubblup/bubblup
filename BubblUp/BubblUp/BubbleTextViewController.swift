@@ -87,7 +87,6 @@ class BubbleTextViewController: UIViewController {
                         anim.duration = 7/100
                         self.bubbleField.layer.addAnimation( anim, forKey:nil )
                         self.bubbleField.text = ""
-                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else{
                         print("unsuccessful")
