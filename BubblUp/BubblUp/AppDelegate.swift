@@ -61,8 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
-            let nav = UINavigationController(rootViewController: vc)
-            window?.rootViewController = nav
+            window?.rootViewController = vc
 
         }
         

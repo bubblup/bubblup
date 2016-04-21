@@ -405,6 +405,15 @@ extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    @IBAction func onRefresh(sender: AnyObject) {
+        getAllIdeas(box)
+
+        if tableView.alpha == 0 {
+            embeddedViewController?.collectionView.reloadData()
+        } else {
+            tableView.reloadData()
+        }
+    }
     @IBAction func onEdit(sender: AnyObject) {
         if tableView.editing{
             //listTableView.editing = false;

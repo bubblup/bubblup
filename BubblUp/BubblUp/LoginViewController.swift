@@ -18,10 +18,14 @@ class LoginViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var returnButton: UIButton!
     //@IBOutlet weak var loginView: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.returnButton.enabled = false
+        
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
@@ -55,23 +59,42 @@ class LoginViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 
     @IBAction func onSignupButton(sender: AnyObject) {
         
-        let newUser = PFUser()
-        newUser.username = usernameTextField.text
-        newUser.password = passwordTextField.text
-        
-        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+        if passwordReTextField.alpha == 0 {
             
-            if success {
-                print("made user")
-                self.performSegueWithIdentifier("goToMainView", sender: nil)
+            self.loginButton.enabled = false
+            self.returnButton.enabled = true
+            
+            UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut, animations: {
+                self.passwordReTextField.alpha = 1.0
+                self.returnButton.center.y += 30
+                self.loginButton.center.y += 30
+                self.loginButton.alpha = 0.0
+                self.returnButton.alpha = 1.0
+
                 
-            } else {
-                print(error?.localizedDescription)
-                if error!.code == 202 {
-                    print("username already taken")
-                }
+            }) { (success: Bool) in
             }
+        }
+        
+        else {
+            let newUser = PFUser()
+            newUser.username = usernameTextField.text
+            newUser.password = passwordTextField.text
             
+            newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                
+                if success {
+                    print("made user")
+                    self.performSegueWithIdentifier("goToMainView", sender: nil)
+                    
+                } else {
+                    print(error?.localizedDescription)
+                    if error!.code == 202 {
+                        print("username already taken")
+                    }
+                }
+                
+            }
         }
 
     }
@@ -93,7 +116,27 @@ class LoginViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         }
 
     }
-//    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+
+    @IBAction func onReturnButton(sender: AnyObject) {
+        
+        self.loginButton.enabled = true
+        self.returnButton.enabled = false
+        
+        UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut, animations: {
+            self.passwordReTextField.alpha = 0.0
+            self.returnButton.center.y -= 30
+            self.loginButton.center.y -= 30
+            self.loginButton.alpha = 1.0
+            self.returnButton.alpha = 0.0
+            
+            
+        }) { (success: Bool) in
+        }
+
+    }
+    
+    
+    //    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
 //        print("User Logged In")
 //        
 //        if ((error) != nil)
