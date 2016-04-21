@@ -234,7 +234,7 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         let idea = ideas[indexPath.row]
         //cell.backgroundColor = UIColor(patternImage: UIImage(named: "bubble-1")!)
         cell.layer.cornerRadius = 3
-        cell.backgroundColor = UIColor(patternImage: UIImage(named: "speechbubble")!)
+        //cell.backgroundColor = UIColor(patternImage: UIImage(named: "speechbubble")!)
         
         let type =  idea["type"] as! Int
         //case text
