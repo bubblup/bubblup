@@ -192,11 +192,21 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
                 if error == nil {
                     self.soundFileData = audioFile
                     print("audio loaded")
+                    self.setSessionPlayback()
+                    do{
+                        self.player = try AVAudioPlayer(data: self.soundFileData)
+                        self.player.delegate = self
+                        self.player.prepareToPlay()
+                    }
                    // player.init(audioFile)
 //                    let path = "temp"
 //                    if !audioFile!.writeToFile(path, atomically: true){
 //                        print("Error saving")
 //                    }
+                    catch let error as NSError {
+                        self.player = nil
+                        print(error.localizedDescription)
+                    }
                 } else {
                     print("audio failed")
                 }
@@ -232,16 +242,16 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
        // print("playing \(url)")
         
         do {
-            self.player = try AVAudioPlayer(data: self.soundFileData)
+            
            // self.player = try AVAudioPlayer(contentsOfURL: url!)
             stopButton.enabled = true
             pauseButton.enabled = true
-            player.delegate = self
-            player.prepareToPlay()
+            
             player.volume = 1.0
             player.play()
-        } catch let error as NSError {
-            self.player = nil
+        }
+        catch let error as NSError {
+            print("could not make session play")
             print(error.localizedDescription)
         }
         
@@ -249,7 +259,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBAction func onPlayButton(sender: AnyObject) {
         
-        setSessionPlayback()
+        
         play()
         
     }
@@ -273,6 +283,8 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
             print(error.localizedDescription)
         }
         
+        setSessionPlayback()
+        
         //recorder = nil
         
     }
@@ -283,7 +295,7 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
         
         
         
-        let session = AVAudioSession.sharedInstance()
+        //let session = AVAudioSession.sharedInstance()
         playButton.enabled = true
         pauseButton.enabled = false
 

@@ -165,11 +165,21 @@ extension OneBubbleViewController {
                 if error == nil {
                     self.soundFileData = audioFile
                     print("audio loaded")
-                    // player.init(audioFile)
-                    //                    let path = "temp"
-                    //                    if !audioFile!.writeToFile(path, atomically: true){
-                    //                        print("Error saving")
-                    //                    }
+                    self.setSessionPlayback()
+                    do{
+                        self.player = try AVAudioPlayer(data: self.soundFileData)
+                        self.player.delegate = self
+                        self.player.prepareToPlay()
+                    }
+                        // player.init(audioFile)
+                        //                    let path = "temp"
+                        //                    if !audioFile!.writeToFile(path, atomically: true){
+                        //                        print("Error saving")
+                        //                    }
+                    catch let error as NSError {
+                        self.player = nil
+                        print(error.localizedDescription)
+                    }
                 } else {
                     print("audio failed")
                 }
@@ -199,17 +209,16 @@ extension OneBubbleViewController {
         // print("playing \(url)")
         
         do {
-            self.player = try AVAudioPlayer(data: self.soundFileData)
+            
             // self.player = try AVAudioPlayer(contentsOfURL: url!)
             stopButton.enabled = true
             pauseButton.enabled = true
-            player.delegate = self
-            player.prepareToPlay()
+            
             player.volume = 1.0
             player.play()
-        } catch let error as NSError {
-            self.player = nil
-            print(error.localizedDescription)
+        }
+        catch let error as NSError {
+            print("could not make session play")
         }
         
     }
@@ -251,7 +260,7 @@ extension OneBubbleViewController {
         
         
         
-        let session = AVAudioSession.sharedInstance()
+        //let session = AVAudioSession.sharedInstance()
         playButton.enabled = true
         pauseButton.enabled = false
         

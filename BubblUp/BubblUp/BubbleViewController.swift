@@ -519,12 +519,15 @@ extension BubbleViewController: UIViewControllerTransitioningDelegate {
     @IBAction func onPhotoButton(sender: AnyObject) {
         print("photo button clicked")
         transition.transitionType = .Photo
+
     }
     @IBAction func onTextButton(sender: AnyObject) {
         transition.transitionType = .Text
+
     }
     @IBAction func onDrawButton(sender: AnyObject) {
         transition.transitionType = .Draw
+
     }
 
     @IBAction func onAddButton(sender: AnyObject) {
