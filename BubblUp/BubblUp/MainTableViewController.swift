@@ -139,6 +139,19 @@ extension MainTableViewController: UITableViewDataSource, UITableViewDelegate {
         let box = boxes[indexPath.row]
         
         cell.titleLabel.text = box["title"] as! String
+        let query = PFQuery(className:"Idea")
+        //query.orderByDescending("_created_at")
+        query.whereKey("box", equalTo: box)
+        query.countObjectsInBackgroundWithBlock { (count: Int32, error: NSError?) -> Void in
+            if error == nil{
+                cell.numLabel.text = "\(count)"
+            }
+            else{
+                cell.numLabel.text = "error"
+                print(error?.localizedDescription)
+            }
+        }
+        
         
         return cell
     }
