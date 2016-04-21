@@ -187,6 +187,11 @@ extension OneBubbleViewController {
             
         }
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
     func setSessionPlayback() {
         let session:AVAudioSession = AVAudioSession.sharedInstance()
         

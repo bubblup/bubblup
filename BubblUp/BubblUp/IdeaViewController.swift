@@ -54,6 +54,10 @@ class IdeaViewController: UIViewController, AVAudioPlayerDelegate {
         loadData()
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
     @IBAction func onEdit(sender: AnyObject) {
         if captionTextField.userInteractionEnabled{
             captionTextField.userInteractionEnabled = false
