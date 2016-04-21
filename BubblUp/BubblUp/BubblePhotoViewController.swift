@@ -54,7 +54,7 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
             vc.delegate = self
             vc.allowsEditing = true
             vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            self.controller?.viewDidLoad()
+          //    self.controller?.viewDidLoad()
             self.viewDelegate?.reloadView(self)
             self.presentViewController(vc, animated: true, completion: nil)
     }
