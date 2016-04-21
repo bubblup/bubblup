@@ -21,6 +21,10 @@ class Ideabox: NSObject {
         ideabox.saveInBackgroundWithBlock(completion)
         
     }
+    
+    class func removeIdeabox(ideabox: PFObject!, withCompletion completion: PFBooleanResultBlock?) {
+        ideabox.deleteInBackgroundWithBlock(completion)
+    }
     /*
     class func getAllBoxes(){
         let query = PFQuery(className:"Ideabox")

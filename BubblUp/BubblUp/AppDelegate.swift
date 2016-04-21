@@ -58,6 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
             
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+            let nav = UINavigationController(rootViewController: vc)
+            window?.rootViewController = nav
+
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName("didLogout", object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in

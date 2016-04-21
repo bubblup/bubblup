@@ -25,6 +25,9 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     let transition = BubbleTransition()
 
     @IBOutlet weak var tabGesture: UITapGestureRecognizer!
+    
+    var open: Bool = false
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var addDrawButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
@@ -40,45 +43,119 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     @IBOutlet weak var containerView: UIView!
    weak var delegate:BubbleViewControllerDelegate?
     
-    @IBAction func composeCanceled(sender: AnyObject) {
-        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+    func addCanceled() {
+        UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: { () -> Void in
             
-            self.addTextButton.center.y = self.view.frame.height - self.addTextButton.frame.height/2 + 50
-            self.addPhotoButton.center.y = self.view.frame.height - self.addPhotoButton.frame.height/2 + 50
-            self.addDrawButton.center.y = self.view.frame.height - self.addDrawButton.frame.height/2 + 50
-            self.addAudioButton.center.y = self.view.frame.height - self.addAudioButton.frame.height/2 + 50
+            self.addDrawButton.center.y += 60
             
-            }, completion: nil)
-        tabGesture.enabled = false
+        }) { (success: Bool) in
+            
+            if success {
+                
+                UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: {
+                    
+                    self.addDrawButton.hidden = true
+                    self.addDrawButton.center.y += 60
+                    self.addAudioButton.center.y += 60
+                    
+                    
+                }) { (success: Bool) in
+                    if success {
+                        
+                        UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: {
+                            
+                            self.addAudioButton.hidden = true
+                            self.addDrawButton.center.y += 60
+                            self.addAudioButton.center.y += 60
+                            self.addPhotoButton.center.y += 60
+
+                            
+                            }, completion: { (success: Bool) in
+                                
+                                UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: {
+                                    
+                                    self.addPhotoButton.hidden = true
+                                    self.addTextButton.center.y += 60
+                                    self.addDrawButton.center.y += 60
+                                    self.addAudioButton.center.y += 60
+                                    self.addPhotoButton.center.y += 60
+
+                                    }, completion: { (success: Bool) in
+                                
+                                        self.addTextButton.hidden = true
+                                })
+                        })
+                    }
+                }
+                
+            }
+            
+        }
 
     }
-    @IBAction func composeClicked(sender: AnyObject) {
-            tabGesture.enabled = true
+    
+    func addClicked() {
+        tabGesture.enabled = true
         addTextButton.hidden = false
         addPhotoButton.hidden = false
         addDrawButton.hidden = false
         addAudioButton.hidden = false
-        self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 150
-        self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 150
-        self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 150
-        self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 150
-//        if(self.tableView.alpha != 1) {
-//        print("compose clicked")
-//        delegate?.compose(self)
-//        composeButton.image = UIImage(named: "cancel")
-//        }
-//        else {
-           print("compose")
-            UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                
-                self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 50
-                self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 50
-                self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 50
-                self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
-                
-                }, completion: nil)
 
-      //  }
+        UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: { () -> Void in
+            
+            self.addTextButton.center.y -= 60
+            self.addPhotoButton.center.y -= 60
+            self.addDrawButton.center.y -= 60
+            self.addAudioButton.center.y -= 60
+            
+        }) { (success: Bool) in
+            
+            if success {
+                
+                UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: {
+                    
+                    self.addPhotoButton.center.y -= 60
+                    self.addDrawButton.center.y -= 60
+                    self.addAudioButton.center.y -= 60
+
+                    
+                }) { (success: Bool) in
+                    if success {
+                        
+                        UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: {
+                            
+                            self.addDrawButton.center.y -= 60
+                            self.addAudioButton.center.y -= 60
+
+                            
+                            }, completion: { (success: Bool) in
+                                
+                                UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: {
+                                    
+                                    self.addDrawButton.center.y -= 60
+                                    
+                                    }, completion: nil)
+                        })
+                    }
+                }
+
+            }
+            
+        }
+        
+
+    }
+    
+    @IBAction func composeClicked(sender: AnyObject) {
+//        self.addTextButton.center = CGPoint(x: 10, y: self.view.frame.height - 10)
+//        self.addPhotoButton.center = CGPoint(x: 10, y: self.view.frame.height - self.addPhotoButton.frame.height/2 + 150)
+//        self.addDrawButton.center = CGPoint(x: 10, y: self.view.frame.height - self.addDrawButton.frame.height/2 + 150)
+//        self.addAudioButton.center = CGPoint(x: 10, y: self.view.frame.height - self.addAudioButton.frame.height/2 + 150)
+        
+        
+        print("compose")
+        addClicked()
+
         
     }
     
@@ -91,14 +168,8 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     @IBAction func viewTapped(sender: AnyObject) {
         print("view tapped")
        // delegate?.composeCancel(self)
-        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-            
-            self.addTextButton.center.y = self.tableView.frame.height - self.addTextButton.frame.height/2 + 150
-            self.addPhotoButton.center.y = self.tableView.frame.height - self.addPhotoButton.frame.height/2 + 150
-            self.addDrawButton.center.y = self.tableView.frame.height - self.addDrawButton.frame.height/2 + 150
-            self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 150
-            
-            }, completion: nil)
+        onAddButton(sender)
+//        addCanceled()
         tabGesture.enabled = false
         
     }
@@ -120,29 +191,29 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
         self.view.bringSubviewToFront(addPhotoButton)
         self.view.bringSubviewToFront(addAudioButton)
         self.view.bringSubviewToFront(addDrawButton)
-      //  addTextButton.send
             
        // addTextButton.layer.zPosition = 1
        // addPhotoButton.layer.zPosition = 1
        // addDrawButton.layer.zPosition = 1
        // addAudioButton.layer.zPosition = 1
-        
+        addButton.layer.cornerRadius = addButton.frame.width/2
+        addButton.clipsToBounds = true
         addTextButton.layer.cornerRadius = addTextButton.frame.width/2
+        addTextButton.clipsToBounds = true
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
+        addPhotoButton.clipsToBounds = true
         addDrawButton.layer.cornerRadius = addDrawButton.frame.width/2
+        addDrawButton.clipsToBounds = true
         addAudioButton.layer.cornerRadius = addAudioButton.frame.width/2
-        print("view did load")
+        addAudioButton.clipsToBounds = true
+
+
+        addButton.center = CGPoint(x: addButton.frame.width/2 + 10, y: self.view.frame.height - addButton.frame.height/2 - 10)
         addTextButton.hidden = true
         addPhotoButton.hidden = true
         addDrawButton.hidden = true
         addAudioButton.hidden = true
 
-    //    self.addTextButton.center.y = self.view.frame.height - self.addTextButton.frame.height/2 + 150
-       // self.addPhotoButton.center.y = self.view.frame.height - self.addPhotoButton.frame.height/2 + 150
-      //  self.addDrawButton.center.y = self.view.frame.height - self.addDrawButton.frame.height/2 + 150
-      //  self.addAudioButton.center.y = self.view.frame.height - self.addAudioButton.frame.height/2 + 150
-     //   self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
-        // Do any additional setup after loading the view.
         
         self.editBarButton.enabled = false
 
@@ -437,31 +508,57 @@ extension BubbleViewController: UIViewControllerTransitioningDelegate {
         
     }
     */
+    
+    
+    
+    
     @IBAction func onAudioButton(sender: AnyObject) {
         print("on audio button")
         transition.transitionType = .Audio
-       // let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleAudioViewController") as! BubbleAudioViewController
-       // self.presentViewController(vc, animated: true, completion: nil)
     }
     @IBAction func onPhotoButton(sender: AnyObject) {
         print("photo button clicked")
         transition.transitionType = .Photo
-      //  let vc = storyboard?.instantiateViewControllerWithIdentifier("BubblePhotoViewController") as! BubblePhotoViewController
-      //  self.presentViewController(vc, animated: true, completion: nil)
     }
     @IBAction func onTextButton(sender: AnyObject) {
         transition.transitionType = .Text
-     //   let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleTextViewController") as! BubbleTextViewController
-     //   self.presentViewController(vc, animated: true, completion: nil)
-        
     }
     @IBAction func onDrawButton(sender: AnyObject) {
         transition.transitionType = .Draw
-    //    let vc = storyboard?.instantiateViewControllerWithIdentifier("BubbleDrawViewController") as! BubbleDrawViewController
-    //    self.presentViewController(vc, animated: true, completion: nil)
-        
     }
 
+    @IBAction func onAddButton(sender: AnyObject) {
+        if !open {
+            open = true
+            
+            self.addClicked()
+
+            UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.addButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+            }) { (success: Bool) in
+                
+                if success {
+                    
+                }
+            }
+
+        } else {
+            open = false
+            
+            self.addCanceled()
+
+            UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.addButton.transform = CGAffineTransformMakeRotation(0)
+            }) { (success: Bool) in
+                
+                if success {
+                    
+                }
+            }
+
+            
+        }
+    }
     
 }
 

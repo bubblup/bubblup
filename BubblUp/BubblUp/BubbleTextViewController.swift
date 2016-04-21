@@ -27,6 +27,7 @@ class BubbleTextViewController: UIViewController {
         dismissButton.layer.cornerRadius = dismissButton.frame.width / 2
         dismissButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
 
+        bubbleField.becomeFirstResponder()
     }
     
     
@@ -60,6 +61,11 @@ class BubbleTextViewController: UIViewController {
         return true
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
             print("was shaken")
@@ -81,6 +87,7 @@ class BubbleTextViewController: UIViewController {
                         anim.duration = 7/100
                         self.bubbleField.layer.addAnimation( anim, forKey:nil )
                         self.bubbleField.text = ""
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else{
                         print("unsuccessful")
@@ -90,7 +97,6 @@ class BubbleTextViewController: UIViewController {
         }
     }
     
-   
 
  
 }

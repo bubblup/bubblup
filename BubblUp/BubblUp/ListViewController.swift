@@ -31,18 +31,21 @@ class ListViewController: UIViewController {
     }
     
     func getAllIdeas(box: PFObject!){
-    let query = PFQuery(className:"Idea")
-    query.orderByDescending("_created_at")
-    query.whereKey("box", equalTo: box)
-    query.findObjectsInBackgroundWithBlock {(media:[PFObject]?, error:NSError?) -> Void in
-    if let media = media {
-        self.ideas = media
-        self.tableView.reloadData()
-    } else {
-    print(error?.localizedDescription)
+        let query = PFQuery(className:"Idea")
+        query.orderByDescending("_created_at")
+        query.whereKey("box", equalTo: box)
+        query.findObjectsInBackgroundWithBlock {(media:[PFObject]?, error:NSError?) -> Void in
+            if let media = media {
+                self.ideas = media
+                self.tableView.reloadData()
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
     }
-    }
-    }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

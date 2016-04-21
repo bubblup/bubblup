@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="BubblUp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -139,13 +140,21 @@
                                 <action selector="onLogoutButton:" destination="CeM-W9-3De" id="piR-v2-VlV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="folder" id="a6n-N5-5yG">
-                            <connections>
-                                <action selector="newFolderClicked:" destination="CeM-W9-3De" id="FCK-HY-jyu"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="folder" id="a6n-N5-5yG">
+                                <connections>
+                                    <action selector="newFolderClicked:" destination="CeM-W9-3De" id="FCK-HY-jyu"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="SPl-wL-xeF">
+                                <connections>
+                                    <action selector="onEditButton:" destination="CeM-W9-3De" id="1dU-VK-lEZ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="SPl-wL-xeF" id="qya-T0-W68"/>
                         <outlet property="tableView" destination="bx5-hf-ND0" id="qMI-KO-WqY"/>
                         <segue destination="mLU-a7-fFn" kind="push" identifier="goToBubbleView" id="EbV-90-wna"/>
                     </connections>
@@ -262,24 +271,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHs-2f-2x2">
-                                <rect key="frame" x="97" y="498" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="H50-X0-6Oa"/>
-                                    <constraint firstAttribute="height" constant="50" id="QLX-1e-EVN"/>
-                                </constraints>
-                                <state key="normal" image="text">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTextButton:" destination="DAd-Xs-XnW" eventType="touchUpInside" id="IKc-bI-d3C"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktw-Yn-aRd">
                                 <rect key="frame" x="250" y="498" width="50" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.82432236049999996" blue="0.63073242620000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="d3y-RU-cGY"/>
                                     <constraint firstAttribute="width" constant="50" id="yqG-5D-zmq"/>
@@ -294,7 +288,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjg-6a-Qzt">
                                 <rect key="frame" x="174" y="498" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.82806179940000002" green="0.88132599899999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="bFX-yS-yEk"/>
                                     <constraint firstAttribute="height" constant="50" id="uES-f0-wKm"/>
@@ -309,7 +303,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-jL-LyF">
                                 <rect key="frame" x="20" y="498" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.53704536560000005" green="0.81156646929999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8wQ-nA-O2F"/>
                                     <constraint firstAttribute="width" constant="50" id="ROg-H6-NOA"/>
@@ -320,6 +314,21 @@
                                 </state>
                                 <connections>
                                     <action selector="onPhotoButton:" destination="DAd-Xs-XnW" eventType="touchUpInside" id="PCH-zF-KMC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHs-2f-2x2">
+                                <rect key="frame" x="97" y="498" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="H50-X0-6Oa"/>
+                                    <constraint firstAttribute="height" constant="50" id="QLX-1e-EVN"/>
+                                </constraints>
+                                <state key="normal" image="text">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTextButton:" destination="DAd-Xs-XnW" eventType="touchUpInside" id="IKc-bI-d3C"/>
                                 </connections>
                             </button>
                         </subviews>

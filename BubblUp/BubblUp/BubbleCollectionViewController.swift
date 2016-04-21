@@ -24,9 +24,10 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
 
 
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    //weak var delegate:BubbleViewControllerDelegate?
 
+    @IBOutlet weak var pinBackgroundView: UIView!
     @IBOutlet weak var pin: UIImageView!
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -36,10 +37,6 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
     var box:PFObject!
     var longPressGesture: UILongPressGestureRecognizer!
     
- //   @IBOutlet weak var addPhotoButton: UIButton!
- //   @IBOutlet weak var addDrawButton: UIButton!
- //   @IBOutlet weak var addTextButton: UIButton!
- //   @IBOutlet weak var addAudioButton: UIButton!
     let transition = BubbleTransition()
     var buttonType: UIButton!
 
@@ -74,22 +71,13 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
         imageView.clipsToBounds = true
         imageView.image = background
         imageView.center = view.center
-       // collectionView.addSubview(imageView)
-        
-        //collectionView.layer.zPosition = -1
-        //self.view.sendSubviewToBack(imageView)
         self.view.insertSubview(imageView, atIndex:0)
-        print("assign")
-      //  collectionView.backgroundColor = UIColor(patternImage: background!)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor.clearColor()
         collectionView.opaque = false
-        //addBackgroundImage()
         assignbackground()
-       // self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
-       // self.collectionView.backgroundView =
         collectionView.dataSource = self
         collectionView.allowsSelection = true
       //  collectionView.allowsMultipleSelection = true
@@ -108,11 +96,22 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
         flowLayout.minimumInteritemSpacing = 5
         flowLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)
 
+        pinBackgroundView.layer.cornerRadius = pinBackgroundView.frame.height/2
+        pinBackgroundView.clipsToBounds = true
+        //        pin.layer.cornerRadius = pin.frame.height/2
+        //        pin.clipsToBounds = true
+        
+        pinBackgroundView.alpha = 0.5
+
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         getAllIdeas(box)
+
+//        pin.center = CGPoint(x: self.view.frame.width - pin.frame.width/2 - 10, y: self.view.frame.height - pin.frame.height/2 - 10)
+//        pin.hidden = false
+
     }
 
     
@@ -120,25 +119,11 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
         super.viewWillAppear(false)
         getAllIdeas(box)
 
-//        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-//            
-//            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
-//            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 - 20
-//            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 - 20
-//            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 - 20
-//
-//            
-//            }, completion: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(false)
         print("view will disappear")
-//        addTextButton.center.y = self.collectionView.frame.height - addTextButton.frame.height/2 + 50
-//        addPhotoButton.center.y = self.collectionView.frame.height - addPhotoButton.frame.height/2 + 50
-//        addDrawButton.center.y = self.collectionView.frame.height - addDrawButton.frame.height/2 + 50
-//        addAudioButton.center.y = self.collectionView.frame.height - addAudioButton.frame.height/2 + 50
-//
     }
     
     
@@ -424,6 +409,8 @@ extension BubbleCollectionViewController {
     func draggedView(sender:UIPanGestureRecognizer){
         print("dragged view")
         
+        var foundCell = false
+        
         if(sender.state == .Began){
             center = sender.view?.center
 
@@ -443,27 +430,43 @@ extension BubbleCollectionViewController {
         }
         if(sender.state == .Ended){
             let visibleCells = collectionView.visibleCells()
+            
             let viewPosition = sender.locationInView(collectionView)
             for cell in visibleCells {
-                //cell.layer.conta
                 if cell.layer.containsPoint(cell.layer.convertPoint(viewPosition, fromLayer: cell.layer.superlayer)){
                     print("delete")
-                    let indexPath = collectionView.indexPathForCell(cell)
-                    removeIdea(indexPath!)
-                    self.collectionView.deleteItemsAtIndexPaths([collectionView.indexPathForCell(cell)!])
+                    UIView.animateWithDuration(0.1, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+                        
+                        sender.view?.center.x -= 10
+                        sender.view?.center.y += 10
+                        
+                        }, completion: { (success: Bool) in
+                            if success {
+                                UIView.animateWithDuration(0.1, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+                                    
+                                    sender.view?.center.x += 10
+                                    sender.view?.center.y -= 10
+                                    
+                                    }, completion: { (success: Bool) in
+                                        if success {
+                                            let indexPath = self.collectionView.indexPathForCell(cell)
+                                            self.removeIdea(indexPath!)
+                                            self.collectionView.deleteItemsAtIndexPaths([self.collectionView.indexPathForCell(cell)!])
+                                            self.pin.center = CGPoint(x: self.view.frame.width - self.pin.frame.width/2 - 10, y: self.view.frame.height - self.pin.frame.height/2 - 10)
+                                        }
+                                })
+                            }
+                    })
+                    foundCell = true
                     break
-                  //  self.collectionView.reloadData()
-                   // self.collectionView.deleteItemsAtIndexPaths([collectionView.indexPathForCell(cell)!])
                 }
+
             }
             
             
-            
-            sender.view?.center
-            for idea in ideas {
-                
+            if !foundCell {
+                self.pin.center = CGPoint(x: self.view.frame.width - self.pin.frame.width/2 - 10, y: self.view.frame.height - self.pin.frame.height/2 - 10)
             }
-            sender.view?.center = center!
             
 
         }
