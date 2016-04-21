@@ -20,6 +20,7 @@ class BubbleLayoutViewController: UIViewController, UIViewControllerTransitionin
     let transition = BubbleTransition()
     var buttonType: UIButton!
     var box: PFObject!
+    weak var controller: BubbleViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

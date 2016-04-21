@@ -14,7 +14,8 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     var index:Int!
     var ideas: [PFObject]!
 
-    
+    weak var controller:BubbleCollectionViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,9 +45,12 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
       //      return nil
        // }
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("BubbleController") as! OneBubbleViewController
+        controller.controller = self.controller
         controller.idea = ideas[index]
         controller.pageIndex = index
+        print("controller \(self.controller)")
         
+        controller.delegate = self.controller
         return controller
         
     }

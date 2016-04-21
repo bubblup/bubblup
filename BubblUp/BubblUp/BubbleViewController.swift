@@ -18,6 +18,9 @@ protocol BubbleViewControllerDelegate: class {
 class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     var box:PFObject!
     var ideas:[PFObject]!
+    private var embeddedViewController: BubbleCollectionViewController?
+    
+    @IBOutlet weak var editBarButton: UIBarButtonItem!
     
     let transition = BubbleTransition()
 
@@ -140,6 +143,9 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
       //  self.addAudioButton.center.y = self.view.frame.height - self.addAudioButton.frame.height/2 + 150
      //   self.addAudioButton.center.y = self.tableView.frame.height - self.addAudioButton.frame.height/2 + 50
         // Do any additional setup after loading the view.
+        
+        self.editBarButton.enabled = false
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -152,16 +158,23 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     
     @IBAction func switchClicked(sender: AnyObject) {
         if(segmentedControl.selectedSegmentIndex == 0) {
+            self.editBarButton.enabled = false
+
             UIView.animateWithDuration(0.5, animations: {
                 self.containerView.alpha = 1
                 self.tableView.alpha = 0
+                self.embeddedViewController?.getAllIdeas(self.box)
             })
             
         }
         else {
+            self.editBarButton.enabled = true
+
             UIView.animateWithDuration(0.5, animations: {
+
                 self.containerView.alpha = 0
                 self.tableView.alpha = 1
+                self.getAllIdeas(self.box)
             })
         }
     }
@@ -189,6 +202,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
         if (segue.identifier == "toListView") {
             let viewController = segue.destinationViewController as! ListViewController
             viewController.box = box
+            
             // pass data to next view
         }
         else if (segue.identifier == "toAnimationSegue"){
@@ -206,6 +220,9 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
             let controller = segue.destinationViewController as! BubbleCollectionViewController
 
           //  let controller = viewController.topViewController as! BubbleCollectionViewController
+           
+            self.embeddedViewController = controller
+            
             delegate = controller
           //  delegate!.compose(self)
             //controller.delegate = self
@@ -219,14 +236,24 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
         if (segue.identifier == "photoSegue"){
             let viewController = segue.destinationViewController as! BubblePhotoViewController
             viewController.box = box
+            viewController.controller = self
+            viewController.delegate = self.embeddedViewController
+
         }
         if (segue.identifier == "textSegue"){
             let viewController = segue.destinationViewController as! BubbleTextViewController
             viewController.box = box
+            viewController.controller = self
+            viewController.delegate = self.embeddedViewController
+
+
         }
         if (segue.identifier == "voiceSegue"){
             let viewController = segue.destinationViewController as! BubbleAudioViewController
             viewController.box = box
+            viewController.controller = self
+            viewController.delegate = self.embeddedViewController
+
         }
         }
     }
@@ -246,7 +273,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
 }
 
 extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
-  
+    
     func getAllIdeas(box: PFObject!){
         let query = PFQuery(className:"Idea")
         query.orderByDescending("_created_at")
@@ -260,6 +287,9 @@ extension BubbleViewController:UITableViewDataSource, UITableViewDelegate {
                 print(error?.localizedDescription)
             }
         }
+        embeddedViewController?.getAllIdeas(box)
+      // getAllIdeas(box)
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

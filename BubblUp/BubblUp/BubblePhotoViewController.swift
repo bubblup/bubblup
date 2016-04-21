@@ -10,12 +10,16 @@ import UIKit
 import Parse
 
 class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    weak var controller: BubbleViewController?
 
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var newPhoto: UIImageView!
     
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var captionTextField: UITextField!
+    
+    weak var delegate:BubbleCollectionViewControllerDelegate?
+
     var vc: UIImagePickerController!
     var box: PFObject!
     override func viewDidLoad() {
@@ -75,7 +79,8 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
         Idea.createNewIdea(captionTextField.text!, type: Type.MediaType.image, file: fileImage, containedIn: box) { (success: Bool, error: NSError?) -> Void in
             if success{
                 print("Image successfully submitted")
-                
+                self.delegate?.didFinishTask(self)
+
                 
             } else{
                 print(error?.localizedDescription)
@@ -114,6 +119,8 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
                 Idea.createNewIdea(captionTextField.text!, type: Type.MediaType.image, file: fileImage, containedIn: box) { (success: Bool, error: NSError?) -> Void in
                     if success {
                         print("successful")
+                        self.controller?.getAllIdeas(self.box)
+
                         CATransaction.begin()
                         CATransaction.setCompletionBlock({ () -> Void in
                             self.captionTextField.text = ""

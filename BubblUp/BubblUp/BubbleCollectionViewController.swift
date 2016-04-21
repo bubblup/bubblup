@@ -9,11 +9,21 @@
 import UIKit
 import Parse
 
+protocol BubbleCollectionViewControllerDelegate: class {
+    func didFinishTask(sender: UIViewController)
+}
 
 
-class BubbleCollectionViewController: UIViewController, UIViewControllerTransitioningDelegate, BubbleViewControllerDelegate {
+
+class BubbleCollectionViewController: UIViewController, UIViewControllerTransitioningDelegate, BubbleViewControllerDelegate, BubbleCollectionViewControllerDelegate {
+    
+
     let panRec = UIPanGestureRecognizer()
+    
+    weak var delegate:BubbleCollectionViewControllerDelegate?
 
+
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     //weak var delegate:BubbleViewControllerDelegate?
 
     @IBOutlet weak var pin: UIImageView!
@@ -35,42 +45,14 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
 
     func compose(sender: BubbleViewController) {
         print("compose")
-//        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-//            
-//            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 - 20
-//            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 - 20
-//            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 - 20
-//            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 - 20
-//            
-//            
-//            }, completion: nil)
+
     }
     func composeCancel(sender: BubbleViewController){
-//        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-//            
-//            self.addTextButton.center.y = self.collectionView.frame.height - self.addTextButton.frame.height/2 + 50
-//            self.addPhotoButton.center.y = self.collectionView.frame.height - self.addPhotoButton.frame.height/2 + 50
-//            self.addDrawButton.center.y = self.collectionView.frame.height - self.addDrawButton.frame.height/2 + 50
-//            self.addAudioButton.center.y = self.collectionView.frame.height - self.addAudioButton.frame.height/2 + 50
-//            
-//            }, completion: nil)
 
         
     }
 
-//    func addBackgroundImage() {
-//        imageView = UIImageView(frame: view.bounds)
-//        imageView.contentMode = .ScaleAspectFill
-//        UIGraphicsBeginImageContext(self.collectionView.frame.size)
-//        UIImage(named: "background")?.drawInRect(self.collectionView.bounds)
-//    
-//        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-//        
-//        UIGraphicsEndImageContext()
-//        
-//        collectionView.backgroundColor = UIColor(patternImage: image)
-//    }
-    
+
     func gradient(view: UIView){
    // var vista : UIView = init(frame: rect)
     let gradient : CAGradientLayer = CAGradientLayer()
@@ -121,7 +103,10 @@ class BubbleCollectionViewController: UIViewController, UIViewControllerTransiti
         panRec.addTarget(self, action: "draggedView:")
         pin.addGestureRecognizer(panRec)
         pin.userInteractionEnabled = true
-        
+    //    flowLayout.scrollDirection = .Horizontal
+        flowLayout.minimumLineSpacing = 5
+        flowLayout.minimumInteritemSpacing = 5
+        flowLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)
 
     }
     
@@ -189,6 +174,7 @@ func colorForIndexPath(indexPath: NSIndexPath) -> UIColor {
 extension BubbleCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func getAllIdeas(box: PFObject!){
+        print("collection get all ideas")
         let query = PFQuery(className:"Idea")
         query.orderByDescending("_created_at")
         query.whereKey("box", equalTo: box)
@@ -247,38 +233,40 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BubbleCell", forIndexPath: indexPath) as! BubbleCell
         let idea = ideas[indexPath.row]
         //cell.backgroundColor = UIColor(patternImage: UIImage(named: "bubble-1")!)
-        
+        cell.layer.cornerRadius = 3
         cell.backgroundColor = UIColor(patternImage: UIImage(named: "speechbubble")!)
-
+        
         let type =  idea["type"] as! Int
         //case text
         //case image
         //case voice
 //        //case video
      //   cell.typeImage.hidden = true
-
+        cell.typeImage.hidden = false
         switch(type){
         case 0:
-            cell.typeImage.hidden = true
-            cell.bubbleLabel.hidden = false
+            cell.typeImage.image = UIImage(named: "text-1")
+
+           // cell.typeImage.hidden = true
+           // cell.bubbleLabel.hidden = false
             break
         case 1:
-            cell.typeImage.image = UIImage(named: "camera")
-            cell.typeImage.hidden = false
-            cell.bubbleLabel.hidden = true
+            cell.typeImage.image = UIImage(named: "picture")
+           // cell.typeImage.hidden = false
+           // cell.bubbleLabel.hidden = true
             break
         case 2:
-            cell.typeImage.image = UIImage(named: "microphone")
-            cell.typeImage.hidden = false
+            cell.typeImage.image = UIImage(named: "audio")
+         //  cell.typeImage.hidden = false
 
-            cell.bubbleLabel.hidden = true
+         //   cell.bubbleLabel.hidden = true
 
             break
         case 3:
-            cell.typeImage.image = UIImage(named: "drawing")
-            cell.typeImage.hidden = false
+            cell.typeImage.image = UIImage(named: "pencil")
+         //   cell.typeImage.hidden = false
 
-            cell.bubbleLabel.hidden = true
+         //   cell.bubbleLabel.hidden = true
 
 
             break
@@ -287,14 +275,14 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         }
 
         
-        UIGraphicsBeginImageContext(cell.frame.size)
-        UIImage(named: "bubble4")?.drawInRect(cell.bounds)
+//        UIGraphicsBeginImageContext(cell.frame.size)
+//        UIImage(named: "bubble4")?.drawInRect(cell.bounds)
+//        
+//        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+//    
+//        UIGraphicsEndImageContext()
         
-        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-    
-        UIGraphicsEndImageContext()
-        
-        cell.backgroundColor = UIColor(patternImage: image)
+      //  cell.backgroundColor = UIColor(patternImage: image)
         
 //        let imageView = UIImageView(frame: cell.bounds)
 //        imageView.image = UIImage(named: "bubble-1")//if its in images.xcassets
@@ -383,7 +371,7 @@ extension BubbleCollectionViewController: UICollectionViewDataSource, UICollecti
         controller.modalPresentationStyle = .Custom
         if (segue.identifier == "toPageView") {
             let viewController = segue.destinationViewController as! PageViewController
-            
+            viewController.controller = self
             viewController.ideas = ideas
             let indexPaths = self.collectionView.indexPathsForSelectedItems()
             let indexPath: NSIndexPath = indexPaths![0] as NSIndexPath
@@ -506,4 +494,29 @@ extension BubbleCollectionViewController {
     }
 
     
+}
+extension BubbleCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let totalwidth = collectionView.bounds.size.width;
+        let numberOfCellsPerRow = 3
+        let oddEven = indexPath.row / numberOfCellsPerRow % 2
+        let dimensions = CGFloat(Int(totalwidth-20) / numberOfCellsPerRow)
+        //if (oddEven == 0) {
+       // if oddEven == 0{
+            return CGSizeMake(dimensions, dimensions)
+       // }
+       // else {
+         //   return CGSizeMake(dimensions, 2*dimensions)
+
+       // }
+       // } else {
+        //    return CGSizeMake(dimensions, dimensions / 2)
+       // }
+    }
+}
+extension BubbleCollectionViewController {
+    func didFinishTask(sender: UIViewController) {
+        print("did finish task")
+        getAllIdeas(box)
+    }
 }

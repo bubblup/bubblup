@@ -10,6 +10,9 @@ import UIKit
 
 class BubbleDrawViewController: UIViewController {
 
+    weak var controller: BubbleViewController?
+    weak var delegate:BubbleCollectionViewControllerDelegate?
+
     @IBOutlet weak var dismissButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()

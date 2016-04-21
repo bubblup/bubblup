@@ -10,11 +10,15 @@ import UIKit
 import Parse
 import AVFoundation
 
+
 class OneBubbleViewController: UIViewController, UIScrollViewDelegate, AVAudioPlayerDelegate {
-    
+    weak var controller:BubbleCollectionViewController?
     var idea: PFObject!
     var type: Int!
     var pageIndex:Int!
+    
+    weak var delegate:BubbleCollectionViewControllerDelegate?
+
 
     var player: AVAudioPlayer!
     var soundFileURL:NSURL!
@@ -49,7 +53,7 @@ class OneBubbleViewController: UIViewController, UIScrollViewDelegate, AVAudioPl
         captionTextField.becomeFirstResponder()
         textLabel.becomeFirstResponder()
             
-        
+        controller?.getAllIdeas(controller?.box)
     
     }
     @IBAction func onCheck(sender: AnyObject) {
@@ -65,6 +69,10 @@ class OneBubbleViewController: UIViewController, UIScrollViewDelegate, AVAudioPl
             idea["text"] = captionTextField.text
         }
         idea.saveInBackground()
+        print(self.controller)
+        delegate?.didFinishTask(self)
+        //self.controller?.getAllIdeas(controller?.box)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -248,4 +256,5 @@ extension OneBubbleViewController {
         pauseButton.enabled = false
         
     }
+   
 }

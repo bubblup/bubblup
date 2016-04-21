@@ -12,6 +12,7 @@ class BubbleCell: UICollectionViewCell {
     @IBOutlet weak var bubbleLabel: UILabel!
     @IBOutlet weak var typeImage: UIImageView!
 
+    @IBOutlet weak var view: UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.cornerRadius = self.frame.height / 2

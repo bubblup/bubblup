@@ -13,10 +13,12 @@ class BubbleTextViewController: UIViewController {
 
     @IBOutlet weak var dismissButton: UIButton!
     let transition = BubbleTransition()
+    weak var controller: BubbleViewController?
 
     @IBOutlet weak var bubbleField: UITextView!
 
-   
+    weak var delegate:BubbleCollectionViewControllerDelegate?
+
     var box:PFObject!
 
     override func viewDidLoad() {
@@ -36,6 +38,7 @@ class BubbleTextViewController: UIViewController {
                 if success {
                     print("successful")
                     self.dismissViewControllerAnimated(true, completion: nil)
+                    self.delegate?.didFinishTask(self)
                 }
                 else{
                     print("unsuccessful")

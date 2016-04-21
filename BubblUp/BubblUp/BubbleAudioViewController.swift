@@ -21,7 +21,9 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
     var player: AVAudioPlayer!
     var recorder: AVAudioRecorder!
     var box: PFObject!
-    
+    weak var controller: BubbleViewController?
+    weak var delegate:BubbleCollectionViewControllerDelegate?
+
     @IBOutlet var statusLabel: UILabel!
     var meterTimer:NSTimer!
     var soundFileURL:NSURL!
@@ -226,6 +228,8 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
         Idea.createNewIdea(textField.text, type: Type.MediaType.voice, file: soundFile, containedIn: box) { (success:Bool, error: NSError?) -> Void in
             if success {
                 print("voice successfully saved")
+                self.delegate?.didFinishTask(self)
+
                 self.dismissViewControllerAnimated(true, completion: nil)
                 self.deleteAllRecordings()
                 self.dismissViewControllerAnimated(true, completion: nil)

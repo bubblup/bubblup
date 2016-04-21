@@ -8,8 +8,11 @@
 
 import UIKit
 import Parse
+
+
 class BubblePageViewController: UIPageViewController {
     
+    weak var controller:BubbleCollectionViewController?
    // var idea: PFObject!
     var ideas: [PFObject]!
     
@@ -45,9 +48,9 @@ extension BubblePageViewController: UIPageViewControllerDataSource, UIPageViewCo
     
     func getViewControllerAtIndex(index: Int) -> OneBubbleViewController {
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("BubbleController") as! OneBubbleViewController
-        
+       
         controller.idea = ideas[index]
-        
+        controller.controller = self.controller
         return controller
         
     }
