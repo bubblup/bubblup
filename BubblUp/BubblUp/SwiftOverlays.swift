@@ -416,7 +416,7 @@ public class SwiftOverlays: NSObject {
         bannerWindow!.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, notificationView.frame.size.height)
         bannerWindow!.hidden = false
         
-        let selector = #selector(closeAnnoyingNotificationOnTopOfStatusBar)
+        let selector = Selector("closeAnnoyingNotificationOnTopOfStatusBar")
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
         notificationView.addGestureRecognizer(gestureRecognizer)
         
