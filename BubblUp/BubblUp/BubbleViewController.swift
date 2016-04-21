@@ -11,11 +11,27 @@ import Parse
 
 
 protocol BubbleViewControllerDelegate: class {
-    func compose(sender: BubbleViewController)
-    func composeCancel(sender: BubbleViewController)
+   // func compose(sender: BubbleViewController)
+  //  func composeCancel(sender: BubbleViewController)
+    func reloadView(sender:UIViewController)
 }
 
-class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
+class BubbleViewController: UIViewController, UIGestureRecognizerDelegate, BubbleViewControllerDelegate   {
+    func reloadView(sender:UIViewController){
+        print("reload view")
+        if self.center != nil {
+            print("center")
+        addPhotoButton.center = self.center!
+        addDrawButton.center = center!
+            addTextButton.center = center!
+            addAudioButton.center = center!
+            addButton.center = center!
+        }
+        
+        addClicked()
+
+    }
+
     var box:PFObject!
     var ideas:[PFObject]!
     private var embeddedViewController: BubbleCollectionViewController?
@@ -43,9 +59,10 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     @IBOutlet weak var containerView: UIView!
    weak var delegate:BubbleViewControllerDelegate?
     
+    var center:CGPoint?
+    
     func addCanceled() {
         UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveLinear, animations: { () -> Void in
-            
             self.addDrawButton.center.y += 60
             
         }) { (success: Bool) in
@@ -176,6 +193,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         tabGesture.enabled = false
         tabGesture.delegate = self
         tableView.delegate = self
@@ -187,10 +205,10 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
         segmentedControl.selectedSegmentIndex = 0
         tableView.alpha = 0
         //delegate = self
-        self.view.bringSubviewToFront(addTextButton)
-        self.view.bringSubviewToFront(addPhotoButton)
-        self.view.bringSubviewToFront(addAudioButton)
-        self.view.bringSubviewToFront(addDrawButton)
+      //  self.view.bringSubviewToFront(addTextButton)
+      //  self.view.bringSubviewToFront(addPhotoButton)
+      //  self.view.bringSubviewToFront(addAudioButton)
+      //  self.view.bringSubviewToFront(addDrawButton)
             
        // addTextButton.layer.zPosition = 1
        // addPhotoButton.layer.zPosition = 1
@@ -214,7 +232,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
         addDrawButton.hidden = true
         addAudioButton.hidden = true
 
-        
+        center = addButton.center
         self.editBarButton.enabled = false
 
     }
@@ -294,7 +312,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
            
             self.embeddedViewController = controller
             
-            delegate = controller
+        //    delegate = controller
           //  delegate!.compose(self)
             //controller.delegate = self
             controller.box = box
@@ -308,6 +326,7 @@ class BubbleViewController: UIViewController, UIGestureRecognizerDelegate   {
             let viewController = segue.destinationViewController as! BubblePhotoViewController
             viewController.box = box
             viewController.controller = self
+            viewController.viewDelegate = self
             viewController.delegate = self.embeddedViewController
 
         }

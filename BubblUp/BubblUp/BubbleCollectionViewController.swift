@@ -15,7 +15,7 @@ protocol BubbleCollectionViewControllerDelegate: class {
 
 
 
-class BubbleCollectionViewController: UIViewController, UIViewControllerTransitioningDelegate, BubbleViewControllerDelegate, BubbleCollectionViewControllerDelegate {
+class BubbleCollectionViewController: UIViewController, UIViewControllerTransitioningDelegate, BubbleCollectionViewControllerDelegate {
     
 
     let panRec = UIPanGestureRecognizer()

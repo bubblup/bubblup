@@ -17,7 +17,7 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
     
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var captionTextField: UITextField!
-    
+    weak var viewDelegate:BubbleViewControllerDelegate?
     weak var delegate:BubbleCollectionViewControllerDelegate?
 
     var vc: UIImagePickerController!
@@ -54,7 +54,8 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
             vc.delegate = self
             vc.allowsEditing = true
             vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            
+            self.controller?.viewDidLoad()
+            self.viewDelegate?.reloadView(self)
             self.presentViewController(vc, animated: true, completion: nil)
     }
     
@@ -69,10 +70,13 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
             // Dismiss UIImagePickerController to go back to your original view controller
             
             dismissViewControllerAnimated(true, completion: nil)
+        viewDelegate?.reloadView(self)
+
             newPhoto.image = editedImage
             newPhoto.hidden = false
             captionTextField.hidden = false
             submitButton.hidden = false
+
     }
     @IBAction func onSubmit(sender: AnyObject) {
         var fileImage = getPFFileFromImage(newPhoto.image)
@@ -81,12 +85,12 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
                 print("Image successfully submitted")
                 self.delegate?.didFinishTask(self)
 
-                
             } else{
                 print(error?.localizedDescription)
             }
             
         }
+        viewDelegate?.reloadView(self)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -102,6 +106,8 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
     }
     @IBAction func onDismissButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        viewDelegate?.reloadView(self)
+
     }
     
     
