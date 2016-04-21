@@ -120,6 +120,7 @@ class BubblePhotoViewController: UIViewController,UIImagePickerControllerDelegat
                     if success {
                         print("successful")
                         self.controller?.getAllIdeas(self.box)
+                        self.delegate?.didFinishTask(self)
 
                         CATransaction.begin()
                         CATransaction.setCompletionBlock({ () -> Void in

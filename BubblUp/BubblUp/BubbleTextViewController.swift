@@ -69,6 +69,8 @@ class BubbleTextViewController: UIViewController {
                 Idea.createNewIdea(bubbleField.text, type: Type.MediaType.text, file: nil, containedIn: box) { (success:Bool, error:NSError?) -> Void in
                     if success {
                         print("successful")
+                        self.delegate?.didFinishTask(self)
+
                         let anim = CAKeyframeAnimation( keyPath:"transform" )
                         anim.values = [
                             NSValue( CATransform3D:CATransform3DMakeTranslation(-5, 0, 0 ) ),

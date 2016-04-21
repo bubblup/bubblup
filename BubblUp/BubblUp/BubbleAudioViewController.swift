@@ -317,6 +317,8 @@ class BubbleAudioViewController: UIViewController, AVAudioPlayerDelegate, AVAudi
                 Idea.createNewIdea(textField.text, type: Type.MediaType.voice, file: soundFile, containedIn: box) { (success:Bool, error: NSError?) -> Void in
                     if success {
                         print("successful")
+                        self.delegate?.didFinishTask(self)
+
                         CATransaction.begin()
                         CATransaction.setCompletionBlock({ () -> Void in
                             self.textField.text = ""
